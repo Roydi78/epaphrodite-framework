@@ -1,0 +1,45 @@
+<div id="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container menuprincipale">
+            <div class="row">
+                <div class="col-md-3 logoepaphrodite">
+                    <img src="{{ path.img('logo','png') }}" class="logo" alt="">
+                </div>
+                <div class="col-md-9">
+                    <button id="btn-menu" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa fa-reorder"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item"><a class="nav-link text-light" href="#">Accueil</a></li>
+                            <li><a class="nav-link text-light" href="#">A propos</a></li>
+                            <li><a class="nav-link text-light" href="#">H&eacute;bergement</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-light" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nos prestations </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-content" aria-labelledby="navbarDropdownBlog">
+                                    <a class="nav-link" href="#">Développement web</a>
+                                    <a class="nav-link" href="#">Web Marketing</a>
+                                    <a class="nav-link" href="#">Cr&eacute;ation graphique</a>
+                                    <a class="nav-link" href="#">Administration syst&egrave;me</a>
+                                    <a class="nav-link" href="#">Conseils & Strat&eacute;gies</a>
+                                </div>
+                            </li>
+                            <li><a class="nav-link text-light" href="#">Nos r&eacute;alisations</a></li>
+                            <li class="lastmenu"><a class="nav-link text-light" href="#">Nous contacter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!--Banniere du site-->
+<section class="container-fluid banniere">
+    <div class="bansite">
+        <img src="{{ path.img('banniere','png') }}" alt="banniere de mon site">
+    </div>
+    <div class="inner-banner">
+        <a href="#" class="haveprojet">AVEZ-VOUS UN PROJET ?</a>
+    </div>
+</section>

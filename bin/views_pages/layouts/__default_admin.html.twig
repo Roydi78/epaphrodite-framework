@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ path.css('/bootstrap') }}" rel="stylesheet">
+    <link href="{{ path.font('/font_awesome') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ path.css('/style_admin') }}" rel="stylesheet">
+    <link rel="icon" href="{{ path.img('logo.png') }}">
+    <title>{{ messages.answers('site-title') }}</title>
+</head>
+<body>
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#"><i class="fa fa-reorder"></i></a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a>ADMINISTRATION</a>
+        <div id="close-sidebar"><i class="fa fa-remove"></i></div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-info">
+          <span class="user-status"><i class="fa fa-circle-o"></i><span>En ligne</span></span>
+          <span class="user-status"><i class="fa fa-reply"></i><span><a href="{{ path.dashboard('admin/') }}">Dashboard</a></span></span>
+        </div>
+      </div>
+      <div class="sidebar-search">
+        <div>
+          <div class="input-group">
+            <input type="text" class="form-control search-menu" placeholder="Search...">
+            <div class="input-group-append"><span class="input-group-text"><i class="icon-search" aria-hidden="true"></i></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu"><span>Menu</span></li>
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>Utilisateurs</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="#">Ajouter des utilisateurs</a></li>
+                <li><a href="#">Liste des utilisateurs</a></li>
+                <li><a href="#">Droits d'acc&egrave;s</a></li>
+              </ul>
+            </div>
+          </li>          
+        </ul>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <a href="{{ path.dashboard('logout/') }}"><i class="fa fa-power-off"></i></a>
+    </div>
+  </nav>
+  <main class="page-content">
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
+  </main>
+</div>
+<script src="{{ path.js('/jquery') }}"></script><script src="{{ path.js('/bootstrap') }}"></script>
+<script>
+jQuery(function ($) {$(".sidebar-dropdown > a").click(function() {
+  $(".sidebar-submenu").slideUp(300);if ($(this).parent().hasClass("active")) {$(".sidebar-dropdown").removeClass("active");$(this).parent().removeClass("active");
+  }else{$(".sidebar-dropdown").removeClass("active");$(this).next(".sidebar-submenu").slideDown(300);$(this).parent().addClass("active");}});
+$("#close-sidebar").click(function() {$(".page-wrapper").removeClass("toggled");});$("#show-sidebar").click(function() {$(".page-wrapper").addClass("toggled");});});
+</script>
+</body>
+</html>

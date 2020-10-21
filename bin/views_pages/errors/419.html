@@ -1,0 +1,16 @@
+{% extends "layouts/__default_errors.html.twig" %} {% block title %}{{ messages.answers('site-title') }}{% endblock %} {% block content %}
+<div class="error-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 titlesite">{{ messages.answers('site-title') }}</div>
+            <div class="col-md-12 ">
+                <div class="error-text">
+                    <h1 class="error">{{ messages.answers('419-title') }}</h1>
+                    <h4>{{ messages.answers('419') }}</h4>
+                    <a href="{{ path.gethost() }}" class="btn btn-success">{{ messages.answers('connexion') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

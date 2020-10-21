@@ -1,0 +1,15 @@
+{% extends "layouts/__default_main.html.twig" %} {% from 'layouts/__baseforms.html.twig' import input_field , submit %} {% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 titlesite">AUTHENTIFICATION</div>
+    </div>
+    <div class="container">
+        <div class="form">
+            <div class="reponses">{{ reponse ? reponse : "" }}</div>
+            <form method="post">
+                {{ csrf.input_field() }} {{ input_field('login','Login','text') }} {{ input_field('password','Password','password') }} {{ submit('Connexion') }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

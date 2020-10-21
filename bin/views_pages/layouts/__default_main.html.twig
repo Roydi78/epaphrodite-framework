@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Author" LANG="fr" CONTENT="{{ messages.answers('author') }}">
+    <meta name="description" content="<p>{{ messages.answers('description') }}</p>"> 
+    <meta name="keywords" content="{{ messages.answers('keywords') }}" />
+    <meta name="language" content="{{ messages.answers('language') }}">
+    <meta name="Revisit-after" CONTENT="15">
+    <meta name="robots" content="Index, Follow">
+    <link href="{{ path.css('bootstrap') }}" rel="stylesheet">
+    <link href="{{ path.font('font-awesome-min') }}" rel="stylesheet" type="text/css">
+    <link href="{{ path.css('animate') }}">
+    <link href="{{ path.css('style') }}" rel="stylesheet">
+    <link rel="icon" href="{{ path.img('logoe','png') }}">
+    <title>{{ messages.answers('site-title') }}</title>
+  </head>
+    <body>
+      {{ include('layouts/__header.html.html') }}
+        {% block content %}{% endblock %}
+      {{ include('layouts/__footer.html.html') }}
+      <script src="{{ path.js('jquery') }}"></script>
+      <script src="{{ path.js('bootstrap-min') }}"></script>
+      <script src="{{ path.js('main') }}"></script>
+      <script>$(document).ready(function(){if ($(window).width()>600){ $(".dropdown").hover(function() {$('.dropdown-menu', this).not('.in .dropdown-menu').stop(false,false).slideDown("500");$(this).toggleClass('open');},function() {$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("500");$(this).toggleClass('open');});}else{$('.message a').click(function(){$('form').animate({height: "toggle", opacity: "toggle"}, "slow");});}}); window.onscroll = function() {myFunction()};var navbar = document.getElementById("navbar");var sticky = navbar.offsetTop;function myFunction() {if (window.pageYOffset >= sticky) {navbar.classList.add("sticky")} else {navbar.classList.remove("sticky");}} $('#Carousel').carousel({interval: 9000}); (function() {'use strict';window.addEventListener('load', function() {var forms = document.getElementsByClassName('validerinfos');var validation = Array.prototype.filter.call(forms, function(form) {form.addEventListener('submit', function(event) {if (form.checkValidity() === false){event.preventDefault();event.stopPropagation();}form.classList.add('was-validated');}, false);});}, false);})();function FunctionHaut() {window.scrollTo({top: 0, left:0, behavior: 'smooth'});}</script>
+    </body>
+</html>
+
