@@ -20,15 +20,18 @@ class Control extends twig
         $this->url_path = new \bin\epaphrodite\path\paths();
         $this->msg = new \bin\epaphrodite\define\text_messages();        
         $this->env = new \bin\epaphrodite\env\env(); 
+        $this->mail = new \bin\epaphrodite\email\send_mail; 
         $this->errors = new errors;       
     }
 
     protected function renderphp( $thml )
     {
        
-        
+        $this->mail->send();
+
         if(file_exists( _DIR_VIEWS_ .  _DIR_MAIN_TEMP_ . $thml .'.html'))
         {
+
             $this->answser = NULL;
             
             /* 
