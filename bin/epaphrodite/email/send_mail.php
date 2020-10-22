@@ -10,17 +10,23 @@ class send_mail
 {
 
     /* 
-      Instantiation and passing `true` enables exceptions
+     * Instantiation and passing `true` enables exceptions
     */
     function __construct()
     {
         $this->mail = new PHPMailer(true);
     }    
 
-    public function settings()
+
+    /**
+     * Parametre des messages
+     * @return void
+    */
+    private function settings()
     {
    
-        try {
+        try 
+        {
 
             $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
             $this->mail->isSMTP();                                            
@@ -30,11 +36,11 @@ class send_mail
             $this->mail->Password   = '@im3ndr#hope';                               
             $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
             $this->mail->Port       = 587;                                   
-            $this->mail->setFrom('infos@epaphrodite.com', 'ADMINISTRATEUR EPAPHRODITE');
+            $this->mail->setFrom('ne-pas-repondre@epaphrodite.com', 'ADMINISTRATEUR EPAPHRODITE');
 
             return true;
 
-        } catch (Exception $e) {
+        }catch (Exception $e){
 
             return false;
 
@@ -42,15 +48,24 @@ class send_mail
 
     }
 
-
-    public function send()
+    /**
+     * Send messages
+     *
+     * @param array $contacts
+     * @param string $msg_header
+     * @param string $msg_content
+     * @return void
+     */
+    public function send( array $contacts , string $msg_header  , string $msg_content )
     {
 
         if($this->settings()===true)
         {
             //Recipients
-            $this->mail->addAddress('aimendri@men-dpes.org', 'Joe User');     // Add a recipient
-            $this->mail->addAddress('aimendrikonan@gmail.com');               // Name is optional
+            foreach ( $contacts as $k => $value) 
+            {
+                $this->mail->addAddress($contacts[$k]);
+            }
             //$this->mail->addReplyTo('info@example.com', 'Information');
             //$this->mail->addCC('cc@example.com');
             //$this->mail->addBCC('bcc@example.com');
@@ -59,22 +74,29 @@ class send_mail
             //$this->mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
             //$this->mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-            $this->content();
-            $this->mail->send();
-
-            echo 'Message has been sent'; 
+            $this->content( $msg_header , $msg_content );
+            $msg = $this->mail->send();
+            $msg='';
+            return 'Message has been sent'; 
             
         }    
 
     }
 
-    public function content()
+    /**
+     * Get content of message
+     *
+     * @param string $msg_header
+     * @param string $msg_content
+     * @return void
+     */
+    private function content( string $msg_header  , string $msg_content )
     {
-            // Content
-            $this->mail->isHTML(true);                                  // Set email format to HTML
-            $this->mail->Subject = 'This is another test';
-            $this->mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-            //$this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $this->mail->isHTML(true);
+        $this->mail->Subject = $msg_header;
+        $this->mail->Body    = $msg_content;
+        //$this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     }
 
