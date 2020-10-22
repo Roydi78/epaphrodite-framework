@@ -56,7 +56,7 @@ class verify_chaine{
     */     
     public function only_number_and_character($variableverif,$nbre)
     {
-        $this->verificaracteres = verify_chaine::without_number_and_characters($variableverif);
+        $this->verificaracteres = $this->without_number_and_characters($variableverif);
         $this->verifinbrecaractere = verify_chaine::count_character_number($variableverif);
 
         if($this->verificaracteres===false&&$this->verifinbrecaractere<$nbre){
@@ -72,8 +72,8 @@ class verify_chaine{
     */     
     public function only_number($variableverif,$nbre)
     {
-        $this->verificaracteres = verify_chaine::without_number($variableverif);
-        $this->verifinbrecaractere = verify_chaine::count_character_number($variableverif);
+        $this->verificaracteres = $this->without_number($variableverif);
+        $this->verifinbrecaractere = $this->count_character_number($variableverif);
         
         if($this->verificaracteres===false&&$this->verifinbrecaractere<$nbre){
     
@@ -89,8 +89,8 @@ class verify_chaine{
     */    
     public function only_character($variableverif,$nbre)
     {
-        $this->verificaracteres = verify_chaine::without_characters($variableverif);
-        $this->verifinbrecaractere = verify_chaine::count_character_number($variableverif);
+        $this->verificaracteres = $this->without_characters($variableverif);
+        $this->verifinbrecaractere = $this->count_character_number($variableverif);
         
         if($this->verificaracteres===false&&$this->verifinbrecaractere<$nbre){
     

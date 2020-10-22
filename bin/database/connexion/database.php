@@ -15,7 +15,7 @@ class database
         const DB_USER = 'root';
         const option =
             [
-                PDO::MYSQL_ATTR_INIT_COMMAND =>'SET NAMES utf8',
+                PDO::MYSQL_ATTR_INIT_COMMAND =>"SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'",
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES  => false
             ];
@@ -34,10 +34,15 @@ class database
         public static function etalirlaconnexion()
         {
             try{
+                
                 $etablirconnexion = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, self::option);
+                
                 return $etablirconnexion;
+
             }catch (PDOException $e){
+
                 echo "Probleme de connexion a la base de donnees: " . $e->getMessage();
+
             }
         }
 
@@ -114,4 +119,5 @@ class database
             $result = $request->execute();
             return $result;
         }
+        
 }

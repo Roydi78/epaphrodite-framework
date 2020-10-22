@@ -8,33 +8,28 @@ use bin\controllers\render\errors;
 class Controladmin extends twig
 {
     /* Gestion des variable du @controlleur */
-    protected $crf_token = "";
-    private $acces_path;
-    private $session_path;
     private $url_path;
-    private $loader;
-    private $twig;
 
     function __construct()
     { 
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf();
         $this->url_path = new \bin\epaphrodite\path\paths();
         $this->messages_path = new \bin\epaphrodite\define\text_messages();        
-        $this->env = new \bin\epaphrodite\env\environement(); 
+        $this->env = new \bin\epaphrodite\env\env(); 
         $this->errors = new errors;
     }
 
-    public function renderphp($view)
+    public function renderphp( $html )
     {
 
-        if(file_exists( _DIR_VIEWS_ . '/admin/'.$view.'.html' ))
+        if(file_exists( _DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html' ))
         {
             
         /* 
             Dashbaord
         */
-        if($view==="admin-dashbaord_ep"){
-            echo $this->twig_env()->render('admin/'.$view.'.html',
+        if( $html ==="admin-dashbaord_ep"){
+            $this->render( _DIR_ADMIN_TEMP_ . $html ,
             [ 
                 'path'=>$this->url_path , 
                 'env'=>$this->env , 
@@ -50,8 +45,8 @@ class Controladmin extends twig
 
 class admin_controller extends Controladmin
 {
-    public function send_page($view){
+    public function send_page( $html ){
 
-        $this->renderphp($view);
+        $this->renderphp( $html );
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace bin\controllers\render;
+
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
@@ -9,8 +10,10 @@ class twig {
     private $loader;
     private $twig;
     
-    /* 
-      Twig path FilesystemLoader
+    /**
+     * Twig path FilesystemLoader
+     *
+     * @return mixed
     */    
     private function twig_filseystem(){
         
@@ -19,15 +22,29 @@ class twig {
         return $this->loader;
     }
 
-    /* 
-      Twig path Environment
-    */     
+    /**
+     * Twig path Environment
+     * @return mixed
+    */    
     public function twig_env(){
 
         $this->twig = new Environment ( $this->twig_filseystem() , [ 'cache' =>false ]);
 
         return $this->twig;
     }
+
+    /**
+     * Twig render
+     *
+     * @param string $view
+     * @param array $array
+     * @return mixed
+     */ 
+    public function render( string $view , array $array ){
+
+      echo $this->twig_env()->render( $view.'.html', $array );
+
+    }    
 
 
 }
