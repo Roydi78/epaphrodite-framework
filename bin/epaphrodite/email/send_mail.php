@@ -17,11 +17,11 @@ class send_mail
         $this->mail = new PHPMailer(true);
     }    
 
-    public function mailparam()
+    public function settings()
     {
    
         try {
-            //Server settings
+
             $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
             $this->mail->isSMTP();                                            
             $this->mail->Host       = 'smtp-fr.securemail.pro';                    
@@ -30,25 +30,25 @@ class send_mail
             $this->mail->Password   = '@im3ndr#hope';                               
             $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
             $this->mail->Port       = 587;                                   
+            $this->mail->setFrom('infos@epaphrodite.com', 'ADMINISTRATEUR EPAPHRODITE');
 
             return true;
 
         } catch (Exception $e) {
 
             return false;
-            //echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
 
         }    
 
     }
 
 
-    public function send(){
+    public function send()
+    {
 
-        if($this->mailparam()===true)
+        if($this->settings()===true)
         {
             //Recipients
-            $this->mail->setFrom('infos@epaphrodite.com', 'Administrateur');
             $this->mail->addAddress('aimendri@men-dpes.org', 'Joe User');     // Add a recipient
             $this->mail->addAddress('aimendrikonan@gmail.com');               // Name is optional
             //$this->mail->addReplyTo('info@example.com', 'Information');
@@ -59,17 +59,22 @@ class send_mail
             //$this->mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
             //$this->mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-            // Content
-            //$this->mail->isHTML(true);                                  // Set email format to HTML
-            $this->mail->Subject = 'Here is the subject';
-            $this->mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-            //$this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
+            $this->content();
             $this->mail->send();
 
             echo 'Message has been sent'; 
             
         }    
+
+    }
+
+    public function content()
+    {
+            // Content
+            $this->mail->isHTML(true);                                  // Set email format to HTML
+            $this->mail->Subject = 'This is another test';
+            $this->mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+            //$this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     }
 
