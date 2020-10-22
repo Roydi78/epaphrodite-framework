@@ -6,6 +6,7 @@ class querybuilder{
 
     private $table;
     private $where;
+    private $like;
     private $and;
     private $order;
     private $join;
@@ -47,16 +48,33 @@ class querybuilder{
         Where 
     */    
     public function where(string $where ):self{
+
         $this->where = "$where = ?";
+
         return $this;
+
     }
+
+    /* 
+        Like 
+    */    
+    public function like(string $like , $sign ):self{
+
+        $this->like = "$like $sign = ?";
+
+        return $this;
+
+    }    
 
     /* 
         limit 
     */     
     public function limit(string $begining , string $end ):self{
+
         $this->limit = "LIMIT $begining , $end";
+
         return $this;
+
     }      
 
     /* 
@@ -143,6 +161,13 @@ class querybuilder{
         }
 
         /* 
+            Add LIKE if exist
+        */         
+        if($this->like){
+            $query .=" LIKE {$this->like} ";
+        }          
+
+        /* 
             Add AND if exist
         */         
         if($this->and){
@@ -225,7 +250,14 @@ class querybuilder{
         */         
         if($this->where){
             $query .=" WHERE {$this->where} ";
-        }        
+        } 
+        
+        /* 
+            Add LIKE if exist
+        */         
+        if($this->like){
+            $query .=" LIKE {$this->like} ";
+        }          
         
         /* 
             Add AND if exist
@@ -253,7 +285,14 @@ class querybuilder{
         */         
         if($this->where){
             $query .=" WHERE {$this->where} ";
-        }        
+        }  
+        
+        /* 
+            Add LIKE if exist
+        */         
+        if($this->like){
+            $query .=" LIKE {$this->like} ";
+        }          
         
         /* 
             Add AND if exist

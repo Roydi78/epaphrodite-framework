@@ -51,4 +51,15 @@ class env{
 
     }
 
+    /* 
+        Vider un repertoire importations excel
+    */
+    public function delete_dir( $directory , $extension ){
+
+        array_map( 'unlink' , glob( $directory . '*' . $extension ) );
+
+        return true;
+
+    }    
+
 }
