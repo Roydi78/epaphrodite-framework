@@ -36,15 +36,38 @@
       <div class="sidebar-menu">
         <ul>
           <li class="header-menu"><span>Menu</span></li>
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>Utilisateurs</span></a>
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>MON PROFIL</span></a>
             <div class="sidebar-submenu">
               <ul>
-                <li><a href="#">Ajouter des utilisateurs</a></li>
-                <li><a href="#">Liste des utilisateurs</a></li>
-                <li><a href="#">Droits d'acc&egrave;s</a></li>
+                <li><a href="#">Modifier mot de passe</a></li>
               </ul>
             </div>
-          </li>          
+          </li>   
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>PARAMETRES</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="{{ path.admin('Liste_operateurs/') }}">Liste des op&eacute;rateurs</a></li>
+                <li><a href="#">Liste des Drenet</a></li>
+                <li><a href="#">Liste des &Eacute;coles</a></li>
+                <li><a href="#">Liste des &Eacute;leves</a></li>
+              </ul>
+            </div>
+          </li>  
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>IMPORT FICHIER</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="{{ path.admin('import_eleves/') }}">Import Eleves</a></li>
+                <li><a href="{{ path.admin('import_ecoles/') }}">Import Ecoles</a></li>
+              </ul>
+            </div>
+          </li>            
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>EXPORTATION</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="{{ path.admin('export_repartition/') }}">Repartition</a></li>
+              </ul>
+            </div>
+          </li>                            
         </ul>
       </div>
     </div>

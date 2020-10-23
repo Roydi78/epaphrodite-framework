@@ -429,3 +429,40 @@ section {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1rem
 }
+
+.admin {
+    text-align: center;
+}
+
+.contenu h3 {
+    text-align: center;
+}
+
+.validerinfos {
+    width: 70%;
+    border: 1px solid #cccccc;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.vertical tbody {
+    text-align: left;
+}
+
+.vertical thead {
+    background: #2f7e2f;
+    color: #ffffff;
+}
+
+#ajouter {
+    border-radius: 20px;
+    float: right;
+    margin: 10px;
+}
+
+#ajouter a {
+    text-decoration: none;
+    color: #fff;
+    border-radius: 20px;
+}
