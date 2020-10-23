@@ -46,6 +46,15 @@ class auth
     private function if_table_exist()
     {
 
+      $sql = "SHOW TABLES FROM user_bd";
+
+      $result = $this->request->select_request( $sql , NULL , NULL , false );
+
+      
+      if(is_array($result)){
+        return true;
+      }else{ return false; }
+
     }
 
     /* 
