@@ -75,8 +75,8 @@ class send_mail
             //$this->mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
             $this->content( $msg_header , $msg_content );
-            $msg = $this->mail->send();
-            $msg='';
+            $this->mail->send();
+            
             return 'Message has been sent'; 
             
         }    

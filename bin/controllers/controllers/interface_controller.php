@@ -27,7 +27,7 @@ class Control extends twig
     protected function renderphp( $thml )
     {
        
-        $this->mail->send(['aimendrikonan@gmail.com','aimendri@men-dpes.org'],'entete test','contenu du test');
+        //$this->mail->send(['aimendrikonan@gmail.com','aimendri@men-dpes.org'],'entete test','contenu du test');
 
         if(file_exists( _DIR_VIEWS_ .  _DIR_MAIN_TEMP_ . $thml .'.html'))
         {
