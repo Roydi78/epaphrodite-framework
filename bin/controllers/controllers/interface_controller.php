@@ -52,7 +52,8 @@ class Control extends twig
             */
             if( $thml ==="login_ep")
             {
-
+                $this->ans='';
+                
                 if( isset($_POST['submit'])&&$this->csrf->process()===true ){
                     
                     $this->result = $this->acces_path->verifymember($_POST['login'],$_POST['password']);
