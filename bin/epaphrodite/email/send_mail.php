@@ -77,7 +77,7 @@ class send_mail
             $this->content( $msg_header , $msg_content );
             $this->mail->send();
             
-            return 'Message has been sent'; 
+            return true; 
             
         }    
 
