@@ -15,21 +15,21 @@ class Control extends twig
 
     function __construct()
     {
+
         $this->acces_path = new \bin\database\requests\select\auth();
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf();
         $this->url_path = new \bin\epaphrodite\path\paths();
         $this->msg = new \bin\epaphrodite\define\text_messages();        
         $this->env = new \bin\epaphrodite\env\env(); 
         $this->mail = new \bin\epaphrodite\email\send_mail; 
-        $this->errors = new errors;       
+        $this->errors = new errors;  
+
     }
 
     protected function renderphp( $thml )
     {
        
-        //$this->mail->send(['aimendrikonan@gmail.com','aimendri@men-dpes.org'],'entete test','contenu du test');
-
-        if(file_exists( _DIR_VIEWS_ .  _DIR_MAIN_TEMP_ . $thml .'.html'))
+        if(file_exists( _DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $thml . '.html' ))
         {
 
             $this->answser = NULL;
@@ -53,7 +53,7 @@ class Control extends twig
             if( $thml ==="login_ep")
             {
                 $this->ans='';
-                
+
                 if( isset($_POST['submit'])&&$this->csrf->process()===true ){
                     
                     $this->result = $this->acces_path->verifymember($_POST['login'],$_POST['password']);
