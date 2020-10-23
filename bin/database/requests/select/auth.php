@@ -50,7 +50,6 @@ class auth
 
       $result = $this->request->select_request( $sql , NULL , NULL , false );
 
-      
       if(is_array($result)){
         return true;
       }else{ return false; }
@@ -73,13 +72,15 @@ class auth
 
         $result = $this->request->select_request($sql,'s',[ $loginuser ] , true);
 
+        return $result;
+
       }else{
 
         $this->if_exist->create_table();
 
-      }
+        return NULL;
 
-      return $result;
+      }
 
     } 
 
