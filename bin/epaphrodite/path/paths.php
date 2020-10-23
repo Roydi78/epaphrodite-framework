@@ -54,8 +54,8 @@ class paths extends host {
     /* 
          images paths 
     */     
-    public function img($img_name,$extention){
-        $this->linkurl = $this->gethost().'static/img/'.$this->slug($img_name).'.'.$extention;
+    public function img($img){
+        $this->linkurl = $this->gethost().'static/img/'.$img;
         return $this->linkurl;
     }     
 

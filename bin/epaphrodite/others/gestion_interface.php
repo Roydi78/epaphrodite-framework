@@ -1,5 +1,5 @@
 <?php
-namespace bin\epaphrodite;
+namespace bin\epaphrodite\others;
 
 class gestion_interface
 {

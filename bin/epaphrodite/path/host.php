@@ -10,16 +10,19 @@ class host {
     /*
         Get domaine of website
     */    
-    private function domain(){
+    private function domain()
+    {
 
-        $this->domaine = "epaphrodite.com";
+        $this->domaine = "epahrodite-framework";
+
         return $this->domaine;
     }
         
     /* 
         Host link path
     */
-    public function host(){
+    public function host()
+    {
 
         $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 

@@ -15,12 +15,12 @@ class geturlspath
 
     public function __construct()
     {
-        $this->startsession = new \bin\epaphrodite\env\gestcookies();
-        $this->path_session = new \bin\epaphrodite\auth\session_auth();
-        $this->path_interface = new \bin\epaphrodite\gestion_interface();
-        $this->path_router_interface = new \bin\controllers\controllers\interface_controller();
-        $this->path_router_admin = new \bin\controllers\controllers\admin_controller();
-        $this->env = new \bin\controllers\render\method44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee(); 
+        $this->startsession = new \bin\epaphrodite\env\gestcookies;
+        $this->path_session = new \bin\epaphrodite\auth\session_auth;
+        $this->path_interface = new \bin\epaphrodite\others\gestion_interface;
+        $this->path_router_interface = new \bin\controllers\controllers\interface_controller;
+        $this->path_router_admin = new \bin\controllers\controllers\admin_controller;
+        $this->env = new \bin\controllers\render\method44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee; 
     }
     
     /* 

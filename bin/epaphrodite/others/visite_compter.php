@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite;
+namespace bin\epaphrodite\others;
 
 class visite_compter{
 
