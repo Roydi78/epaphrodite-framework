@@ -11,7 +11,7 @@ class database
     */
         private $etablirconnexion;
         const DB_PASS = "root";
-        const DB_DSN = "mysql:host=localhost;dbname=dspsdatabase";
+        const DB_DSN = "mysql:host=localhost;dbname=epaphrodite_bd";
         const DB_USER = 'root';
         const option =
             [

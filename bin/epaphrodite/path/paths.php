@@ -2,7 +2,8 @@
 
 namespace bin\epaphrodite\path;
 
-class paths extends host {
+class paths extends host 
+{
 
     private $linkurl;
     private $slug;
@@ -10,69 +11,107 @@ class paths extends host {
     /* 
         Host link path
     */
-    public function gethost(){
+    public function gethost()
+    {
+
         return $this->host();
+
     }
 
     /* 
-        Ordinary link paths
+        Main path link
     */
-    public function main($ordlink){
-        $this->linkurl = $this->gethost().'views/'.$this->slug($ordlink).'/';
-        return $this->linkurl;
-    }    
+    public function main( $ordlink )
+    {
 
-    /* 
-        Administrator link paths ( dashboard )
-    */    
-    public function dashboard($adminlinkneeded){
-        $this->linkurl = $this->gethost().$this->slug($adminlinkneeded).'/';
+        $this->linkurl = $this->gethost().'views/'.$this->slug($ordlink).'/';
+
         return $this->linkurl;
-    } 
+
+    }  
     
     /* 
-        Ordinary administrator link paths
-    */    
-    public function admin($adminlinkneeded){
-        $this->linkurl = $this->gethost().'admin-views/'.$this->slug($adminlinkneeded).'/';
+        Main id path link
+    */     
+    public function main_id($adminlinkneeded , $typeaction , $idneeded)
+    {
+
+        $this->linkurl = $this->gethost().'admin-views/'.$adminlinkneeded.$typeaction.$idneeded;
+
         return $this->linkurl;
+
     }     
 
     /* 
-        articles link paths
-    */     
-    public function adidlink($adminlinkneeded , $typeaction , $idneeded){
-        $this->linkurl = $this->gethost().'admin-views/'.$adminlinkneeded.$typeaction.$idneeded;
-        return $this->linkurl;
-    }    
+        dashboard paths ( dashboard )
+    */    
+    public function dashboard($adminlinkneeded)
+    {
 
-    public function oridlink($ordlinkneeded , $typeaction , $idneeded){
-        $this->linkurl = $this->gethost().'views/'.$ordlinkneeded.$typeaction.$idneeded;
+        $this->linkurl = $this->gethost().$this->slug($adminlinkneeded).'/';
+
         return $this->linkurl;
+
+    } 
+    
+    /* 
+        Admin path link
+    */    
+    public function admin($adminlinkneeded)
+    {
+
+        $this->linkurl = $this->gethost().'admin-views/'.$this->slug($adminlinkneeded).'/';
+
+        return $this->linkurl;
+
+    }        
+
+    /* 
+        Admin id path link
+    */      
+    public function admin_id($ordlinkneeded , $typeaction , $idneeded)
+    {
+
+        $this->linkurl = $this->gethost().'views/'.$ordlinkneeded.$typeaction.$idneeded;
+
+        return $this->linkurl;
+
     }    
 
     /* 
          images paths 
     */     
-    public function img($img){
+    public function img($img)
+    {
+
         $this->linkurl = $this->gethost().'static/img/'.$img;
+
         return $this->linkurl;
+
     }     
 
     /* 
          js paths 
     */      
-    public function js($js){
+    public function js($js)
+    {
+
         $this->linkurl = $this->gethost().'static/js/'.$js.'.js';
+
         return $this->linkurl;
+
     }    
     
     /* 
          css paths 
     */      
-    public function css($css){
+    public function css($css)
+    {
+
         $this->linkurl = $this->gethost().'static/css/'.$this->slug($css).'.css';
+
         return $this->linkurl;
+
     } 
 
     /* 
@@ -86,15 +125,20 @@ class paths extends host {
     /* 
          pdf files paths 
     */      
-    public function pdf($pdfneeded){
-        $this->linkurl = $this->gethost().'static/pdf'.$this->slug($pdfneeded);
+    public function pdf($pdfneeded)
+    {
+
+        $this->linkurl = $this->gethost().'static/pdf'.$pdfneeded;
+
         return $this->linkurl;
+
     } 
     
     /* 
         slug constructor
     */      
-    private function slug( $string, $delimiter = '-' ) {
+    private function slug( $string, $delimiter = '-' ) 
+    {
 
         $oldLocale = setlocale(LC_ALL, '0');
         setlocale(LC_ALL, 'en_US.UTF-8');
