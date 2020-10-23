@@ -8,6 +8,7 @@ use \bin\epaphrodite\path\paths;
 use bin\epaphrodite\crf_token\csrf_secure;
 use \bin\database\connexion\processed_request;
 use bin\epaphrodite\define\text_messages;
+use bin\database\requests\insert\if_not_exist;
 
 
 class auth
@@ -20,6 +21,7 @@ class auth
     */
     function __construct()
     {
+
       $this->path = new paths();
       $this->secure = new csrf_secure();
       $this->verify_if_is_correct = new verify_chaine;
@@ -27,28 +29,46 @@ class auth
       $this->request = new processed_request;
       $this->msg = new text_messages;
       $this->star = new \bin\epaphrodite\env\gestcookies();
+      $this->if_exist = new if_not_exist;
       
     }
 
     /**
-     * Recuperation des parametres d'execution d'une requete sql
-    */   
+     * Querybilder constructor
+     *
+     * @return \bin\database\querybilder\querybuilder
+    */    
     private function getclassQueryBuilder(): \bin\database\querybilder\querybuilder
     {
         return new \bin\database\querybilder\querybuilder();
-    }    
+    } 
+    
+    private function if_table_exist()
+    {
+
+    }
 
     /* 
       Verify if exist in database
     */
-    public function verifiersiexite($loginuser)
+    public function verify_if_user_exist($loginuser)
     {
 
-      $sql = $this->getclassQueryBuilder() 
-                    -> table('userpme_bd') 
+      if($this->if_table_exist()===false)
+      {
+
+        $sql = $this->getclassQueryBuilder() 
+                    -> table('user_bd') 
                     -> where('loginuser_bd') 
                     -> SQuery(NULL);
-      $result = $this->request->select_request($sql,'s',[ $loginuser ] , true);
+
+        $result = $this->request->select_request($sql,'s',[ $loginuser ] , true);
+
+      }else{
+
+        $this->if_exist->create_table();
+
+      }
 
       return $result;
 
@@ -62,7 +82,7 @@ class auth
 
       if(($this->verify_if_is_correct->only_number_and_character( $login , $nbre=12 ))===false){
 
-            $loginUserResult = $this->verifiersiexite($login);
+            $loginUserResult = $this->verify_if_user_exist($login);
 
             if(!empty($loginUserResult)){
 
