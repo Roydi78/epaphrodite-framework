@@ -20,16 +20,14 @@ class Control extends twig
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf();
         $this->url_path = new \bin\epaphrodite\path\paths();
         $this->msg = new \bin\epaphrodite\define\text_messages();        
-        $this->env = new \bin\epaphrodite\env\env(); 
-        $this->mail = new \bin\epaphrodite\email\send_mail; 
+        $this->env = new \bin\epaphrodite\env\env();
         $this->errors = new errors;  
 
     }
 
     protected function renderphp( $thml )
     {
-        $this->mail->send_email(['aimendrikonan@gmail.com'],'entete du test','contenu du test');
-  
+        
         if(file_exists( _DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $thml . '.html' ))
         {
 

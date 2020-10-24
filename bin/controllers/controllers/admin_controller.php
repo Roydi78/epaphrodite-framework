@@ -14,7 +14,8 @@ class Controladmin extends twig
     { 
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf();
         $this->url_path = new \bin\epaphrodite\path\paths();
-        $this->messages_path = new \bin\epaphrodite\define\text_messages();        
+        $this->messages_path = new \bin\epaphrodite\define\text_messages(); 
+        $this->mail = new \bin\epaphrodite\email\send_mail;        
         $this->env = new \bin\epaphrodite\env\env(); 
         $this->errors = new errors;
     }

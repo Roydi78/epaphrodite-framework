@@ -71,15 +71,21 @@ class send_mail
             //$this->mail->addBCC('bcc@example.com');
 
             // Attachments
-            //$this->mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-            //$this->mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+            //$this->mail->addAttachment('/var/tmp/file.tar.gz');
+            //$this->mail->addAttachment('/tmp/image.jpg', 'new.jpg');
 
+            // Chrager le contenu du mail
             $this->content( $msg_header , $msg_content );
 
-            if($this->mail->send()){
-                echo 'email send' ;
+            // Verifier l'envoi du mail
+            if($this->mail->send())
+            {
+                return true;
+
+            }else{
+
+                return false;
             }
-            
             
         }    
 
