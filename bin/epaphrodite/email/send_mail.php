@@ -56,7 +56,7 @@ class send_mail
      * @param string $msg_content
      * @return void
      */
-    public function send( array $contacts , string $msg_header  , string $msg_content )
+    public function send_email( array $contacts , string $msg_header  , string $msg_content )
     {
 
         if($this->settings()===true)
@@ -75,9 +75,11 @@ class send_mail
             //$this->mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
             $this->content( $msg_header , $msg_content );
-            $this->mail->send();
+
+            if($this->mail->send()){
+                echo 'email send' ;
+            }
             
-            return true; 
             
         }    
 

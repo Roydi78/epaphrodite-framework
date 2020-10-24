@@ -1429,24 +1429,16 @@ class PHPMailer
      */
     public function send()
     {
-        try 
-        {
-
-            if (!$this->preSend())
-            {
+        try {
+            if (!$this->preSend()) {
                 return false;
             }
 
             return $this->postSend();
-
-        }catch (Exception $exc){
-
+        } catch (Exception $exc) {
             $this->mailHeader = '';
-            
             $this->setError($exc->getMessage());
-
-            if ($this->exceptions)
-            {
+            if ($this->exceptions) {
                 throw $exc;
             }
 
