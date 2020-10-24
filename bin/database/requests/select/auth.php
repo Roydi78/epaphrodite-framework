@@ -6,8 +6,9 @@ use bin\epaphrodite\env\verify_chaine;
 use bin\epaphrodite\auth\session_auth;
 use \bin\epaphrodite\path\paths;
 use bin\epaphrodite\crf_token\csrf_secure;
-use \bin\database\connexion\processed_request;
+use bin\database\connexion\processed_request;
 use bin\epaphrodite\define\text_messages;
+use bin\epaphrodite\env\gestcookies;
 use bin\database\requests\insert\if_not_exist;
 
 
@@ -16,8 +17,9 @@ class auth
 
     private $request;
 
-    /* 
-      Get class 
+    /**
+     * Get class
+     * @return void
     */
     function __construct()
     {
@@ -28,7 +30,7 @@ class auth
       $this->userbd = new session_auth;
       $this->request = new processed_request;
       $this->msg = new text_messages;
-      $this->star = new \bin\epaphrodite\env\gestcookies();
+      $this->star = new gestcookies();
       $this->if_exist = new if_not_exist;
       
     }
@@ -43,66 +45,86 @@ class auth
         return new \bin\database\querybilder\querybuilder();
     } 
     
+    /**
+     * Verify if user_bd table exist in database
+     * @return bool
+    */
     private function if_table_exist()
     {
+      
+        try
+        {
 
-      $sql = "SHOW TABLES FROM user_bd";
+          $sql = $this->getclassQueryBuilder() 
+                      -> table('user_bd') 
+                      -> SQuery(NULL);
 
-      $result = $this->request->select_request( $sql , NULL , NULL , false );
+          $this->request->select_request( $sql , NULL , NULL , false );
+          
+          return true;
+          
+        }catch (\Exception $e){
 
-      if(is_array($result)){
-        return true;
-      }else{ return false; }
+          return false;
+
+        }
 
     }
 
-    /* 
-      Verify if exist in database
+    /**
+     * Verify if exist in database
+     *
+     * @param string $loginuser
+     * @return void
     */
-    public function verify_if_user_exist($loginuser)
+    public function verify_if_user_exist( string $loginuser )
     {
+      
+        if($this->if_table_exist()===true)
+        {
 
-      if($this->if_table_exist()===false)
-      {
+          $sql = $this->getclassQueryBuilder() 
+                      -> table('user_bd') 
+                      -> where('loginuser_bd') 
+                      -> SQuery(NULL);
 
-        $sql = $this->getclassQueryBuilder() 
-                    -> table('user_bd') 
-                    -> where('loginuser_bd') 
-                    -> SQuery(NULL);
+          $result = $this->request->select_request($sql,'s',[ $loginuser ] , true );
 
-        $result = $this->request->select_request($sql,'s',[ $loginuser ] , true);
+          return $result;
 
-        return $result;
+        }else{
 
-      }else{
+          $this->if_exist->create_table();
 
-        $this->if_exist->create_table();
+          return NULL;
 
-        return NULL;
-
-      }
+        }
 
     } 
 
-    /* 
-      Verify authentification of user
-    */
-    public function verifymember( $login , $motpasse )
+    /**
+     * Verify authentification of user
+     *
+     * @param string $login
+     * @param string $motpasse
+     * @return bool
+     */
+    public function verifymember( string $login , string $motpasse )
     {
 
       if(($this->verify_if_is_correct->only_number_and_character( $login , $nbre=12 ))===false){
 
-            $loginUserResult = $this->verify_if_user_exist($login);
+            $users_datas = $this->verify_if_user_exist($login);
 
-            if(!empty($loginUserResult)){
+            if(!empty($users_datas)){
 
               if (!empty($motpasse)){
 
-                $cryptermdp = hash('gost',$motpasse);
+                $cryptermdp = hash('gost' , $motpasse );
 
               }
               
-              $hashpassword = $loginUserResult[0]["mdpuser_bd"];
+              $hashpassword = $users_datas[0]["mdpuser_bd"];
 
               $loginPassword = 0;
 
@@ -117,9 +139,9 @@ class auth
 
                     session_start();
                     
-                    $_SESSION["loginuserbd"] = $loginUserResult[0]["loginuser_bd"];
+                    $_SESSION["loginuserbd"] = $users_datas[0]["loginuser_bd"];
 
-                    $_SESSION["iduserbd"] = $loginUserResult[0]["iduserpme_bd"];
+                    $_SESSION["iduserbd"] = $users_datas[0]["iduserpme_bd"];
 
                     $this->gethost = $this->path->sad_link('admin');
 

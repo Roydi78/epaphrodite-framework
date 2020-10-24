@@ -7,8 +7,8 @@ class text_messages
     public function answers($typeansers){
         $this->datas_type[] =
         [
-            'site-title'=> 'AGENCE EPAPHRODITE',
-            'author' => 'Agence epaphrodite',
+            'site-title'=> 'EPAPHRODITE FRAMEWORK',
+            'author' => 'epaphrodite',
             'description' => 'agence epaphrodite',
             'keywords' => "Agence epaphrodite  , Création; site web; digitale; community manager; logo; identité visuelle; marketing; communication; abidjan; Côte d'Ivoire; Afrique; Didier Drogba",
             'token_name' => 'token_crf_ep',
