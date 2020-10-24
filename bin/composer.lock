@@ -5,8 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "85e07ea1e3620c3da1942492052d7d21",
-    "packages": [
-        {
+    "packages": [{
             "name": "phpmailer/phpmailer",
             "version": "v6.1.8",
             "source": {
@@ -49,8 +48,7 @@
             "license": [
                 "LGPL-2.1-only"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Marcus Bointon",
                     "email": "phpmailer@synchromedia.co.uk"
                 },
@@ -107,8 +105,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Gert de Pagter",
                     "email": "BackEndTea@gmail.com"
                 },
@@ -165,8 +162,7 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
                 },
@@ -224,8 +220,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "authors": [
-                {
+            "authors": [{
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com",
                     "homepage": "http://fabien.potencier.org",
