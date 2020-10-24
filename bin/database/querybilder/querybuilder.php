@@ -14,7 +14,7 @@ class querybuilder{
     private $group;
     private $insert;
     private $values;   
-    private $set;       
+    private $set;    
 
     /**
      * table
@@ -133,42 +133,54 @@ class querybuilder{
         $this->group = "GROUP BY $group";
 
         return $this;
-        
+
     }      
 
-    /* 
-        and 
-    */     
+    /**
+     * and
+     *
+     * @param array $getand
+     * @return self
+    */    
     public function and( $getand=[] ):self{
 
-        foreach($getand as $val){
+        foreach($getand as $val)
+        {
             $this->and .= " AND " . $val . " = ? ";
         }
 
         return $this;
     }     
 
-    /* 
-        join table
-    */     
-    public function join( $getjoin=[] ):self{
+    /**
+     * join
+     *
+     * @param array $getjoin
+     * @return self
+    */    
+    public function join( $getjoin=[] ):self
+    {
 
-        if(count($getjoin)==1){ $datas=explode('|',$getjoin[0]); $this->join = "$datas[0] ON $datas[1]"; }
-        if(count($getjoin)==2){ $datas=explode('|',$getjoin[0]); $datas1=explode('|',$getjoin[1]); $this->join = "$datas[0] ON $datas[1] JOIN $datas1[0] ON $datas1[1]"; }
-        if(count($getjoin)==3){ $datas=explode('|',$getjoin[0]); $datas1=explode('|',$getjoin[1]); $datas2=explode('|',$getjoin[2]); $this->join = "$datas[0] ON $datas[1] JOIN $datas1[0] ON $datas1[1] JOIN $datas2[0] ON $datas2[1]"; }
-        if(count($getjoin)==4){ $datas=explode('|',$getjoin[0]); $datas1=explode('|',$getjoin[1]); $datas2=explode('|',$getjoin[2]); $datas3=explode('|',$getjoin[3]); $this->join = "$datas[0] ON $datas[1] JOIN $datas1[0] ON $datas1[1] JOIN $datas2[0] ON $datas2[1] JOIN $datas3[0] ON $datas3[1]"; }
-        if(count($getjoin)==5){ $datas=explode('|',$getjoin[0]); $datas1=explode('|',$getjoin[1]); $datas2=explode('|',$getjoin[2]); $datas3=explode('|',$getjoin[3]); $datas4=explode('|',$getjoin[4]); $this->join = "$datas[0] ON $datas[1] JOIN $datas1[0] ON $datas1[1] JOIN $datas2[0] ON $datas2[1] JOIN $datas3[0] ON $datas3[1]  JOIN $datas4[0] ON $datas4[1]"; }
+        foreach( $getjoin as $val ){
+
+            $this->join .= ' JOIN ' . str_replace( '|' , ' ON ' , $val );
+
+        }
 
         return $this;
     }    
 
     
-    /* 
-        and 
-    */     
+    /**
+     * set
+     *
+     * @param array $getset
+     * @return self
+     */    
     public function set( $getset=[] ):self{
         
         foreach($getset as $val){
+
             $this->set .= $val . " = ?". " , ";;
         }
 
@@ -177,10 +189,14 @@ class querybuilder{
         return $this;
     }    
 
-    /* 
-        Select Query chaine builder
-    */ 
-    public function SQuery($propriety):string{
+    /**
+     * select query chaine
+     *
+     * @param array $propriety
+     * @return string
+     */
+    public function SQuery($propriety):string
+    {
 
         if($propriety===NULL){ $propriety='*';}
 
@@ -190,14 +206,16 @@ class querybuilder{
         $query = "SELECT $propriety FROM {$this->table}";
 
         /* 
-            Add JOIN if exist
+            Add join if exist
         */         
         if($this->join){
-            $query .=" JOIN {$this->join}";
+
+            $query .=" {$this->join}";
+
         }        
 
         /* 
-            Add WHERE if exist
+            Add where if exist
         */         
         if($this->where){
             $query .=" WHERE {$this->where}";
@@ -242,9 +260,11 @@ class querybuilder{
     }   
     
     
-    /* 
-        Insert Query chaine builder
-    */     
+    /**
+     * insert query chaine
+     *
+     * @return void
+     */     
     public function IQuery(){
 
         /* 
@@ -271,10 +291,12 @@ class querybuilder{
     }   
    
 
-    /* 
-        Update Query chaine builder
+    /**
+     * Update query chaine
+     *  @return string
     */     
-    public function UQuery(){
+    public function UQuery()
+    {
 
         /* 
             Update inital query chaine
@@ -313,10 +335,13 @@ class querybuilder{
 
     }
     
-    /* 
-        Delete Query chaine builder
-    */     
-    public function DQuery(){
+    /**
+     * Delete query chaine
+     *
+     * @return string
+     */     
+    public function DQuery()
+    {
 
         /* 
             Update inital query chaine

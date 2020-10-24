@@ -36,6 +36,7 @@ class Control extends twig
             /* 
                 Home page ( index ) 
             */
+
             if( $thml ==="index_ep")
             {
                 $this->render( _DIR_MAIN_TEMP_ . $thml ,
