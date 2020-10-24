@@ -6,24 +6,15 @@ use \bin\database\connexion\processed_request;
 
 class if_not_exist{
 
-    /* 
-      Get class 
-    */    
+    /**
+     * Get class
+     * @return void
+    */   
     function __construct()
     {
-        $this->request = new processed_request;
+      $this->request = new processed_request;
     } 
 
-    /**
-     * Querybilder constructor
-     *
-     * @return \bin\database\querybilder\querybuilder
-    */   
-    private function getclassQueryBuilder(): \bin\database\querybilder\querybuilder
-    {
-        return new \bin\database\querybilder\querybuilder();
-    }  
-    
     /* 
       Creation de la table auth_secure
     */

@@ -16,38 +16,57 @@ class querybuilder{
     private $values;   
     private $set;       
 
-    /* 
-        Database table 
+    /**
+     * table
+     *
+     * @param string $table
+     * @return self
     */
-    public function table(string $table ):self{
+    public function table( string $table ):self
+    {
+
         $this->table = "$table";
+
         return $this;
+
     }
 
-     /* 
-        Insert datas 
-    */     
-    public function insert(string $insert ):self{
+    /**
+     * insert
+     *
+     * @param string $insert
+     * @return self
+    */   
+    public function insert( string $insert ):self
+    {
 
         $this->insert = "$insert";
 
         return $this;
     } 
     
-    /* 
-        Insert Values 
+    /**
+     * values
+     *
+     * @param string $values
+     * @return self
     */     
-    public function values(string $values ):self{
+    public function values( string $values ):self
+    {
 
         $this->values = "$values";
         
         return $this;
     }    
 
-    /* 
-        Where 
-    */    
-    public function where(string $where ):self{
+    /**
+     * where
+     *
+     * @param string $where
+     * @return self
+    */     
+    public function where(string $where ):self
+    {
 
         $this->where = "$where = ?";
 
@@ -55,10 +74,15 @@ class querybuilder{
 
     }
 
-    /* 
-        Like 
-    */    
-    public function like(string $like , $sign ):self{
+    /**
+     * like
+     *
+     * @param string $where
+     * @param mixed $sign
+     * @return self
+    */      
+    public function like( string $like , $sign ):self
+    {
 
         $this->like = "$like $sign = ?";
 
@@ -66,10 +90,15 @@ class querybuilder{
 
     }    
 
-    /* 
-        limit 
+    /**
+     * limit
+     *
+     * @param string $begining
+     * @param string $end
+     * @return self
     */     
-    public function limit(string $begining , string $end ):self{
+    public function limit( string $begining , string $end ):self
+    {
 
         $this->limit = "LIMIT $begining , $end";
 
@@ -77,20 +106,34 @@ class querybuilder{
 
     }      
 
-    /* 
-        order by 
-    */     
-    public function orderBy(string $key , string $direction ):self{
+    /**
+     * order by
+     *
+     * @param string $key
+     * @param string $direction
+     * @return self
+    */ 
+    public function orderBy( string $key , string $direction ):self
+    {
+
         $this->order = "ORDER BY $key $direction";
+
         return $this;
+
     }  
 
-    /* 
-        group by 
-    */     
-    public function groupBy(string $group ):self{
+    /**
+     * group by
+     *
+     * @param string $group
+     * @return self
+    */      
+    public function groupBy( string $group ):self
+    {
         $this->group = "GROUP BY $group";
+
         return $this;
+        
     }      
 
     /* 
