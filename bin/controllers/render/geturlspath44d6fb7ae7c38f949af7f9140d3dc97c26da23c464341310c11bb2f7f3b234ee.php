@@ -13,6 +13,10 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
     private $path_router_admin;
     private $url;
 
+    /**
+     * Get class
+     * @return void
+    */
     public function __construct()
     {
         $this->startsession = new \bin\epaphrodite\env\gestcookies;
@@ -23,9 +27,15 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
         $this->env = new \bin\controllers\render\method44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee; 
     }
     
-    /* 
-        Recuperation de la valeur de l'url 
-    */
+    /**
+     * Check and send to controller
+     *
+     * @var \bin\epaphrodite\env\gestion_interface $path_interface
+     * @var \bin\epaphrodite\auth\session_auth $path_session
+     * @var string $url
+     * @var $this $this
+     * @return string
+    */ 
     private function geturi()
     {
 
@@ -47,18 +57,36 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
     */
     public function runApp44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee()
     {
-        $this->url = $this->geturi();
 
-        $this->startsession->startsession(60*60*24,'/','',false,true);
+            $this->url = $this->geturi();
+
+            /**
+             * Set cookies and start user session
+             * 
+             * @param string $lifetime
+             * @param string $path
+             * @param string $dommaine
+             * @param string $secure
+             * @param string $httonly
+             * @return void
+            */ 
+            $this->startsession->startsession(60*60*24,'/','',false,true);
         
-            if($this->url === "views/login/"||$this->url === "logout/"){  
+            /*
+                Get user authentification page or destroy session
+            */             
+            if($this->url === "views/login/"||$this->url === "logout/")
+            {  
 
                 $this->path_session->deconnexion();
 
                 $this->url = $this->path_interface->login_interface();  
 
             }
-            //var_dump($this->url);die();
+
+            /*
+                Get user dashbord page
+            */ 
             if($this->url=="admin/"&&$this->path_session->token_crf()!==NULL&&$this->path_session->id_user()!==NULL)
             {   
                 $this->url = $this->path_interface->gestion_interface_users($this->path_session->id_user());  
@@ -66,25 +94,44 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
 
         $this->geturls = explode('/',$this->url);
        
+        /*
+           Return true user page
+        */ 
         $this->url = $this->router($this->geturls);
         
     }
 
-    /* 
-        Access aux controlleurs des applications du systeme 
+    /**
+     * Return true controller
+     *
+     * @param array $recuperationurl
+     * @var \bin\controllers\controllers\interface_controller $path_router_interface
+     * @var \bin\controllers\controllers\admin_controller $path_router_admin
+     * @return string
     */
     private function router($recuperationurl)
     {
-        if(count($recuperationurl)>1){ $pageenvoyer = $recuperationurl[1].'_ep';
-        }else{$pageenvoyer = 'erreur';}
+        if(count($recuperationurl)>1){ 
+            
+            $pageenvoyer = $recuperationurl[1].'_ep';
+
+        }else{
+            
+            $pageenvoyer = 'erreur';
+        }
 
         if($recuperationurl[0]==="views" || $pageenvoyer==="erreur")
         {
             return $this->path_router_interface->send_page($pageenvoyer);
-        }elseif($recuperationurl[0]==="admin-views"&&$this->path_session->token_crf()!==NULL&&$this->path_session->id_user()!==NULL){   
+
+        }elseif($recuperationurl[0]==="admin-views"&&$this->path_session->token_crf()!==NULL&&$this->path_session->id_user()!==NULL){
+
             return $this->path_router_admin->send_page($pageenvoyer);
+
         }else{
+
             return $this->path_router_interface->send_page($pageenvoyer);
+
         }
     }
     
