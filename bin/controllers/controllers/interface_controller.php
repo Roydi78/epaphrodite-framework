@@ -26,6 +26,9 @@ class Control extends twig
     private $env;
     private $errors;
 
+    /**
+     * Get class
+    */    
     function __construct()
     {
 
@@ -38,7 +41,7 @@ class Control extends twig
         $this->errors = new errors;  
 
     }
-    
+
 
     protected function renderphp( $thml )
     {
