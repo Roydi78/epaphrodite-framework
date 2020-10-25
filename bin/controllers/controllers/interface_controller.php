@@ -6,12 +6,25 @@ use bin\controllers\render\errors;
 
 class Control extends twig 
 {
-    /* Gestion des variable du @controlleur */
-        protected $crf_token = "";
-        private $acces_path;
-        private $session_path;
-        private $url_path;
-        private $errors;
+    /**
+     * declare variables
+     *
+     * @var \bin\epaphrodite\path\paths $url_path
+     * @var \bin\epaphrodite\crf_token\token_csrf $csrf
+     * @var \bin\epaphrodite\auth\session_auth $path_session
+     * @var \bin\epaphrodite\define\text_messages $msg
+     * @var \bin\epaphrodite\email\send_mail $mail
+     * @var \bin\controllers\render\errors $errors
+     * @var \bin\database\requests\select\auth $acces_path
+     * @var \bin\epaphrodite\env\template $template
+    */
+    private $csrf;
+    private $acces_path;
+    private $template;
+    private $url_path;
+    private $msg;
+    private $env;
+    private $errors;
 
     function __construct()
     {
@@ -21,9 +34,11 @@ class Control extends twig
         $this->url_path = new \bin\epaphrodite\path\paths();
         $this->msg = new \bin\epaphrodite\define\text_messages();        
         $this->env = new \bin\epaphrodite\env\env();
+        $this->template = new \bin\epaphrodite\env\template();
         $this->errors = new errors;  
 
     }
+    
 
     protected function renderphp( $thml )
     {
