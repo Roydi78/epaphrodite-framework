@@ -25,6 +25,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
         $this->path_router_interface = new \bin\controllers\controllers\interface_controller;
         $this->path_router_admin = new \bin\controllers\controllers\admin_controller;
         $this->env = new \bin\controllers\render\method44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee; 
+        $this->path_url = new \bin\epaphrodite\path\paths;
     }
     
     /**
@@ -48,7 +49,8 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
             $this->urlfound = 'views/index/';
         }
         
-        return  str_replace("-","_", $this->urlfound);
+        return  $this->path_url->href_slug($this->urlfound);
+        
     }
     
     

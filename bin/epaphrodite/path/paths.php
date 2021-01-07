@@ -5,11 +5,18 @@ namespace bin\epaphrodite\path;
 class paths extends host 
 {
 
-    private $linkurl;
-    private $slug;
+    /**
+     * paths variables
+     *
+     * @var string $url_path_link
+     * @var string $slug
+    */
+    private $url_path_link;
 
-    /* 
-        Host link path
+    /**
+     * Host link path
+     *
+     * @return void
     */
     public function gethost()
     {
@@ -18,126 +25,164 @@ class paths extends host
 
     }
 
-    /* 
-        Main path link
-    */
-    public function main( $ordlink )
+    /**
+     * Simple main link paths
+     *
+     * @param string $url_needed
+     * @return void
+    */ 
+    public function main( string $url_needed )
     {
 
-        $this->linkurl = $this->gethost().'views/'.$this->slug($ordlink).'/';
+        $this->url_path_link = $this->gethost().'views/'.$this->slug($url_needed).'/';
 
-        return $this->linkurl;
+        return $this->url_path_link;
 
     }  
     
-    /* 
-        Main id path link
-    */     
-    public function main_id($adminlinkneeded , $typeaction , $idneeded)
+    /**
+     * Path main for @id
+     *
+     * @param string $url_needed
+     * @param string $type_action
+     * @param integer $id_needed
+     * @return void
+    */   
+    public function main_id( string $url_needed , string $type_action , int $id_needed )
     {
 
-        $this->linkurl = $this->gethost().'admin-views/'.$adminlinkneeded.$typeaction.$idneeded;
+        $this->url_path_link = $this->gethost().'admin-views/'.$url_needed.$type_action.$id_needed;
 
-        return $this->linkurl;
+        return $this->url_path_link;
 
     }     
 
-    /* 
-        dashboard paths ( dashboard )
-    */    
-    public function dashboard($adminlinkneeded)
+    /**
+     * Simple dashboard path link
+     *
+     * @param string $url_needed
+     * @return void
+    */   
+    public function dashboard( string $url_needed )
     {
 
-        $this->linkurl = $this->gethost().$this->slug($adminlinkneeded).'/';
+        $this->url_path_link = $this->gethost().$this->slug($url_needed).'/';
 
-        return $this->linkurl;
+        return $this->url_path_link;
 
     } 
     
-    /* 
-        Admin path link
-    */    
-    public function admin($adminlinkneeded)
+    /**
+     * Simple admin link path
+     *
+     * @param string $url_needed
+     * @return void
+    */   
+    public function admin( string $url_needed )
     {
 
-        $this->linkurl = $this->gethost().'admin-views/'.$this->slug($adminlinkneeded).'/';
+        $this->url_path_link = $this->gethost().'admin-views/'.$this->slug($url_needed).'/';
 
-        return $this->linkurl;
+        return $this->url_path_link;
 
     }        
 
-    /* 
-        Admin id path link
-    */      
-    public function admin_id($ordlinkneeded , $typeaction , $idneeded)
+    /**
+     * Path admin for @id
+     *
+     * @param string $url_needed
+     * @param string $type_action
+     * @param integer $id_needed
+     * @return void
+    */         
+    public function admin_id( string $ordlinkneeded , string $type_action , int $id_needed )
     {
 
-        $this->linkurl = $this->gethost().'views/'.$ordlinkneeded.$typeaction.$idneeded;
+        $this->url_path_link = $this->gethost().'views/'.$ordlinkneeded.$type_action.$id_needed;
 
-        return $this->linkurl;
+        return $this->url_path_link;
 
     }    
 
-    /* 
-         images paths 
-    */     
-    public function img($img)
+    /**
+     * images paths
+     *
+     * @param string $img
+     * @return void
+    */
+    public function img( string $img )
     {
 
-        $this->linkurl = $this->gethost().'static/img/'.$img;
+        $this->url_path_link = $this->gethost().'static/img/'.$img;
 
-        return $this->linkurl;
+        return $this->url_path_link;
 
     }     
 
-    /* 
-         js paths 
-    */      
-    public function js($js)
+    /**
+     * js paths
+     *
+     * @param string $js
+     * @return void
+    */
+    public function js( string $js )
     {
 
-        $this->linkurl = $this->gethost().'static/js/'.$js.'.js';
+        $this->url_path_link = $this->gethost().'static/js/'.$js.'.js';
 
-        return $this->linkurl;
+        return $this->url_path_link;
 
     }    
     
-    /* 
-         css paths 
+    /**
+     * css paths
+     *
+     * @param string $css
+     * @return void
     */      
-    public function css($css)
+    public function css( string $css )
     {
 
-        $this->linkurl = $this->gethost().'static/css/'.$this->slug($css).'.css';
+        $this->url_path_link = $this->gethost().'static/css/'.$css.'.css';
 
-        return $this->linkurl;
+        return $this->url_path_link;
 
     } 
 
-    /* 
-         bootstrap font paths 
-    */      
-    public function font($cssneeded){
-        $this->linkurl = $this->gethost().'static/font-awesome/css/'.$this->slug($cssneeded).'.css';
-        return $this->linkurl;
+    /**
+     * bootstrap font paths
+     *
+     * @param string $cssneeded
+     * @return void
+    */     
+    public function font( string $cssneeded ){
+        $this->url_path_link = $this->gethost().'static/font-awesome/css/'.$this->slug($cssneeded).'.css';
+        return $this->url_path_link;
     } 
     
-    /* 
-         pdf files paths 
+    /**
+     * pdf files paths
+     *
+     * @param string $pdfneeded
+     * @return void
     */      
-    public function pdf($pdfneeded)
+    public function pdf( string $pdfneeded )
     {
 
-        $this->linkurl = $this->gethost().'static/pdf'.$pdfneeded;
+        $this->url_path_link = $this->gethost().'static/pdf'.$pdfneeded;
 
-        return $this->linkurl;
+        return $this->url_path_link;
 
     } 
     
-    /* 
-        slug constructor
-    */      
-    private function slug( $string, $delimiter = '-' ) 
+    /**
+     * slug constructor
+     *
+     * @param string $string
+     * @param string $delimiter
+     * @return void
+    */
+    private function slug( string $string , string $delimiter = '-' ) 
     {
 
         $oldLocale = setlocale(LC_ALL, '0');
@@ -148,9 +193,33 @@ class paths extends host
         $this->slug = preg_replace("/[\/_|+ -]+/", $delimiter, $this->slug);
         $this->slug = trim($this->slug, $delimiter);
         setlocale(LC_ALL, $oldLocale);
+
         return $this->slug;
 
     }    
+
+    /**
+     * slug constructor for href
+     *
+     * @param string $string
+     * @param string $delimiter
+     * @return void
+    */      
+    public function href_slug( string $string , string $delimiter = '_' ) 
+    {
+
+        $oldLocale = setlocale(LC_ALL, '0');
+        setlocale(LC_ALL, 'en_US.UTF-8');
+        $this->slug = iconv('UTF-8', 'ASCII//TRANSLIT', $string);
+        $this->slug = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $this->slug);
+        $this->slug = strtolower($this->slug);
+        $this->slug = preg_replace("/[\%<>_|+ -]+/", $delimiter, $this->slug);
+        $this->slug = trim($this->slug, $delimiter);
+        setlocale(LC_ALL, $oldLocale);
+
+        return $this->slug;
+
+    }      
 
 }
 
