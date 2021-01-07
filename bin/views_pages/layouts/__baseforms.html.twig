@@ -2,7 +2,7 @@
 {% macro input_field( name , label , type , placeholder , indications , value ) %}
   <div class="form-group">
    {% if label != false %} <label>{{ label }}</label>{% endif %}
-    <input type="{{ type }}" class="form-control" name="{{ name }}" {% if placeholder != false %} placeholder="{{ placeholder }}" {% endif %} {% if value != false %} value="{{ value }}" {% endif %} required>
+    <input type="{{ type }}" class="form-control" name="{{ name }}" {% if placeholder != false %} placeholder="{{ placeholder }}" {% endif %} {% if value != false %} value="{{ value }}" {% endif %} id="{{ name }}" required>
     {% if indications != false %}
       <div class="invalid-feedback">{{ indications }}</div>
     {% endif %}
@@ -11,12 +11,12 @@
 
 {% macro submit(label) %}
   <div class="form-group">
-      <button name = "submit" class="btn btn-block" type="submit" style="padding-right: 10px;background-color: #4169E1;color: white">{{ label }}</button>
+      <button name = "submit" class="btn btn-block" type="submit" style="padding-right: 10px;background-color: #011142;color: white">{{ label }}</button>
   </div>
 {% endmacro %}
 
 {% macro button( href , label , class , id ) %}
-  <button type = "submit" id = "{{ id }}" class = "btn {{ class }}">
+  <button type = "submit" id = "{{ id }}" style="padding-right: 10px;background-color: #011142;color: white" class = "btn {{ class }}">
     <a href="{{ href }}">{{ label }}</a>
   </button>
 {% endmacro %}
@@ -53,4 +53,21 @@
   <label>{{ label }}</label>
   <input type="file" name="{{ name }}" id="{{ id }}" accept="{{ format }} ">
   <hr>
+{% endmacro %}
+
+{% macro input_search(name_searchbar , name_submit , placeholder , class) %}
+  <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4 {{ class }}">
+    <div class="input-group" id="searchbar">
+        <input type="search" name="{{ name_searchbar }}" placeholder="{{ placeholder }}" class="form-control border-0 bg-light" id="recherchedata" onkeyup="Rechinfodatas()">
+        <div class="input-group-append">
+            <button id="button-addon1" name="{{ name_submit }}" type="submit" class="btn btn-link text-dark"><i class="icon icon-search"></i></button>
+        </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro buttom_href(href , label , class , id) %}
+  <button type="submit" id="{{ id }}" class="btn {{ class }}">
+    <a href="{{ href }}">{{ label }}</a>
+  </button>
 {% endmacro %}
