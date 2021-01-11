@@ -28,10 +28,13 @@ class env{
         return strftime( "%A %d %B %Y" , strtotime($date));
     }
 
-    /* 
-        Code ISO  
-    */    
-    public function chaine ( $chaine ){
+    /**
+     * Code ISO
+     *
+     * @param string $chaine
+     * @return void
+     */
+    public function chaine ( string $chaine ){
 
         $pattern = [ "/&#039;/", "/&#224;/", "/&#225;/", "/&#226;/", "/&#227;/", "/&#228;/", "/&#230;/", "/&#231;/" , "/&#232;/" , "/&#233;/" , "/&#234;/" , "/&#235;/" , "/&#238;/", "/&#239;/", "/&#244;/", "/&#251;/", "/&amp;/"];
             
@@ -41,9 +44,29 @@ class env{
 
         return $str_noacc;
     
-    }      
+    } 
+    
+    /**
+     * For transcoding values in an Excel generated (french)
+     *
+     * @param string $chaine
+     * @return void
+     */
+    public function translate_fr( string $chaine ){
+        
+        $this->chaine_translate = iconv('Windows-1252', 'UTF-8//TRANSLIT', $chaine);
 
-    public function import_fichier( $Lien_fichier ){
+        return $this->chaine_translate;
+
+    }
+    
+    /**
+     * Import files in server
+     *
+     * @param string $Lien_fichier
+     * @return void
+     */
+    public function import_fichier( string $Lien_fichier ){
 
         $charger = $Lien_fichier .'/'.$_FILES['file']['name']; 
 
@@ -51,10 +74,14 @@ class env{
 
     }
 
-    /* 
-        Vider un repertoire importations excel
-    */
-    public function delete_dir( $directory , $extension ){
+    /**
+     * Vider un repertoire
+     *
+     * @param string $directory
+     * @param string $extension
+     * @return void
+     */
+    public function delete_dir( string $directory , string $extension ){
 
         array_map( 'unlink' , glob( $directory . '*' . $extension ) );
 
