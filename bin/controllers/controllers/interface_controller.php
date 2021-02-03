@@ -38,6 +38,7 @@ class Control extends twig
         $this->msg = new \bin\epaphrodite\define\text_messages();        
         $this->env = new \bin\epaphrodite\env\env();
         $this->template = new \bin\epaphrodite\env\template();
+        $this->sms = new \bin\epaphrodite\api\send_sms;
         $this->errors = new errors;  
 
     }
@@ -45,7 +46,8 @@ class Control extends twig
 
     protected function renderphp( $thml )
     {
-        
+        //var_dump($this->sms->sms());die();
+
         if(file_exists( _DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $thml . '.html' ))
         {
 
