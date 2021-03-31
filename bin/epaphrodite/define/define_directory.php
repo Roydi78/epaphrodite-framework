@@ -14,5 +14,6 @@ define('_DIR_FUNCTION_','bin/epaphrodite');
 define('_DIR_VENDOR_', 'bin/vendor');
 define('_DIR_IMG_', 'static/img/');
 define('_DIR_PDF_', 'static/docs/');
+define('_DIR_FILES_', 'static/files/');
 define('_DIR_MEDIA_', 'bin/media/');
 define('_DIR_VISITOR_', 'bin/visite_compter_folder/');

@@ -56,7 +56,7 @@ class send_mail
      * @param string $msg_content
      * @return void
      */
-    public function send_email( array $contacts , string $msg_header  , string $msg_content )
+    public function send_email( ?array $contacts=null , ?string $msg_header=null  , ?string $msg_content=null , ?string $file=null )
     {
 
         if($this->settings()===true)
@@ -72,7 +72,7 @@ class send_mail
 
             // Attachments
             //$this->mail->addAttachment('/var/tmp/file.tar.gz');
-            //$this->mail->addAttachment('/tmp/image.jpg', 'new.jpg');
+            if($file!=null){ $this->mail->addAttachment( _DIR_FILES_ , $file ); }
 
             // Chrager le contenu du mail
             $this->content( $msg_header , $msg_content );
