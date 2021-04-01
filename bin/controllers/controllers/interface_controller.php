@@ -65,7 +65,7 @@ class Control extends twig
                 [ 
                     'path'=>$this->url_path , 
                     'env'=>$this->env , 
-                    'messages' => $this->msg
+                    'msg' => $this->msg
                 ]);
             }
 
@@ -91,7 +91,7 @@ class Control extends twig
                 [ 
                     'path'=>$this->url_path , 
                     'env'=>$this->env , 
-                    'messages' => $this->msg,
+                    'msg' => $this->msg,
                     'csrf'=> $this->csrf,
                     'reponse'=>$this->ans,
                 ]);

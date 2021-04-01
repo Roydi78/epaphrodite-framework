@@ -49,13 +49,13 @@ class Controladmin extends twig
          * @param array $array
          * @return mixed
         */
-        if( $html ==="admin-dashbaord_ep"){
+        if( $html ==="admin_dashbaord_ep"){
 
             $this->render( _DIR_ADMIN_TEMP_ . $html ,
             [ 
                 'path'=>$this->url_path , 
                 'env'=>$this->env , 
-                'messages' => $this->msg
+                'msg' => $this->msg
             ]);
             
         }            
