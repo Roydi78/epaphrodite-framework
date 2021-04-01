@@ -46,17 +46,19 @@ class Control extends twig
 
     protected function renderphp( $thml )
     {
-        //var_dump($this->sms->sms());die();
 
         if(file_exists( _DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $thml . '.html' ))
         {
 
             $this->answser = NULL;
             
-            /* 
-                Home page ( index ) 
+            /**
+             * index du site
+             * 
+             * @param string $html
+             * @param array $array
+             * @return mixed
             */
-
             if( $thml ==="index_ep")
             {
                 $this->render( _DIR_MAIN_TEMP_ . $thml ,
@@ -67,10 +69,14 @@ class Control extends twig
                 ]);
             }
 
-            /* 
-                Authentification page ( login ) 
+            /**
+             * Authentification page ( login )
+             * 
+             * @param string $html
+             * @param array $array
+             * @return mixed
             */
-            if( $thml ==="login_ep")
+            elseif( $thml ==="login_ep")
             {
                 $this->ans='';
 
@@ -90,7 +96,7 @@ class Control extends twig
                     'reponse'=>$this->ans,
                 ]);
                 
-            }            
+            }else{ $this->errors->error_404(); }          
             
         }else{ $this->errors->error_404(); }     
     }

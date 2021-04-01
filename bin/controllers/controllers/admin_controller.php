@@ -26,16 +26,22 @@ class Controladmin extends twig
         if(file_exists( _DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html' ))
         {
             
-        /* 
-            Dashbaord
+        /**
+         * Dashboard
+         * 
+         * @param string $html
+         * @param array $array
+         * @return mixed
         */
         if( $html ==="admin-dashbaord_ep"){
+
             $this->render( _DIR_ADMIN_TEMP_ . $html ,
             [ 
                 'path'=>$this->url_path , 
                 'env'=>$this->env , 
                 'messages' => $this->messages_path
             ]);
+            
         }            
                  
 
