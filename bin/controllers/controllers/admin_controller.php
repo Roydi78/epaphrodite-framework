@@ -7,14 +7,30 @@ use bin\controllers\render\errors;
 
 class Controladmin extends twig
 {
-    /* Gestion des variable du @controlleur */
+
+    /**
+     * declare variables
+     *
+     * @var \bin\epaphrodite\path\paths $url_path
+     * @var \bin\epaphrodite\crf_token\token_csrf $csrf
+     * @var \bin\epaphrodite\auth\session_auth $path_session
+     * @var \bin\epaphrodite\define\text_messages $msg
+     * @var \bin\epaphrodite\email\send_mail $mail
+     * @var \bin\controllers\render\errors $errors
+    */
+    private $csrf;
+    private $acces_path;
+    private $template;
     private $url_path;
+    private $msg;
+    private $env;
+    private $errors;
 
     function __construct()
     { 
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf();
         $this->url_path = new \bin\epaphrodite\path\paths();
-        $this->messages_path = new \bin\epaphrodite\define\text_messages(); 
+        $this->msg = new \bin\epaphrodite\define\text_messages(); 
         $this->mail = new \bin\epaphrodite\email\send_mail;        
         $this->env = new \bin\epaphrodite\env\env(); 
         $this->errors = new errors;
@@ -39,7 +55,7 @@ class Controladmin extends twig
             [ 
                 'path'=>$this->url_path , 
                 'env'=>$this->env , 
-                'messages' => $this->messages_path
+                'messages' => $this->msg
             ]);
             
         }            
