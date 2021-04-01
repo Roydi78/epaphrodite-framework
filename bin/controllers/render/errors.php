@@ -27,7 +27,7 @@ class errors extends twig{
         [ 
 
             'path'=>$this->url_path ,
-            'messages' => $this->messages_path ,
+            'msg' => $this->messages_path ,
 
         ]);
         die();
@@ -43,7 +43,7 @@ class errors extends twig{
         [ 
 
             'path'=>$this->url_path ,
-            'messages' => $this->messages_path ,
+            'msg' => $this->messages_path ,
 
         ]);
         die();
@@ -59,7 +59,7 @@ class errors extends twig{
         $this->render('errors/419', 
         [ 
             'path'=>$this->url_path ,
-            'messages' => $this->messages_path ,
+            'msg' => $this->messages_path ,
         ]);
         $this->session->deconnexion();
         die();
@@ -76,7 +76,7 @@ class errors extends twig{
         $this->render('errors', 
         [ 
             'path'=>$this->url_path ,
-            'messages' => $this->messages_path ,
+            'msg' => $this->messages_path ,
         ]);
         die();
 
