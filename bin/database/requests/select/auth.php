@@ -36,6 +36,7 @@ class auth
     }
 
     /**
+     * **********************************************************************************************
      * Querybilder constructor
      *
      * @return \bin\database\querybilder\querybuilder
@@ -46,6 +47,7 @@ class auth
     } 
     
     /**
+     * **********************************************************************************************
      * Verify if user_bd table exist in database
      * @return bool
     */
@@ -72,6 +74,7 @@ class auth
     }
 
     /**
+     * **********************************************************************************************
      * Verify if exist in database
      *
      * @param string $loginuser
@@ -103,6 +106,7 @@ class auth
     } 
 
     /**
+     * **********************************************************************************************
      * Verify authentification of user
      *
      * @param string $login

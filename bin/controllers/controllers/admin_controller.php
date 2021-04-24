@@ -5,35 +5,42 @@ namespace bin\controllers\controllers;
 use bin\controllers\render\twig;
 use bin\controllers\render\errors;
 
-class Controladmin extends twig
+class Control_admin extends twig
 {
 
     /**
      * declare variables
      *
-     * @var \bin\epaphrodite\path\paths $url_path
+     * @var \bin\epaphrodite\path\paths $paths
      * @var \bin\epaphrodite\crf_token\token_csrf $csrf
-     * @var \bin\epaphrodite\auth\session_auth $path_session
+     * @var \bin\epaphrodite\auth\session_auth $auth
      * @var \bin\epaphrodite\define\text_messages $msg
+     * @var \bin\epaphrodite\api\sms\send_sms $sms
      * @var \bin\epaphrodite\email\send_mail $mail
+     * @var \bin\epaphrodite\env\template $template
+     * @var \bin\epaphrodite\env\env $env
      * @var \bin\controllers\render\errors $errors
     */
     private $csrf;
-    private $acces_path;
+    private $auth;
     private $template;
-    private $url_path;
+    private $paths;
+    private $sms;
     private $msg;
+    private $email;
     private $env;
     private $errors;
 
     function __construct()
     { 
-        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf();
-        $this->url_path = new \bin\epaphrodite\path\paths();
-        $this->msg = new \bin\epaphrodite\define\text_messages(); 
+        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
+        $this->auth = new \bin\epaphrodite\auth\session_auth();
+        $this->paths = new \bin\epaphrodite\path\paths();
+        $this->msg = new \bin\epaphrodite\define\text_messages; 
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
         $this->email = new \bin\epaphrodite\api\email\send_mail;       
-        $this->env = new \bin\epaphrodite\env\env(); 
+        $this->env = new \bin\epaphrodite\env\env;
+        $this->template = new \bin\epaphrodite\env\template; 
         $this->errors = new errors;
     }
 
@@ -44,6 +51,7 @@ class Controladmin extends twig
         {
             
         /**
+         * ************************************************************************
          * Dashboard
          * 
          * @param string $html
@@ -54,7 +62,7 @@ class Controladmin extends twig
 
             $this->render( _DIR_ADMIN_TEMP_ . $html ,
             [ 
-                'path'=>$this->url_path , 
+                'path'=>$this->paths , 
                 'env'=>$this->env , 
                 'msg' => $this->msg ,
                 'template' => $this->template->admin(),
@@ -68,7 +76,7 @@ class Controladmin extends twig
 
 }
 
-class admin_controller extends Controladmin
+class admin_controller extends Control_admin
 {
     public function send_page( $html ){
 
