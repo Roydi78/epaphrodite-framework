@@ -109,7 +109,7 @@ class auth
      * @param string $motpasse
      * @return bool
      */
-    public function verifymember( string $login , string $motpasse )
+    public function verify_user_access( string $login , string $motpasse )
     {
 
       if(($this->verify_if_is_correct->only_number_and_character( $login , $nbre=12 ))===false){

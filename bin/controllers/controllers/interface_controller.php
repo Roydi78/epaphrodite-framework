@@ -55,8 +55,6 @@ class Control extends twig
 
         if(file_exists( _DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $html . '.html' ))
         {
-
-            $this->answser = NULL;
             
             /**
              * *****************************************************************************************************************************
@@ -73,7 +71,7 @@ class Control extends twig
                     'path' => $this->paths , 
                     'env' => $this->env , 
                     'msg' => $this->msg ,
-                    'template' => $this->template->default(),
+                    'template' => $this->template->main(),
                 ]);
             }
 
@@ -91,7 +89,7 @@ class Control extends twig
 
                 if( isset($_POST['submit'])&&$this->csrf->process()===true ){
                     
-                    $this->result = $this->acces_path->verifymember($_POST['login'],$_POST['password']);
+                    $this->result = $this->acces_path->verify_user_access( $_POST['login'] , $_POST['password'] );
 
                     if($this->result === false){ $this->ans = $this->msg->answers('login-wrong'); }
 
@@ -104,12 +102,13 @@ class Control extends twig
                     'msg' => $this->msg,
                     'csrf'=> $this->csrf,
                     'reponse'=>$this->ans,
-                    'template' => $this->template->default(),
+                    'template' => $this->template->main(),
                 ]);
                 
             }else{ $this->errors->error_404(); }          
             
-        }else{ $this->errors->error_404(); }     
+        }else{ $this->errors->error_404(); }  
+
     }
 
 }

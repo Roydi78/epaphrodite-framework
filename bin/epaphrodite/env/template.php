@@ -40,10 +40,22 @@ class template
      *
      * @return string
     */    
-    public function default(){
+    public function main(){
 
         return "layouts/__default_main.html.twig";
 
-    }         
+    }  
+    
+    /**
+     * ******************************************************************************
+     * Get default template ( when user are not connected )
+     *
+     * @return string
+    */    
+    public function admin(){
+
+        return "layouts/__default_admin.html.twig";
+
+    }     
 
 }

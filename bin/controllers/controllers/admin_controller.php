@@ -56,7 +56,8 @@ class Controladmin extends twig
             [ 
                 'path'=>$this->url_path , 
                 'env'=>$this->env , 
-                'msg' => $this->msg
+                'msg' => $this->msg ,
+                'template' => $this->template->admin(),
             ]);
             
         }            

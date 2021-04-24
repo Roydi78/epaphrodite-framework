@@ -67,12 +67,12 @@ class querybuilder{
      * where
      *
      * @param string $where
+     * @param string $type
      * @return self
     */     
-    public function where(string $where ):self
+    public function where(string $where , ?string $type=null ):self
     {
-
-        $this->where = "$where = ?";
+        if( $type==null ){ $this->where = "$where = ?"; }else{ $this->where = "$where $type ?"; }
 
         return $this;
 
