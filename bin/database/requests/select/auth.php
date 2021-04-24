@@ -139,9 +139,9 @@ class auth
 
                     session_start();
                     
-                    $_SESSION["loginuserbd"] = $users_datas[0]["loginuser_bd"];
+                    $_SESSION["login"] = $users_datas[0]["loginuser_bd"];
 
-                    $_SESSION["iduserbd"] = $users_datas[0]["iduser_bd"];
+                    $_SESSION["id"] = $users_datas[0]["iduser_bd"];
 
                     $this->gethost = $this->path->sad_link('admin');
 

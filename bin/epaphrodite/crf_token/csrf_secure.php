@@ -63,7 +63,7 @@ class csrf_secure
                     -> values( ' ? , ? ' )  
                     -> IQuery(); 
 
-        $this->request->insert_request($sql,'ss',[ md5($this->userbd->login_user()) , $cookies ], false );      
+        $this->request->insert_request( $sql,'ss',[ md5($this->userbd->login_user()) , $cookies ], false );      
 
     }    
 

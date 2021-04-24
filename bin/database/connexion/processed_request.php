@@ -17,7 +17,7 @@ class processed_request
      * @param boolean|null $etat
      * @return void
      */
-    public function select_request( string $sql, ?string $Parametre=null , ?array $datasparam = null , ?bool $etat=false ){
+    public function select_request( $sql, ?string $Parametre=null , ?array $datasparam = null , ?bool $etat=false ){
 
         $result = $this->connexion()->select($sql, $Parametre, $datasparam);
 
@@ -37,7 +37,7 @@ class processed_request
      * @param boolean|null $etat
      * @return void
     */  
-    public function update_request( string $sql , ?string $Parametre=null , ?array $datasparam = null , ?bool $etat = false ){
+    public function update_request( $sql , ?string $Parametre=null , ?array $datasparam = null , ?bool $etat = false ){
 
         $result = $this->connexion()->update($sql, $Parametre, $datasparam);
 
@@ -57,7 +57,7 @@ class processed_request
      * @param boolean|null $etat
      * @return void
      */   
-    public function insert_request( string $sql , ?string $Parametre = null , ?array $datasparam = null , ?bool $etat = false ){
+    public function insert_request( $sql , ?string $Parametre = null , ?array $datasparam = null , ?bool $etat = false ){
 
         $result = $this->connexion()->insert($sql, $Parametre, $datasparam);
 
@@ -77,7 +77,7 @@ class processed_request
      * @param boolean|null $etat
      * @return void
      */    
-    public function delete_request( string $sql , ?string $Parametre = null , ?array $datasparam = null , ?bool $etat = false ){
+    public function delete_request( $sql , ?string $Parametre = null , ?array $datasparam = null , ?bool $etat = false ){
 
         $result = $this->connexion()->delete($sql, $Parametre, $datasparam);
 

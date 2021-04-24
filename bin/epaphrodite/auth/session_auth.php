@@ -17,7 +17,7 @@ class session_auth
     */    
     public function login_user(){
 
-        $this->login = isset($_SESSION['loginuserbd']) ? $_SESSION['loginuserbd'] : NULL;
+        $this->login = isset($_SESSION['login']) ? $_SESSION['login'] : NULL;
 
         return $this->login;
 
@@ -31,7 +31,7 @@ class session_auth
     */     
     public function id_user(){
 
-        $this->iduser = isset($_SESSION['iduserbd']) ? $_SESSION['iduserbd'] : NULL;
+        $this->iduser = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
 
         return $this->iduser;
 
