@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\sms\api;
+namespace bin\epaphrodite\api\sms;
 use bin\epaphrodite\auth\session_auth;
 use \Mailjet\Resources;
 

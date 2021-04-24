@@ -9,7 +9,8 @@ use PHPMailer\PHPMailer\Exception;
 class send_mail 
 {
 
-    /* 
+    /**
+     * *******************************************************************************************
      * Instantiation and passing `true` enables exceptions
     */
     function __construct()
@@ -19,7 +20,8 @@ class send_mail
 
 
     /**
-     * Parametre des messages
+     * *******************************************************************************************
+     * email setting
      * @return void
     */
     private function settings()
@@ -32,8 +34,8 @@ class send_mail
             $this->mail->isSMTP();                                            
             $this->mail->Host       = 'smtp-fr.securemail.pro';                    
             $this->mail->SMTPAuth   = true;                                   
-            $this->mail->Username   = 'aimendri@men-dpes.org';                     
-            $this->mail->Password   = '@im3ndr#hope';                               
+            $this->mail->Username   = 'adresse_mail';                     
+            $this->mail->Password   = 'mot_de_passe';                               
             $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
             $this->mail->Port       = 587;                                   
             $this->mail->setFrom('ne-pas-repondre@epaphrodite.com', 'ADMINISTRATEUR EPAPHRODITE');
@@ -49,11 +51,13 @@ class send_mail
     }
 
     /**
+     * *******************************************************************************************
      * Send messages
      *
-     * @param array $contacts
-     * @param string $msg_header
-     * @param string $msg_content
+     * @param array $contacts|null
+     * @param string $msg_header|null
+     * @param string $msg_content|null
+     * @param string $file|null
      * @return void
      */
     public function send_email( ?array $contacts=null , ?string $msg_header=null  , ?string $msg_content=null , ?string $file=null )
@@ -66,6 +70,7 @@ class send_mail
             {
                 $this->mail->addAddress($contacts[$k]);
             }
+
             //$this->mail->addReplyTo('info@example.com', 'Information');
             //$this->mail->addCC('cc@example.com');
             //$this->mail->addBCC('bcc@example.com');
@@ -92,7 +97,8 @@ class send_mail
     }
 
     /**
-     * Get content of message
+     * *******************************************************************************************
+     * Get content of header and content of email
      *
      * @param string $msg_header
      * @param string $msg_content
