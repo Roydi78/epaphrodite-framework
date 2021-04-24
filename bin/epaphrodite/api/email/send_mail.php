@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\epaphrodite\email;
+namespace bin\epaphrodite\api\email;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
