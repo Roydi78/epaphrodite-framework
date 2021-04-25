@@ -11,9 +11,10 @@ class errors extends twig{
     */
     function __construct()
     {
-        $this->url_path = new \bin\epaphrodite\path\paths();
-        $this->messages_path = new \bin\epaphrodite\define\text_messages();
-        $this->session = new \bin\epaphrodite\auth\session_auth();        
+        $this->paths = new \bin\epaphrodite\path\paths();
+        $this->msg = new \bin\epaphrodite\define\text_messages();
+        $this->session = new \bin\epaphrodite\auth\session_auth(); 
+        $this->template = new \bin\epaphrodite\env\template;       
     }
 
     /**
@@ -26,8 +27,9 @@ class errors extends twig{
         $this->render('errors/404', 
         [ 
 
-            'path'=>$this->url_path ,
-            'msg' => $this->messages_path ,
+            'path'=>$this->paths ,
+            'msg' => $this->msg ,
+            'error' => $this->template->errors(),
 
         ]);
         die();
@@ -42,8 +44,9 @@ class errors extends twig{
         $this->render('errors/403', 
         [ 
 
-            'path'=>$this->url_path ,
-            'msg' => $this->messages_path ,
+            'path'=>$this->paths ,
+            'msg' => $this->msg ,
+            'error' => $this->template->errors(),
 
         ]);
         die();
@@ -58,11 +61,12 @@ class errors extends twig{
 
         $this->render('errors/419', 
         [ 
-            'path'=>$this->url_path ,
-            'msg' => $this->messages_path ,
+            'path'=>$this->paths ,
+            'msg' => $this->msg ,
+            'error' => $this->template->errors(),
         ]);
-        $this->session->deconnexion();
-        die();
+
+        $this->session->deconnexion();die();
 
     }        
 
@@ -75,9 +79,11 @@ class errors extends twig{
 
         $this->render('errors', 
         [ 
-            'path'=>$this->url_path ,
-            'msg' => $this->messages_path ,
+            'path'=>$this->paths ,
+            'msg' => $this->msg ,
+            'error' => $this->template->errors(),
         ]);
+        
         die();
 
     }        
