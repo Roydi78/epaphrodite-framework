@@ -60,7 +60,7 @@ class template
     
     /**
      * ******************************************************************************
-     * Get default template ( when user are not connected )
+     * Get default template ( forms template )
      *
      * @return string
     */    
@@ -72,7 +72,7 @@ class template
     
     /**
      * ******************************************************************************
-     * Get default template ( when user are not connected )
+     * Get default template ( error template )
      *
      * @return string
     */    
