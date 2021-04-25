@@ -1,4 +1,5 @@
 
+<!-- All kind of input from template -->
 {% macro input_field( name , label , type , placeholder , indications , value ) %}
   <div class="form-group">
    {% if label != false %} <label>{{ label }}</label>{% endif %}
@@ -9,18 +10,21 @@
   </div>
 {% endmacro %}
 
-{% macro submit(label) %}
+<!-- All kind of submit from template -->
+{% macro submit( label , name , color ) %}
   <div class="form-group">
-      <button name = "submit" class="btn btn-block" type="submit" style="padding-right: 10px;background-color: #011142;color: white">{{ label }}</button>
+      <button name = "{{ name }}" style="padding-right: 10px;" class="btn btn-block {{ color }}" type="submit">{{ label }}</button>
   </div>
 {% endmacro %}
 
+<!-- All kind of bootstrap button from template -->
 {% macro button( href , label , class , id ) %}
-  <button type = "submit" id = "{{ id }}" style="padding-right: 10px;background-color: #011142;color: white" class = "btn {{ class }}">
+  <button type = "submit" id = "{{ id }}" style="padding-right: 10px;" class = "btn {{ class }}">
     <a href="{{ href }}">{{ label }}</a>
   </button>
 {% endmacro %}
 
+<!-- All select from template -->
 {% macro select(name , label , value , content ) %}
   <div class="form-group">
       <label>{{ label }}</label>
@@ -30,17 +34,7 @@
   </div>
 {% endmacro %}
 
-{% macro search_field( name , name_submit , placeholder , class) %}
-  <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4 {{ class }}">
-    <div class="input-group" id="searchbar">
-        <input type="search" name="{{ name }}" placeholder="{{ placeholder }}" class="form-control border-0 bg-light" id="recherchedata" onkeyup="Rechinfodatas()">
-        <div class="input-group-append">
-            <button id="button-addon1" name="{{ name_submit }}" type="submit" class="btn btn-link text-dark"><i class="icon icon-search"></i></button>
-        </div>
-    </div>
-  </div>
-{% endmacro %}
-
+<!-- All textarea input from template -->
 {% macro textarea_field(name , label , indications ) %}
   <div class="form-group">
     <label>{{ label }}</label>
@@ -49,23 +43,26 @@
   </div>
 {% endmacro %}
 
+<!-- All input for import fiels from template -->
 {% macro import_field(name , id , format , label) %}
   <label>{{ label }}</label>
   <input type="file" name="{{ name }}" id="{{ id }}" accept="{{ format }} ">
   <hr>
 {% endmacro %}
 
+<!-- All input with search icon from template -->
 {% macro input_search(name_searchbar , name_submit , placeholder , class) %}
   <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4 {{ class }}">
     <div class="input-group" id="searchbar">
         <input type="search" name="{{ name_searchbar }}" placeholder="{{ placeholder }}" class="form-control border-0 bg-light" id="recherchedata" onkeyup="Rechinfodatas()">
         <div class="input-group-append">
-            <button id="button-addon1" name="{{ name_submit }}" type="submit" class="btn btn-link text-dark"><i class="icon icon-search"></i></button>
+            <button id="button-addon1" name="{{ name_submit }}" type="submit" class="btn btn-link text-dark"><i class="fa fa-search"></i></button>
         </div>
     </div>
   </div>
 {% endmacro %}
 
+<!-- All href button from template -->
 {% macro buttom_href(href , label , class , id) %}
   <button type="submit" id="{{ id }}" class="btn {{ class }}">
     <a href="{{ href }}">{{ label }}</a>

@@ -8,7 +8,7 @@
         <div class="form">
             <div class="reponses">{{ reponse ? reponse : "" }}</div>
             <form method="post">
-                {{ csrf.input_field() }} {{ input_field('login','Login','text') }} {{ input_field('password','Password','password') }} {{ submit('Connexion') }}
+                {{ csrf.input_field() }} {{ input_field('login','Login','text') }} {{ input_field('password','Password','password') }} {{ submit('Connexion' , 'submit' , 'btn-success') }}
             </form>
         </div>
     </div>
