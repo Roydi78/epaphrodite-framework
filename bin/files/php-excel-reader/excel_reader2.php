@@ -542,7 +542,7 @@ class Spreadsheet_Excel_Reader {
 		}
 		return null;
 	}
-	function fontProperty($row,$col,$sheet=0,$prop) {
+	function fontProperty( ?string $row=null , ?string $col=null , ?int $sheet=0, ?string $prop=null ) {
 		$font = $this->fontRecord($row,$col,$sheet);
 		if ($font!=null) {
 			return $font[$prop];

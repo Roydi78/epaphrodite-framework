@@ -4,6 +4,8 @@
  *
  * @author Martins Pilsetnieks
  */
+
+
 	class SpreadsheetReader_XLSX implements Iterator, Countable
 	{
 		const CELL_TYPE_BOOL = 'b';
@@ -453,7 +455,7 @@
 					case 't':
 						if ($this -> SharedStrings -> nodeType == XMLReader::END_ELEMENT)
 						{
-							continue;
+							break;
 						}
 						$CacheValue .= $this -> SharedStrings -> readString();
 						break;
@@ -578,7 +580,7 @@
 						case 't':
 							if ($this -> SharedStrings -> nodeType == XMLReader::END_ELEMENT)
 							{
-								continue;
+								break;
 							}
 							$Value .= $this -> SharedStrings -> readString();
 							break;
@@ -1046,7 +1048,7 @@
 							// If it is a closing tag, skip it
 							if ($this -> Worksheet -> nodeType == XMLReader::END_ELEMENT)
 							{
-								continue;
+								break;
 							}
 
 							$StyleId = (int)$this -> Worksheet -> getAttribute('s');
@@ -1080,7 +1082,7 @@
 						case 'is':
 							if ($this -> Worksheet -> nodeType == XMLReader::END_ELEMENT)
 							{
-								continue;
+								break;
 							}
 
 							$Value = $this -> Worksheet -> readString();
