@@ -104,6 +104,8 @@ class Control extends twig
                     'csrf'=> $this->csrf,
                     'reponse'=>$this->ans,
                     'template' => $this->template->main(),
+                    'form' => $this->template->forms(),
+                    'error' => $this->template->errors(),
                 ]);
                 
             }else{ $this->errors->error_404(); }          

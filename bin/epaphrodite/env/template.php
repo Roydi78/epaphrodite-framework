@@ -56,6 +56,30 @@ class template
 
         return "layouts/__default_admin.html.twig";
 
-    }     
+    }
+    
+    /**
+     * ******************************************************************************
+     * Get default template ( when user are not connected )
+     *
+     * @return string
+    */    
+    public function forms(){
+
+        return "layouts/__baseforms.html.twig";
+
+    }  
+    
+    /**
+     * ******************************************************************************
+     * Get default template ( when user are not connected )
+     *
+     * @return string
+    */    
+    public function errors(){
+
+        return "layouts/__default_errors.html.twig";
+
+    }      
 
 }
