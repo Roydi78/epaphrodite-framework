@@ -80,6 +80,30 @@ class template
 
         return "layouts/__default_errors.html.twig";
 
-    }      
+    } 
+    
+    /**
+     * ******************************************************************************
+     * Get default template ( show messages )
+     *
+     * @return string
+    */    
+    public function msg(){
+
+        return "layouts/__messages.html.twig";
+
+    }  
+    
+    /**
+     * ******************************************************************************
+     * Get default template ( breadcrumbs template )
+     *
+     * @return string
+    */    
+    public function breadcrumbs(){
+
+        return "layouts/__breadcrumb.html.twig";
+
+    }     
 
 }
