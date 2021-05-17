@@ -159,6 +159,17 @@ class paths extends host
         $this->url_path_link = $this->gethost().'static/font-awesome/css/'.$this->slug($cssneeded).'.css';
         return $this->url_path_link;
     } 
+
+    /**
+     * bootstrap font paths
+     *
+     * @param string $cssneeded
+     * @return void
+    */     
+    public function icofont( string $cssneeded ){
+        $this->url_path_link = $this->gethost().'static/icofont/'.$cssneeded.'.css';
+        return $this->url_path_link;
+    }     
     
     /**
      * pdf files paths
