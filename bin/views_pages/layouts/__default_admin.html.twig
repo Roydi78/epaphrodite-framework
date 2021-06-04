@@ -57,12 +57,6 @@
     </div>
   </main>
 </div>
-<script src="{{ path.js('/jquery') }}"></script><script src="{{ path.js('/bootstrap') }}"></script>
-<script>
-jQuery(function ($) {$(".sidebar-dropdown > a").click(function() {
-  $(".sidebar-submenu").slideUp(300);if ($(this).parent().hasClass("active")) {$(".sidebar-dropdown").removeClass("active");$(this).parent().removeClass("active");
-  }else{$(".sidebar-dropdown").removeClass("active");$(this).next(".sidebar-submenu").slideDown(300);$(this).parent().addClass("active");}});
-$("#close-sidebar").click(function() {$(".page-wrapper").removeClass("toggled");});$("#show-sidebar").click(function() {$(".page-wrapper").addClass("toggled");});});
-</script>
+<script>(function() { 'use strict'; window.addEventListener('load', function() { var forms = document.getElementsByClassName('validerinfos'); var validation = Array.prototype.filter.call(forms, function(form) { form.addEventListener('submit', function(event) { if (form.checkValidity() === false) { event.preventDefault(); event.stopPropagation();}form.classList.add('was-validated');}, false);});}, false);})();</script><script src="{{ path.js('jquery') }}"></script><script src="{{ path.js('bootstrap') }}"></script><script>jQuery(function ($) {$(".sidebar-dropdown > a").click(function() {$(".sidebar-submenu").slideUp(300);if ($(this).parent().hasClass("active")) {$(".sidebar-dropdown").removeClass("active");$(this).parent().removeClass("active");}else{$(".sidebar-dropdown").removeClass("active");$(this).next(".sidebar-submenu").slideDown(300);$(this).parent().addClass("active");}});$("#close-sidebar").click(function() {$(".page-wrapper").removeClass("toggled");});$("#show-sidebar").click(function() {$(".page-wrapper").addClass("toggled");});});</script>
 </body>
 </html>

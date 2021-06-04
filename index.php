@@ -1,6 +1,6 @@
 <?php
 
-//var_dump(hash('gost','Epaphrodite'));die();
+var_dump(hash('gost','000749@dsps@000749'));die();
 
 require 'bin/epaphrodite/define/define_directory.php';
 
