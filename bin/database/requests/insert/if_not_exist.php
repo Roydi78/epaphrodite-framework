@@ -2,7 +2,7 @@
 
 namespace bin\database\requests\insert;
 
-use \bin\database\config\processed_request;
+use \bin\database\config\process;
 
 class if_not_exist{
 
@@ -13,7 +13,7 @@ class if_not_exist{
     */   
     function __construct()
     {
-      $this->request = new processed_request;
+      $this->request = new process;
     } 
 
     /**

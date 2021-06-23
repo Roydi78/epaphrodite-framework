@@ -4,23 +4,6 @@ namespace bin\epaphrodite\env;
 
 class layouts
 {
-
-    /**
-     * ******************************************************************************
-     * Get template ( when user is connected )
-     *
-     * @param  $typeusers
-     * @return string
-     */
-    public function template( $type_users ){
-
-
-        if($type_users===1)
-        {
-            return "layouts/__default_admin.html.twig";
-        }  
-
-    }
     
     /**
      * ******************************************************************************
@@ -30,7 +13,7 @@ class layouts
     */    
     public function login(){
 
-        return "layouts/__default_login.html.twig";
+        return "layouts/template/__default_login.html.twig";
 
     } 
     
@@ -42,7 +25,7 @@ class layouts
     */    
     public function main(){
 
-        return "layouts/__default_main.html.twig";
+        return "layouts/template/__default_main.html.twig";
 
     }  
     
@@ -54,7 +37,7 @@ class layouts
     */    
     public function admin(){
 
-        return "layouts/__default_admin.html.twig";
+        return "layouts/template/__default_admin.html.twig";
 
     }
     
@@ -66,7 +49,7 @@ class layouts
     */    
     public function forms(){
 
-        return "layouts/__baseforms.html.twig";
+        return "layouts/widgets/__widgets.forms.html.twig";
 
     }  
     
@@ -78,7 +61,7 @@ class layouts
     */    
     public function errors(){
 
-        return "layouts/__default_errors.html.twig";
+        return "layouts/template/__default_errors.html.twig";
 
     } 
     
@@ -90,7 +73,7 @@ class layouts
     */    
     public function msg(){
 
-        return "layouts/__messages.html.twig";
+        return "layouts/widgets/__widgets.messages.html.twig";
 
     }  
     
@@ -102,7 +85,7 @@ class layouts
     */    
     public function breadcrumbs(){
 
-        return "layouts/__breadcrumb.html.twig";
+        return "layouts/widgets/__widgets.breadcrumb.html.twig";
 
     }     
 

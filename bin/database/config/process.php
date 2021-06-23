@@ -4,10 +4,10 @@ namespace bin\database\config;
 
 use bin\database\config\database;
 
-class processed_request
+class process
 {
 
-    *
+    
     /**
      * *****************************************************************************************************************************
      * Processed all select request
@@ -16,7 +16,7 @@ class processed_request
      * @param array|null $datasparam
      * @param boolean|null $etat
      * @return void
-     */
+    */
     public function select_request( $sql, ?string $Parametre=null , ?array $datasparam = null , ?bool $etat=false ){
 
         $result = $this->connexion()->select($sql, $Parametre, $datasparam);

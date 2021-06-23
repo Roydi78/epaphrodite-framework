@@ -17,13 +17,13 @@ class Control_admin extends twig
      * @var \bin\epaphrodite\define\text_messages $msg
      * @var \bin\epaphrodite\api\sms\send_sms $sms
      * @var \bin\epaphrodite\email\send_mail $mail
-     * @var \bin\epaphrodite\env\template $template
+     * @var \bin\epaphrodite\env\layouts $layouts
      * @var \bin\epaphrodite\env\env $env
      * @var \bin\controllers\render\errors $errors
     */
     private $csrf;
     private $auth;
-    private $template;
+    private $layouts;
     private $paths;
     private $sms;
     private $msg;
@@ -40,7 +40,7 @@ class Control_admin extends twig
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
         $this->email = new \bin\epaphrodite\api\email\send_mail;       
         $this->env = new \bin\epaphrodite\env\env;
-        $this->template = new \bin\epaphrodite\env\template; 
+        $this->layouts = new \bin\epaphrodite\env\layouts; 
         $this->errors = new errors;
     }
 
@@ -65,7 +65,7 @@ class Control_admin extends twig
                 'path'=>$this->paths , 
                 'env'=>$this->env , 
                 'msg' => $this->msg ,
-                'template' => $this->template->admin(),
+                'layouts' => $this->layouts->admin(),
             ]);
             
         }            

@@ -6,7 +6,7 @@ use bin\epaphrodite\env\verify_chaine;
 use bin\epaphrodite\auth\session_auth;
 use \bin\epaphrodite\path\paths;
 use bin\epaphrodite\crf_token\csrf_secure;
-use bin\database\config\processed_request;
+use bin\database\config\process;
 use bin\epaphrodite\define\text_messages;
 use bin\epaphrodite\env\gestcookies;
 use bin\database\requests\insert\if_not_exist;
@@ -28,7 +28,7 @@ class auth
       $this->secure = new csrf_secure();
       $this->verify_if_is_correct = new verify_chaine;
       $this->userbd = new session_auth;
-      $this->request = new processed_request;
+      $this->request = new process;
       $this->msg = new text_messages;
       $this->star = new gestcookies();
       $this->if_exist = new if_not_exist;
@@ -112,7 +112,7 @@ class auth
      * @param string $login
      * @param string $motpasse
      * @return bool
-     */
+    */
     public function verify_user_access( string $login , string $motpasse )
     {
 

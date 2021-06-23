@@ -2,7 +2,7 @@
 
 namespace bin\epaphrodite\crf_token;
 
-use bin\database\connexion\processed_request;
+use bin\database\config\process;
 use bin\epaphrodite\auth\session_auth;
 
 class csrf_secure
@@ -16,7 +16,7 @@ class csrf_secure
      */    
     function __construct()
     {
-        $this->request = new processed_request;
+        $this->request = new process;
         $this->userbd = new session_auth();
         $this->messages = new \bin\epaphrodite\define\text_messages;
     }

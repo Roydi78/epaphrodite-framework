@@ -1,7 +1,7 @@
 <?php
 
 namespace bin\database\requests\json;
-use \bin\database\connexion\processed_request;
+use \bin\database\config\process;
 
 
 class graph_datas
@@ -14,7 +14,7 @@ class graph_datas
     */
     function __construct()
     {
-      $this->request = new processed_request;
+      $this->request = new process;
       
     }
 
