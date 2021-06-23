@@ -19,9 +19,9 @@
     <title>{{ msg.answers('site-title') }}</title>
   </head>
     <body>
-      {{ include('layouts/__header.html.html') }}
+      {{ include('layouts/template/__header.html.html') }}
         {% block content %}{% endblock %}
-      {{ include('layouts/__footer.html.html') }}
+      {{ include('layouts/template/__footer.html.html') }}
       <script src="{{ path.js('jquery') }}"></script>
       <script src="{{ path.js('bootstrap-min') }}"></script>
       <script src="{{ path.js('aos') }}"></script>
