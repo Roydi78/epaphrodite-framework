@@ -1,6 +1,7 @@
 <?php
 
 namespace bin\controllers\controllers;
+
 use bin\controllers\render\twig;
 use bin\controllers\render\errors;
 
@@ -53,10 +54,11 @@ class Control extends twig
 
     protected function renderphp( $html )
     {
+        
 
         if(file_exists( _DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $html . '.html' ))
         {
-            
+            //var_dump( _DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $html . '.html' );die();
             /**
              * *****************************************************************************************************************************
              * index
@@ -116,7 +118,7 @@ class Control extends twig
 }
 
 
-class interface_controller extends Control
+class main_controller extends Control
 {
     public function send_page( $html )
     {

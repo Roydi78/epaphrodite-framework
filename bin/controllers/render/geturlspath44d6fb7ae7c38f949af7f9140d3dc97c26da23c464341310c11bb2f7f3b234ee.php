@@ -9,8 +9,8 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
     private $startsession;
     private $path_interface;
     private $urlfound;
-    private $path_router_interface;
-    private $path_router_admin;
+    private $main_controller;
+    private $admin_controller;
     private $url;
 
     /**
@@ -22,8 +22,8 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
         $this->startsession = new \bin\epaphrodite\env\gestcookies;
         $this->path_session = new \bin\epaphrodite\auth\session_auth;
         $this->path_interface = new \bin\epaphrodite\others\gestion_interface;
-        $this->path_router_interface = new \bin\controllers\controllers\interface_controller;
-        $this->path_router_admin = new \bin\controllers\controllers\admin_controller;
+        $this->main_controller = new \bin\controllers\controllers\main_controller;
+        $this->admin_controller = new \bin\controllers\controllers\admin_controller;
         $this->env = new \bin\controllers\render\method44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee; 
         $this->path_url = new \bin\epaphrodite\path\paths;
     }
@@ -107,8 +107,8 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
      * Return true controller
      *
      * @param array $recuperationurl
-     * @var \bin\controllers\controllers\interface_controller $path_router_interface
-     * @var \bin\controllers\controllers\admin_controller $path_router_admin
+     * @var \bin\controllers\controllers\main_controller $main_controller
+     * @var \bin\controllers\controllers\admin_controller $admin_controller
      * @return string
     */
     private function router($recuperationurl)
@@ -124,15 +124,15 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
 
         if($recuperationurl[0]==="views" || $pageenvoyer==="erreur")
         {
-            return $this->path_router_interface->send_page($pageenvoyer);
+            return $this->main_controller->send_page($pageenvoyer);
 
         }elseif($recuperationurl[0]==="admin-views"&&$this->path_session->token_crf()!==NULL&&$this->path_session->id_user()!==NULL){
 
-            return $this->path_router_admin->send_page($pageenvoyer);
+            return $this->admin_controller->send_page($pageenvoyer);
 
         }else{
 
-            return $this->path_router_interface->send_page($pageenvoyer);
+            return $this->main_controller->send_page($pageenvoyer);
 
         }
     }

@@ -14,7 +14,7 @@ class errors extends twig{
         $this->paths = new \bin\epaphrodite\path\paths();
         $this->msg = new \bin\epaphrodite\define\text_messages();
         $this->session = new \bin\epaphrodite\auth\session_auth(); 
-        $this->template = new \bin\epaphrodite\env\template;       
+        $this->layouts = new \bin\epaphrodite\env\layouts;       
     }
 
     /**
@@ -29,7 +29,7 @@ class errors extends twig{
 
             'path'=>$this->paths ,
             'msg' => $this->msg ,
-            'error' => $this->template->errors(),
+            'error' => $this->layouts->errors(),
 
         ]);
         die();
@@ -46,7 +46,7 @@ class errors extends twig{
 
             'path'=>$this->paths ,
             'msg' => $this->msg ,
-            'error' => $this->template->errors(),
+            'error' => $this->layouts->errors(),
 
         ]);
         die();
@@ -63,7 +63,7 @@ class errors extends twig{
         [ 
             'path'=>$this->paths ,
             'msg' => $this->msg ,
-            'error' => $this->template->errors(),
+            'error' => $this->layouts->errors(),
         ]);
 
         $this->session->deconnexion();die();
@@ -81,7 +81,7 @@ class errors extends twig{
         [ 
             'path'=>$this->paths ,
             'msg' => $this->msg ,
-            'error' => $this->template->errors(),
+            'error' => $this->layouts->errors(),
         ]);
         
         die();

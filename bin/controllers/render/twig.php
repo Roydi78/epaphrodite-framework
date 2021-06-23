@@ -41,7 +41,7 @@ class twig {
      * @return mixed
      */ 
     public function render( string $view , array $array ){
-
+        //var_dump( $array );die();
       echo $this->twig_env()->render( $view.'.html', $array );
 
     }    
