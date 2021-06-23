@@ -2,7 +2,7 @@
 
 namespace bin\epaphrodite\env;
 
-class template
+class layouts
 {
 
     /**

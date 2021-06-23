@@ -2,8 +2,13 @@
 
 namespace bin\epaphrodite\others;
 
+
 class gestion_interface
 {
+
+    private $auth_interface;
+    private $type_user_connecter;
+
 
     public function gestion_interface_users()
     {

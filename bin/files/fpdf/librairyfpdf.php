@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\files;
+namespace bin\files\fpdf;
 use Exception;
 
 define('FPDF_VERSION','1.82');

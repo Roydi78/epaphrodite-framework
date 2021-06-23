@@ -9,7 +9,7 @@ class database
     /*
         @Var of connexions 
     */
-        private $etablirconnexion;
+        private $get_connexion;
         const DB_PASS = "root";
         const DB_DSN = "mysql:host=localhost;dbname=epaphrodite_bd";
         const DB_USER = 'root';
@@ -25,7 +25,7 @@ class database
     */
         function __construct()
         {
-            $this->etablirconnexion = $this->etalirlaconnexion();
+            $this->get_connexion = $this->etalirlaconnexion();
         }
 
     /* 
@@ -35,9 +35,9 @@ class database
         {
             try{
                 
-                $etablirconnexion = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, self::option);
+                $get_connexion = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, self::option);
                 
-                return $etablirconnexion;
+                return $get_connexion;
 
             }catch (PDOException $e){
 
@@ -51,19 +51,19 @@ class database
     */
         public function closeConnection()
         {
-            $this->etablirconnexion = NULL;
+            $this->get_connexion = NULL;
         }
 
     /* 
         SQL select request  
     */
-        public function select($sqlreq, $Typeparametre, $datasparam = array())
+        public function select($sql_chaine, $Typeparametre, $param = array())
         {
-            $request = $this->etablirconnexion->prepare($sqlreq);
+            $request = $this->get_connexion->prepare($sql_chaine);
             if (!empty($Typeparametre)) {
-                foreach($datasparam as $k => &$v) 
+                foreach($param as $k => &$v) 
                 {
-                    $request->bindParam($k + 1, $datasparam[$k], PDO::PARAM_STR);
+                    $request->bindParam($k + 1, $param[$k], PDO::PARAM_STR);
                 }
             }    
             $request->execute();
@@ -73,13 +73,13 @@ class database
     /* 
         SQL insert request  
     */
-        public function insert($sqlreq, $Typeparametre, $datasparam = array())
+        public function insert($sql_chaine, $Typeparametre, $param = array())
         {
-            $request = $this->etablirconnexion->prepare($sqlreq);
+            $request = $this->get_connexion->prepare($sql_chaine);
             if (!empty($Typeparametre)) {
-                foreach($datasparam as $k => &$v) 
+                foreach($param as $k => &$v) 
                 {
-                    $request->bindParam($k + 1, $datasparam[$k], PDO::PARAM_STR);
+                    $request->bindParam($k + 1, $param[$k], PDO::PARAM_STR);
                 }
             }    
             $result = $request->execute();
@@ -89,14 +89,14 @@ class database
     /* 
         SQL delete request  
     */
-        public function delete($sqlreq, $Typeparametre, $datasparam = array())
+        public function delete($sql_chaine, $Typeparametre, $param = array())
         {
-            $requestdeleted = $this->etablirconnexion->prepare($sqlreq);
+            $requestdeleted = $this->get_connexion->prepare($sql_chaine);
             
             if (!empty($Typeparametre)) {
-                foreach($datasparam as $k => &$v) 
+                foreach($param as $k => &$v) 
                 {
-                    $requestdeleted->bindParam($k + 1, $datasparam[$k], PDO::PARAM_STR);
+                    $requestdeleted->bindParam($k + 1, $param[$k], PDO::PARAM_STR);
                 }
             }   
             $resultdeleted = $requestdeleted->execute();
@@ -106,14 +106,14 @@ class database
     /* 
         SQL update request 
     */
-        public function update($sqlreq, $Typeparametre, $datasparam = array())
+        public function update($sql_chaine, $Typeparametre, $param = array())
         {
-            $request = $this->etablirconnexion->prepare($sqlreq);
+            $request = $this->get_connexion->prepare($sql_chaine);
             
             if (!empty($Typeparametre)) {
-                foreach($datasparam as $k => &$v) 
+                foreach($param as $k => &$v) 
                 {
-                    $request->bindParam($k + 1, $datasparam[$k], PDO::PARAM_STR);
+                    $request->bindParam($k + 1, $param[$k], PDO::PARAM_STR);
                 }
             }    
             $result = $request->execute();
