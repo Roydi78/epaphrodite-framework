@@ -6,7 +6,7 @@ use bin\epaphrodite\env\verify_chaine;
 use bin\epaphrodite\auth\session_auth;
 use \bin\epaphrodite\path\paths;
 use bin\epaphrodite\crf_token\csrf_secure;
-use bin\database\connexion\processed_request;
+use bin\database\config\processed_request;
 use bin\epaphrodite\define\text_messages;
 use bin\epaphrodite\env\gestcookies;
 use bin\database\requests\insert\if_not_exist;

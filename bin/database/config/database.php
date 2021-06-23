@@ -1,6 +1,6 @@
 <?php
 
-namespace bin\database\connexion;
+namespace bin\database\config;
 use PDO;
 use PDOException;
 

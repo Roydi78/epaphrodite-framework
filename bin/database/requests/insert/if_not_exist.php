@@ -2,7 +2,7 @@
 
 namespace bin\database\requests\insert;
 
-use \bin\database\connexion\processed_request;
+use \bin\database\config\processed_request;
 
 class if_not_exist{
 

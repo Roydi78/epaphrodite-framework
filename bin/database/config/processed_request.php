@@ -1,16 +1,16 @@
 <?php
 
-namespace bin\database\connexion;
+namespace bin\database\config;
 
-use bin\database\connexion\database;
+use bin\database\config\database;
 
 class processed_request
 {
 
+    *
     /**
      * *****************************************************************************************************************************
      * Processed all select request
-     *
      * @param string $sql
      * @param string|null $Parametre
      * @param array|null $datasparam
@@ -20,7 +20,7 @@ class processed_request
     public function select_request( $sql, ?string $Parametre=null , ?array $datasparam = null , ?bool $etat=false ){
 
         $result = $this->connexion()->select($sql, $Parametre, $datasparam);
-
+        
         if($etat===true){ $this->connexion->closeConnection(); }
 
         return $result;
