@@ -20,6 +20,10 @@
         margin-top: 300px;
     }
     
+    .mt-20 {
+        margin-top: 20px;
+    }
+    
     .mt-10 {
         margin-top: 10px;
     }
@@ -38,6 +42,10 @@
     
     .mb-30 {
         padding-bottom: 300px;
+    }
+    
+    .mb-20 {
+        padding-bottom: 20px;
     }
     
     .mb-10 {
@@ -60,6 +68,10 @@
         padding-top: 300px;
     }
     
+    .pt-20 {
+        padding-top: 20px;
+    }
+    
     .pt-10 {
         padding-top: 10px;
     }
@@ -78,6 +90,10 @@
     
     .pb-30 {
         padding-bottom: 300px;
+    }
+    
+    .pb-20 {
+        padding-bottom: 20px;
     }
     
     .pb-10 {

@@ -4,7 +4,7 @@
     {% if label != false %}
       <label class="label">{{ label }}</label>
     {% endif %}
-      <input type="{{ type }}" class="input-text" name="{{ name }}" {% if value != false %} value="{{ value }}" {% endif %} {% if onpaste == true %} onpaste="return false" required {% endif %}>
+      <input type="{{ type }}" class="form-control" name="{{ name }}" {% if value != false %} value="{{ value }}" {% endif %} {% if onpaste == true %} onpaste="return false" required {% endif %}>
     {% if indications != false %}
       <div class="invalid-feedback">{{ indications }}</div>
     {% endif %}
