@@ -8,7 +8,7 @@ class text_messages
         $this->datas_type[] =
         [
             'site-title'=> 'EPAPHRODITE FRAMEWORK',
-            'author' => 'epaphrodite',
+            'author' => 'Agence Epaphrodite',
             'description' => 'agence epaphrodite',
             'keywords' => "Agence epaphrodite  , Création; site web; digitale; community manager; logo; identité visuelle; marketing; communication; abidjan; Côte d'Ivoire; Afrique; Didier Drogba",
             'token_name' => 'token_crf_ep',

@@ -14,4 +14,9 @@
     }, false);
 })();
 
-AOS.init({ duration: 1200, })
+AOS.init({ duration: 1200, });
+
+
+function FunctionHaut() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+}

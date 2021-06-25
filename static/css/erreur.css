@@ -36,3 +36,11 @@ p {
     color: rgb(113, 120, 126);
     font-family: 'Lato', sans-serif;
 }
+
+.error-text a {
+    text-decoration: none;
+    background-color: rgb(2, 168, 43);
+    padding: 10px 30px;
+    color: #ffffff;
+    border-radius: 10px;
+}

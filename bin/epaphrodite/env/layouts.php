@@ -25,7 +25,7 @@ class layouts
     */    
     public function main(){
 
-        return "layouts/template/__default_main.html.twig";
+        return "layouts/template/__default.main.html.twig";
 
     }  
     
@@ -37,7 +37,7 @@ class layouts
     */    
     public function admin(){
 
-        return "layouts/template/__default_admin.html.twig";
+        return "layouts/template/__default.admin.html.twig";
 
     }
     
@@ -61,7 +61,7 @@ class layouts
     */    
     public function errors(){
 
-        return "layouts/template/__default_errors.html.twig";
+        return "layouts/template/__default.errors.html.twig";
 
     } 
     

@@ -4,6 +4,86 @@
         line-height: 1.6em;
     }
     
+    .mt-100 {
+        margin-top: 100px;
+    }
+    
+    .mt-70 {
+        margin-top: 70px;
+    }
+    
+    .mt-50 {
+        margin-top: 50px;
+    }
+    
+    .mt-30 {
+        margin-top: 300px;
+    }
+    
+    .mt-10 {
+        margin-top: 10px;
+    }
+    
+    .mb-100 {
+        padding-bottom: 100px;
+    }
+    
+    .mb-70 {
+        padding-bottom: 70px;
+    }
+    
+    .mb-50 {
+        padding-bottom: 50px;
+    }
+    
+    .mb-30 {
+        padding-bottom: 300px;
+    }
+    
+    .mb-10 {
+        padding-bottom: 10px;
+    }
+    
+    .pt-100 {
+        padding-top: 100px;
+    }
+    
+    .pt-70 {
+        padding-top: 70px;
+    }
+    
+    .pt-50 {
+        padding-top: 50px;
+    }
+    
+    .pt-30 {
+        padding-top: 300px;
+    }
+    
+    .pt-10 {
+        padding-top: 10px;
+    }
+    
+    .pb-100 {
+        padding-bottom: 100px;
+    }
+    
+    .pb-70 {
+        padding-bottom: 70px;
+    }
+    
+    .pb-50 {
+        padding-bottom: 50px;
+    }
+    
+    .pb-30 {
+        padding-bottom: 300px;
+    }
+    
+    .pb-10 {
+        padding-bottom: 10px;
+    }
+    
     .logo img {
         margin-top: 150px;
         width: 40%;
@@ -22,16 +102,21 @@
         text-align: center;
     }
     
-    .deskop {
-        text-align: center;
+    h4 {
+        color: #253858;
+        margin-top: 2rem;
+        position: relative;
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.5rem;
     }
     
-    a {
+    .deskop a {
+        text-decoration: none;
         text-align: center;
-        padding: 7px 27px;
+        padding: 17px 40px;
         background: #ffa500;
         border: 1px solid #ffa500;
-        border-radius: 20px;
+        border-radius: 40px;
         color: #ffffff;
         font-weight: bold;
     }
@@ -41,16 +126,8 @@
         color: #ffffff;
     }
     
-    h4 {
-        color: #253858;
-        margin-top: 2rem;
-        position: relative;
-        font-family: 'Raleway', sans-serif;
-        font-size: 1.5rem;
-    }
-    
     .form {
-        margin: 30px auto;
+        margin: auto;
         width: 50%;
         padding: 20px;
         border: 1px solid #026d49;
@@ -58,7 +135,12 @@
         background: #f1f1f1;
     }
     
-    .reponses {
+    .success {
+        text-align: center;
+        color: #198a02;
+    }
+    
+    .error {
         text-align: center;
         color: #ee2d2d;
     }

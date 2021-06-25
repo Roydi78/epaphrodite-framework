@@ -5,12 +5,30 @@
         <div class="col-md-12 titlesite">AUTHENTIFICATION</div>
     </div>
     <div class="container">
-        <div class="form">
-            <div class="reponses">{{ reponse ? reponse : "" }}</div>
-            <form method="post">
-                {{ csrf.input_field() }} {{ input_field('login','Login','text') }} {{ input_field('password','Password','password') }} {{ submit('Connexion' , 'submit' , 'btn-success') }}
+        <div class="form mt-30">
+            <div class="reponses {{ class }}">{{ reponse ? reponse : "" }}</div>
+            <form method="post" class="validerinfos" novalidate>
+                {{ csrf.input_field() }} {{ input_field('login','Login','text' , "Entrez votre Login svp!!!" ) }} {{ input_field('password','Password','password' , "Entrez votre mot de passe svp!!!" ) }} {{ submit('submit' , 'Connexion' , 'btn-success') }}
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('validerinfos');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 {% endblock %}

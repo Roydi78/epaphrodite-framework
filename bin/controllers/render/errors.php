@@ -22,15 +22,13 @@ class errors extends twig{
      *
      * @return exit
     */   
-    public function error_404(){
-
+    public function error_404()
+    {
         $this->render('errors/404', 
         [ 
-
             'path'=>$this->paths ,
             'msg' => $this->msg ,
-            'error' => $this->layouts->errors(),
-
+            'layouts' => $this->layouts->errors(),
         ]);
         die();
     }
@@ -40,30 +38,29 @@ class errors extends twig{
      *
      * @return exit
      */   
-    public function error_403(){
-        $this->render('errors/403', 
-        [ 
-
-            'path'=>$this->paths ,
-            'msg' => $this->msg ,
-            'error' => $this->layouts->errors(),
-
-        ]);
-        die();
-    }   
+        public function error_403()
+        {
+            $this->render('errors/403', 
+            [ 
+                'path'=>$this->paths ,
+                'msg' => $this->msg ,
+                'layouts' => $this->layouts->errors(),
+            ]);
+            die();
+        }   
     
     /**
      * Page erreur 419 
      *
      * @return exit
      */  
-    public function error_419(){
+     public function error_419(){
 
         $this->render('errors/419', 
         [ 
             'path'=>$this->paths ,
             'msg' => $this->msg ,
-            'error' => $this->layouts->errors(),
+            'layouts' => $this->layouts->errors(),
         ]);
 
         $this->session->deconnexion();die();
@@ -81,11 +78,9 @@ class errors extends twig{
         [ 
             'path'=>$this->paths ,
             'msg' => $this->msg ,
-            'error' => $this->layouts->errors(),
+            'layouts' => $this->layouts->errors(),
         ]);
-        
         die();
-
     }        
 
 }

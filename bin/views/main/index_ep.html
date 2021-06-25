@@ -1,12 +1,11 @@
 {% extends layouts %} {% block content %}
 <div class="container-fluid">
-    <div class="row aos-init" data-aos="fade-up" data-aos-offset="300">
-        <div class="logo" align='center'><img src="{{ path.img('logo.png') }}" class="img-fluid"></div>
+    <div class="row">
+        <div class="logo aos-init" data-aos="fade-right" data-aos-offset="300" align='center'><img src="{{ path.img('logo.png') }}" class="img-fluid"></div>
         <div class="col-md-12 titlesite">{{ msg.answers('site-title') }}</div>
         <div class="col-md-12 deskop">
-            <h1>Welcome</h1>
+            <h1 class="aos-init" data-aos="fade-left" data-aos-offset="300">Welcome</h1>
             <a href="{{ path.main('login') }}">ACCES ADMINISTRATION</a>
-            <h4>{{ msg.answers('author') }}</h4>
         </div>
     </div>
 </div>

@@ -88,13 +88,12 @@ class Control extends twig
             */
             elseif( $html ==="login_ep")
             {
-                $this->ans='';
+                $this->ans='';$class=null;
 
                 if( isset($_POST['submit'])&&$this->csrf->process()===true ){
                     
                     $this->result = $this->acces_path->verify_user_access( $_POST['login'] , $_POST['password'] );
-
-                    if($this->result === false){ $this->ans = $this->msg->answers('login-wrong'); }
+                    if($this->result === false){ $this->ans = $this->msg->answers('login-wrong'); $class="error"; }
 
                 }
 
@@ -105,6 +104,7 @@ class Control extends twig
                     'msg' => $this->msg,
                     'csrf'=> $this->csrf,
                     'reponse'=>$this->ans,
+                    'class'=>$class,
                     'layouts' => $this->layouts->main(),
                     'form' => $this->layouts->forms(),
                 ]);
