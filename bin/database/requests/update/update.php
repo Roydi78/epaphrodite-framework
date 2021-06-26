@@ -23,9 +23,9 @@ class update{
 
         $sql = $this->QueryBuilder() 
                     -> table('user_bd') 
-                    -> SQuery(NULL);
+                    -> UQuery(NULL);
 
-        $result = $this->process->select( $sql , null , null , true );
+        $result = $this->process->update( $sql , null , null , true );
 
         return $result;        
 

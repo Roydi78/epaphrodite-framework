@@ -8,13 +8,13 @@ class paths extends host
     /**
      * paths variables
      *
-     * @var string $url_path_link
+     * @var string $path
      * @var string $slug
     */
-    private $url_path_link;
+    private $path;
 
     /**
-     * Host link path
+     * Host path
      *
      * @return void
     */
@@ -26,81 +26,81 @@ class paths extends host
     }
 
     /**
-     * Simple main link paths
+     * Simple main paths
      *
-     * @param string $url_needed
+     * @param ?string $url=null
      * @return void
     */ 
-    public function main( string $url_needed )
+    public function main( ?string $url=null )
     {
 
-        $this->url_path_link = $this->gethost().'views/'.$this->slug($url_needed).'/';
+        $this->path = $this->gethost().'views/'.$this->slug($url).'/';
 
-        return $this->url_path_link;
+        return $this->path;
 
     }  
     
     /**
      * Path main for @id
      *
-     * @param string $url_needed
-     * @param string $type_action
-     * @param integer $id_needed
+     * @param string $url|null
+     * @param string $action
+     * @param integer $id
      * @return void
     */   
-    public function main_id( string $url_needed , string $type_action , int $id_needed )
+    public function main_id( ?string $url=null , string $action , int $id )
     {
 
-        $this->url_path_link = $this->gethost().'admin-views/'.$url_needed.$type_action.$id_needed;
+        $this->path = $this->gethost().'admin-views/'.$url.$action.$id;
 
-        return $this->url_path_link;
+        return $this->path;
 
     }     
 
     /**
-     * Simple dashboard path link
+     * Dashboard path link
      *
-     * @param string $url_needed
+     * @param string $url|null
      * @return void
     */   
-    public function dashboard( string $url_needed )
+    public function dashboard( ?string $url=null )
     {
 
-        $this->url_path_link = $this->gethost().$this->slug($url_needed).'/';
+        $this->path = $this->gethost().$this->slug($url).'/';
 
-        return $this->url_path_link;
+        return $this->path;
 
     } 
     
     /**
-     * Simple admin link path
+     * Admin link path
      *
-     * @param string $url_needed
+     * @param string $url|null
      * @return void
     */   
-    public function admin( string $url_needed )
+    public function admin( ?string $url=null )
     {
 
-        $this->url_path_link = $this->gethost().'admin-views/'.$this->slug($url_needed).'/';
+        $this->path = $this->gethost().'admin-views/'.$this->slug($url).'/';
 
-        return $this->url_path_link;
+        return $this->path;
 
     }        
 
     /**
-     * Path admin for @id
+     * Admin for @id
      *
-     * @param string $url_needed
-     * @param string $type_action
-     * @param integer $id_needed
+     * @param string $url|null
+     * @param string $action
+     * @param integer $id
      * @return void
     */         
-    public function admin_id( string $ordlinkneeded , string $type_action , int $id_needed )
+    public function admin_id( string $url , string $action , int $id )
     {
 
-        $this->url_path_link = $this->gethost().'views/'.$ordlinkneeded.$type_action.$id_needed;
+        $this->path = $this->gethost().'views/'.$url.$action.$id;
 
-        return $this->url_path_link;
+        return $this->path;
 
     }    
 
@@ -113,9 +113,9 @@ class paths extends host
     public function img( string $img )
     {
 
-        $this->url_path_link = $this->gethost().'static/img/'.$img;
+        $this->path = $this->gethost().'static/img/'.$img;
 
-        return $this->url_path_link;
+        return $this->path;
 
     }     
 
@@ -128,9 +128,9 @@ class paths extends host
     public function js( string $js )
     {
 
-        $this->url_path_link = $this->gethost().'static/js/'.$js.'.js';
+        $this->path = $this->gethost().'static/js/'.$js.'.js';
 
-        return $this->url_path_link;
+        return $this->path;
 
     }    
     
@@ -143,9 +143,9 @@ class paths extends host
     public function css( string $css )
     {
 
-        $this->url_path_link = $this->gethost().'static/css/'.$css.'.css';
+        $this->path = $this->gethost().'static/css/'.$css.'.css';
 
-        return $this->url_path_link;
+        return $this->path;
 
     } 
 
@@ -156,8 +156,8 @@ class paths extends host
      * @return void
     */     
     public function font( string $cssneeded ){
-        $this->url_path_link = $this->gethost().'static/font-awesome/css/'.$this->slug($cssneeded).'.css';
-        return $this->url_path_link;
+        $this->path = $this->gethost().'static/font-awesome/css/'.$this->slug($cssneeded).'.css';
+        return $this->path;
     } 
 
     /**
@@ -167,8 +167,8 @@ class paths extends host
      * @return void
     */     
     public function icofont( string $cssneeded ){
-        $this->url_path_link = $this->gethost().'static/icofont/'.$cssneeded.'.css';
-        return $this->url_path_link;
+        $this->path = $this->gethost().'static/icofont/'.$cssneeded.'.css';
+        return $this->path;
     }     
     
     /**
@@ -180,9 +180,9 @@ class paths extends host
     public function pdf( string $pdfneeded )
     {
 
-        $this->url_path_link = $this->gethost().'static/pdf'.$pdfneeded;
+        $this->path = $this->gethost().'static/pdf'.$pdfneeded;
 
-        return $this->url_path_link;
+        return $this->path;
 
     } 
     

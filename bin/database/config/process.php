@@ -18,9 +18,9 @@ class process
      * @return void
     */
     public function select( $sql , ?string $Parametre=null , ?array $datasparam = null , ?bool $etat=false ){
-var_dump($sql);
+
         $result = $this->connexion()->select($sql, $Parametre, $datasparam);
-        
+  
         if($etat===true){ $this->connexion->closeConnection(); }
 
         return $result;

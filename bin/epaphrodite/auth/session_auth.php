@@ -5,7 +5,7 @@ class session_auth
 {
     public $login;
     public $iduser;
-    public $token_crf;
+    public $token_csrf;
     public $typuser;
 
 
@@ -15,7 +15,7 @@ class session_auth
      * @var mixed $login
      * @return mixed
     */    
-    public function login_user(){
+    public function login(){
 
         $this->login = isset($_SESSION['login']) ? $_SESSION['login'] : NULL;
 
@@ -29,27 +29,27 @@ class session_auth
      * @var mixed $iduser
      * @return mixed
     */     
-    public function id_user(){
+    public function id(){
 
-        $this->iduser = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
+        $this->id = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
 
-        return $this->iduser;
+        return $this->id;
 
     }
 
     /**
      * ***************************************************************************************************
-     * User cookies token_crf data
-     * @var mixed $token_crf
+     * User cookies token_csrf data
+     * @var mixed $token_csrf
      * @return mixed
     */      
-    public function token_crf(){
+    public function token_csrf(){
 
         $this->messages = new \bin\epaphrodite\define\text_messages();
 
-        $token_crf = !empty($_COOKIE[$this->messages->answers('token_name')]) ? $_COOKIE[$this->messages->answers('token_name')] : NULL;
+        $token_csrf = !empty($_COOKIE[$this->messages->answers('token_name')]) ? $_COOKIE[$this->messages->answers('token_name')] : NULL;
         
-        return $token_crf;
+        return $token_csrf;
 
     }
 
@@ -60,7 +60,7 @@ class session_auth
     */     
     public function deconnexion(){ 
 
-        if($this->login_user()!==NULL&&$this->id_user()!==NULL){
+        if($this->login()!==NULL&&$this->id()!==NULL){
 
             session_unset();
 

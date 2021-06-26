@@ -23,9 +23,9 @@ class insert{
 
         $sql = $this->QueryBuilder() 
                     -> table('user_bd') 
-                    -> SQuery(NULL);
+                    -> IQuery(NULL);
 
-        $result = $this->process->select_process( $sql , null , null , true );
+        $result = $this->process->insert( $sql , null , null , true );
 
         return $result;        
 

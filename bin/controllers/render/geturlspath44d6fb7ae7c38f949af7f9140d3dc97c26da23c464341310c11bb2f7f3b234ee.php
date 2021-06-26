@@ -5,7 +5,7 @@ namespace bin\controllers\render;
 
 class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee
 {
-    private $path_session;
+    private $session;
     private $startsession;
     private $path_interface;
     private $urlfound;
@@ -20,7 +20,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
     public function __construct()
     {
         $this->startsession = new \bin\epaphrodite\env\gestcookies;
-        $this->path_session = new \bin\epaphrodite\auth\session_auth;
+        $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->path_interface = new \bin\epaphrodite\others\gestion_interface;
         $this->main = new \bin\controllers\controllers\main;
         $this->admin = new \bin\controllers\controllers\admin;
@@ -32,7 +32,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
      * Check and send to controller
      *
      * @var \bin\epaphrodite\env\gestion_interface $path_interface
-     * @var \bin\epaphrodite\auth\session_auth $path_session
+     * @var \bin\epaphrodite\auth\session_auth $session
      * @var string $url
      * @var $this $this
      * @return string
@@ -80,7 +80,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
             if($this->url === "views/login/"||$this->url === "logout/")
             {  
 
-                $this->path_session->deconnexion();
+                $this->session->deconnexion();
 
                 $this->url = $this->path_interface->login_interface();  
 
@@ -89,9 +89,9 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
             /*
                 Get user dashbord page
             */ 
-            if($this->url=="admin/"&&$this->path_session->token_crf()!==NULL&&$this->path_session->id_user()!==NULL)
+            if($this->url=="admin/"&&$this->session->token_csrf()!==NULL&&$this->session->id()!==NULL)
             {   
-                $this->url = $this->path_interface->gestion_interface_users($this->path_session->id_user());  
+                $this->url = $this->path_interface->gestion_interface_users($this->session->id());  
             }
 
         $this->geturls = explode('/',$this->url);
@@ -126,7 +126,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
         {
             return $this->main->send_page($pageenvoyer);
 
-        }elseif($recuperationurl[0]==="admin-views"&&$this->path_session->token_crf()!==NULL&&$this->path_session->id_user()!==NULL){
+        }elseif($recuperationurl[0]==="admin-views"&&$this->session->token_csrf()!==NULL&&$this->session->id_user()!==NULL){
 
             return $this->admin->send_page($pageenvoyer);
 

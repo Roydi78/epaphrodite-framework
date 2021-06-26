@@ -10,7 +10,7 @@ class gestcookies
     protected $pathvalue;
     protected $cookievalue;
     protected $initvalue = "";
-    private $path_session;
+    private $session;
 
     /**
      * construct class
@@ -19,7 +19,7 @@ class gestcookies
     function __construct()
     {
         $this->pathvalue = new \bin\epaphrodite\crf_token\gettokenvalue();
-        $this->path_session = new \bin\epaphrodite\auth\session_auth();
+        $this->session = new \bin\epaphrodite\auth\session_auth();
         $this->messages = new \bin\epaphrodite\define\text_messages;
         $this->csrf = new csrf_secure;
     }
@@ -43,7 +43,7 @@ class gestcookies
 
         session_start();
 
-        if($this->path_session->login_user()===NULL&&empty($this->path_session->token_crf()))
+        if($this->session->login()===NULL&&empty($this->session->token_csrf()))
         {
 
             $this->set_user_cookies( $path, $dommaine, $secure, $httonly , $this->pathvalue->getvalue($this->initvalue) );

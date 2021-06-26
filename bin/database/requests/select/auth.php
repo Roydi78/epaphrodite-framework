@@ -61,7 +61,7 @@ class auth
                       -> table('user_bd') 
                       -> SQuery(NULL);
 
-          $this->process->select_process( $sql , NULL , NULL , false );
+          $this->process->select( $sql , NULL , NULL , false );
           
           return true;
           
@@ -147,7 +147,7 @@ class auth
 
                     $_SESSION["id"] = $users_datas[0]["iduser_bd"];
 
-                    $this->gethost = $this->path->sad_link('admin');
+                    $this->gethost = $this->path->dashboard('admin');
 
                     if($this->secure->get_csrf($_COOKIE[$this->msg->answers('token_name')])!==0)
                     {
