@@ -76,7 +76,7 @@ class Control_admin extends twig
 
 }
 
-class admin_controller extends Control_admin
+class admin extends Control_admin
 {
     public function send_page( $html ){
 

@@ -118,7 +118,7 @@ class Control extends twig
 }
 
 
-class main_controller extends Control
+class main extends Control
 {
     public function send_page( $html )
     {

@@ -25,7 +25,7 @@ class if_not_exist{
 
       $sql = "CREATE TABLE IF NOT EXISTS auth_secure (idtoken_secure int(11) NOT NULL auto_increment , auth varchar(300)NOT NULL , auth_key varchar(700)NOT NULL , PRIMARY KEY(idtoken_secure) )";        
 
-      $this->request->insert_request( $sql , NULL , NULL , false );
+      $this->request->insert( $sql , NULL , NULL , false );
 
     }  
     
@@ -38,7 +38,7 @@ class if_not_exist{
 
       $sql = "CREATE TABLE IF NOT EXISTS user_bd (iduser_bd int(11) NOT NULL auto_increment , loginuser_bd varchar(200)NOT NULL , mdpuser_bd varchar(700)NOT NULL , PRIMARY KEY(iduser_bd) )";        
 
-      $this->request->insert_request( $sql , NULL , NULL , false );
+      $this->request->insert( $sql , NULL , NULL , false );
 
     }   
     

@@ -15,7 +15,7 @@ use bin\database\requests\insert\if_not_exist;
 class auth
 {
 
-    private $request;
+    private $process;
 
     /**
      * Get class
@@ -25,12 +25,12 @@ class auth
     {
 
       $this->path = new paths();
-      $this->secure = new csrf_secure();
+      $this->secure = new csrf_secure;
       $this->verify_if_is_correct = new verify_chaine;
       $this->userbd = new session_auth;
-      $this->request = new process;
+      $this->process = new process;
       $this->msg = new text_messages;
-      $this->star = new gestcookies();
+      $this->star = new gestcookies;
       $this->if_exist = new if_not_exist;
       
     }
@@ -41,7 +41,7 @@ class auth
      *
      * @return \bin\database\querybilder\querybuilder
     */    
-    private function getclassQueryBuilder(): \bin\database\querybilder\querybuilder
+    private function QueryBuilder(): \bin\database\querybilder\querybuilder
     {
         return new \bin\database\querybilder\querybuilder();
     } 
@@ -57,11 +57,11 @@ class auth
         try
         {
 
-          $sql = $this->getclassQueryBuilder() 
+          $sql = $this->QueryBuilder() 
                       -> table('user_bd') 
                       -> SQuery(NULL);
 
-          $this->request->select_request( $sql , NULL , NULL , false );
+          $this->process->select_process( $sql , NULL , NULL , false );
           
           return true;
           
@@ -86,12 +86,12 @@ class auth
         if($this->if_table_exist()===true)
         {
 
-          $sql = $this->getclassQueryBuilder() 
+          $sql = $this->QueryBuilder() 
                       -> table('user_bd') 
                       -> where('loginuser_bd') 
                       -> SQuery(NULL);
 
-          $result = $this->request->select_request($sql,'s',[ $loginuser ] , true );
+          $result = $this->process->select($sql,'s',[ $loginuser ] , true );
 
           return $result;
 
