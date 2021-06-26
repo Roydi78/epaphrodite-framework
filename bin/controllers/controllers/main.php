@@ -18,11 +18,11 @@ class Control extends twig
      * @var \bin\epaphrodite\email\send_mail $email
      * @var \bin\epaphrodite\api\sms\send_sms $sms
      * @var \bin\controllers\render\errors $errors
-     * @var \bin\database\requests\select\auth $acces_path
+     * @var \bin\database\requests\select\auth $loginin
      * @var \bin\epaphrodite\env\layouts $layouts
     */
     private $csrf;
-    private $acces_path;
+    private $loginin;
     private $layouts;
     private $paths;
     private $email;
@@ -38,7 +38,7 @@ class Control extends twig
     function __construct()
     {
 
-        $this->acces_path = new \bin\database\requests\select\auth;
+        $this->loginin = new \bin\database\requests\select\auth;
         $this->auth = new \bin\epaphrodite\auth\session_auth();
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
         $this->paths = new \bin\epaphrodite\path\paths;
@@ -52,7 +52,7 @@ class Control extends twig
     }
 
 
-    protected function renderphp( $html )
+    protected function epaphrodite( $html )
     {
         
 
@@ -92,7 +92,7 @@ class Control extends twig
 
                 if( isset($_POST['submit'])&&$this->csrf->process()===true ){
                     
-                    $this->result = $this->acces_path->verify_user_access( $_POST['login'] , $_POST['password'] );
+                    $this->result = $this->loginin->verify_user_access( $_POST['login'] , $_POST['password'] );
                     if($this->result === false){ $this->ans = $this->msg->answers('login-wrong'); $class="error"; }
 
                 }
@@ -123,7 +123,7 @@ class main extends Control
     public function send_page( $html )
     {
 
-        $this->renderphp( $html );
+        $this->epaphrodite( $html );
 
     }
 

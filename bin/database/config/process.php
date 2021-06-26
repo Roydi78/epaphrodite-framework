@@ -12,16 +12,16 @@ class process
      * *****************************************************************************************************************************
      * Processed all select request
      * @param string $sql
-     * @param string|null $Parametre
-     * @param array|null $datasparam
-     * @param boolean|null $etat
+     * @param string|null $param
+     * @param array|null $datas
+     * @param boolean|null $bd
      * @return void
     */
-    public function select( $sql , ?string $Parametre=null , ?array $datasparam = null , ?bool $etat=false ){
+    public function select( $sql , ?string $param=null , ?array $datas = null , ?bool $bd=false ){
 
-        $result = $this->connexion()->select($sql, $Parametre, $datasparam);
+        $result = $this->connexion()->select($sql, $param, $datas);
   
-        if($etat===true){ $this->connexion->closeConnection(); }
+        if($bd===true){ $this->connexion->closeConnection(); }
 
         return $result;
 
@@ -32,16 +32,16 @@ class process
      * Processed all update request
      *
      * @param string $sql
-     * @param string|null $Parametre
-     * @param array|null $datasparam
-     * @param boolean|null $etat
+     * @param string|null $param
+     * @param array|null $datas
+     * @param boolean|null $bd
      * @return void
     */  
-    public function update( $sql , ?string $Parametre=null , ?array $datasparam = null , ?bool $etat = false ){
+    public function update( $sql , ?string $param=null , ?array $datas = null , ?bool $bd = false ){
 
-        $result = $this->connexion()->update($sql, $Parametre, $datasparam);
+        $result = $this->connexion()->update($sql, $param, $datas);
 
-        if($etat===true){ $this->connexion->closeConnection(); }
+        if($bd===true){ $this->connexion->closeConnection(); }
 
         return $result;
 
@@ -52,16 +52,16 @@ class process
      * Processed all insert request
      *
      * @param string $sql
-     * @param string|null $Parametre
-     * @param array|null $datasparam
-     * @param boolean|null $etat
+     * @param string|null $param
+     * @param array|null $datas
+     * @param boolean|null $bd
      * @return void
      */   
-    public function insert( $sql , ?string $Parametre = null , ?array $datasparam = null , ?bool $etat = false ){
+    public function insert( $sql , ?string $param = null , ?array $datas = null , ?bool $bd = false ){
 
-        $result = $this->connexion()->insert($sql, $Parametre, $datasparam);
+        $result = $this->connexion()->insert($sql, $param, $datas);
 
-        if($etat===true){ $this->connexion->closeConnection(); }
+        if($bd===true){ $this->connexion->closeConnection(); }
 
         return $result;
 
@@ -72,16 +72,16 @@ class process
      * Processed all delete request
      *
      * @param string $sql
-     * @param string|null $Parametre
-     * @param array|null $datasparam
-     * @param boolean|null $etat
+     * @param string|null $param
+     * @param array|null $datas
+     * @param boolean|null $bd
      * @return void
      */    
-    public function delete( $sql , ?string $Parametre = null , ?array $datasparam = null , ?bool $etat = false ){
+    public function delete( $sql , ?string $param = null , ?array $datas = null , ?bool $bd = false ){
 
-        $result = $this->connexion()->delete($sql, $Parametre, $datasparam);
+        $result = $this->connexion()->delete($sql, $param, $datas);
 
-        if($etat===true){ $this->connexion->closeConnection(); }
+        if($bd===true){ $this->connexion->closeConnection(); }
 
         return $result;
         

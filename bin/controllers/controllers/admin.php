@@ -44,7 +44,7 @@ class Control_admin extends twig
         $this->errors = new errors;
     }
 
-    public function renderphp( $html )
+    public function epaphrodite( $html )
     {
 
         if(file_exists( _DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html' ))
@@ -80,6 +80,6 @@ class admin extends Control_admin
 {
     public function send_page( $html ){
 
-        $this->renderphp( $html );
+        $this->epaphrodite( $html );
     }
 }

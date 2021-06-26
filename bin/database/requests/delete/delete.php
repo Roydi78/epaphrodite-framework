@@ -25,7 +25,7 @@ class delete{
                     -> table('user_bd') 
                     -> DQuery(NULL);
 
-        $result = $this->process->delete_process( $sql , null , null , true );
+        $result = $this->process->delete( $sql , null , null , true );
 
         return $result;        
 
