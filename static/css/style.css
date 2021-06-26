@@ -126,10 +126,14 @@
         font-size: 1.5rem;
     }
     
-    .deskop a {
+    .epaphrodite {
+        margin-top: 30px;
+    }
+    
+    .epaphrodite a {
         text-decoration: none;
         text-align: center;
-        padding: 17px 40px;
+        padding: 10px 40px;
         background: #ffa500;
         border: 1px solid #ffa500;
         border-radius: 40px;

@@ -3,14 +3,13 @@
     <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="{{ path.css('bootstrap.min') }}">
+        <link href="{{ path.css('bootstrap') }}" rel="stylesheet">
+        <link href="{{ path.font('font-awesome-min') }}" rel="stylesheet" type="text/css">
+        <link href="{{ path.icofont('icofont.min') }}" rel="stylesheet" type="text/css">
+        <link href="{{ path.css('aos') }}" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ path.css('erreur') }}">
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="container">
-                {% block content %}{% endblock %}
-            </div>
-        </div>
+        {% block content %}{% endblock %}
     </body>
 </html>

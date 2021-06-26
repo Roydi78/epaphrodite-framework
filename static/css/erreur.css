@@ -40,7 +40,7 @@ p {
 .error-text a {
     text-decoration: none;
     background-color: rgb(2, 168, 43);
-    padding: 10px 30px;
+    padding: 10px 40px;
     color: #ffffff;
-    border-radius: 10px;
+    border-radius: 40px;
 }
