@@ -8,7 +8,7 @@ use bin\epaphrodite\auth\session_auth;
 class csrf_secure
 {
 
-    public $userbd;
+    public $session;
     public $request;
     /**
      * Get class
@@ -17,7 +17,7 @@ class csrf_secure
     function __construct()
     {
         $this->request = new process;
-        $this->userbd = new session_auth();
+        $this->session = new session_auth();
         $this->messages = new \bin\epaphrodite\define\text_messages;
     }
 
@@ -26,7 +26,7 @@ class csrf_secure
      *
      * @return \bin\database\querybilder\querybuilder
      */
-    private function getclassQueryBuilder(): \bin\database\querybilder\querybuilder
+    private function QueryBuilder(): \bin\database\querybilder\querybuilder
     {
         return new \bin\database\querybilder\querybuilder();
     }     
@@ -39,13 +39,13 @@ class csrf_secure
      */
     private function update_bd_token($cookies){
 
-        $sql = $this->getclassQueryBuilder() 
+        $sql = $this->QueryBuilder() 
         -> table('auth_secure') 
         -> set([ 'auth_key' ]) 
         -> where('auth') 
         -> UQuery();  
 
-        $this->request->update_request($sql,'ss',[ $cookies , md5($this->userbd->login_user()) ] , false );
+        $this->request->update($sql,'ss',[ $cookies , md5($this->session->login()) ] , false );
         
     }
 
@@ -57,13 +57,13 @@ class csrf_secure
      */     
     private function insert_bd_token($cookies){
 
-        $sql = $this->getclassQueryBuilder() 
+        $sql = $this->QueryBuilder() 
                     -> table('auth_secure') 
                     -> insert('auth , auth_key')
                     -> values( ' ? , ? ' )  
                     -> IQuery(); 
 
-        $this->request->insert_request( $sql,'ss',[ md5($this->userbd->login_user()) , $cookies ], false );      
+        $this->request->insert( $sql,'ss',[ md5($this->session->login()) , $cookies ], false );      
 
     }    
 
@@ -74,12 +74,12 @@ class csrf_secure
      */
     public function secure(){
 
-        $sql = $this->getclassQueryBuilder() 
+        $sql = $this->QueryBuilder() 
                     -> table('auth_secure')                   
                     -> where('auth') 
                     -> SQuery(NULL); 
        
-        $result = $this->request->select_request( $sql, 's' , [ md5($this->userbd->login_user()) ] , false );
+        $result = $this->request->select( $sql, 's' , [ md5($this->session->login()) ] , false );
         
         if(!empty($result)){ return $result[0]['auth_key']; }else{ return 0;}       
 

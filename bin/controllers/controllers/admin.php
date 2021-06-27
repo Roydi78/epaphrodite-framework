@@ -46,7 +46,8 @@ class Control_admin extends twig
 
     public function epaphrodite( $html )
     {
-
+    
+        //var_dump(_DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html');
         if(file_exists( _DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html' ))
         {
             
@@ -58,7 +59,8 @@ class Control_admin extends twig
          * @param array $array
          * @return mixed
         */
-        if( $html ==="admin_dashbaord_ep"){
+        if( $html ==="dashbaord/admin_ep"){
+
 
             $this->render( _DIR_ADMIN_TEMP_ . $html ,
             [ 
@@ -78,7 +80,7 @@ class Control_admin extends twig
 
 class admin extends Control_admin
 {
-    public function send_page( $html ){
+    public function send( $html ){
 
         $this->epaphrodite( $html );
     }

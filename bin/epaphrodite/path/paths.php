@@ -51,7 +51,7 @@ class paths extends host
     public function main_id( ?string $url=null , string $action , int $id )
     {
 
-        $this->path = $this->gethost().'admin-views/'.$url.$action.$id;
+        $this->path = $this->gethost().$url.$action.$id;
 
         return $this->path;
 
@@ -63,10 +63,10 @@ class paths extends host
      * @param string $url|null
      * @return void
     */   
-    public function dashboard( ?string $url=null )
+    public function dashboard()
     {
 
-        $this->path = $this->gethost().$this->slug($url).'/';
+        $this->path = $this->gethost().'dashbaord/admin/';
 
         return $this->path;
 
@@ -81,7 +81,7 @@ class paths extends host
     public function admin( ?string $url=null )
     {
 
-        $this->path = $this->gethost().'admin-views/'.$this->slug($url).'/';
+        $this->path = $this->gethost().$this->slug($url).'/';
 
         return $this->path;
 

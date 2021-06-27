@@ -7,7 +7,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
 {
     private $session;
     private $startsession;
-    private $path_interface;
+    private $interface_manager;
     private $urlfound;
     private $main;
     private $admin;
@@ -21,7 +21,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
     {
         $this->startsession = new \bin\epaphrodite\env\gestcookies;
         $this->session = new \bin\epaphrodite\auth\session_auth;
-        $this->path_interface = new \bin\epaphrodite\others\gestion_interface;
+        $this->interface_manager = new \bin\epaphrodite\others\gestion_interface;
         $this->main = new \bin\controllers\controllers\main;
         $this->admin = new \bin\controllers\controllers\admin;
         $this->env = new \bin\controllers\render\method44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee; 
@@ -31,7 +31,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
     /**
      * Check and send to controller
      *
-     * @var \bin\epaphrodite\env\gestion_interface $path_interface
+     * @var \bin\epaphrodite\env\gestion_interface $interface_manager
      * @var \bin\epaphrodite\auth\session_auth $session
      * @var string $url
      * @var $this $this
@@ -82,18 +82,20 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
 
                 $this->session->deconnexion();
 
-                $this->url = $this->path_interface->login_interface();  
+                $this->url = $this->interface_manager->login();  
 
             }
 
             /*
                 Get user dashbord page
             */ 
-            if($this->url=="admin/"&&$this->session->token_csrf()!==NULL&&$this->session->id()!==NULL)
+            if($this->session->token_csrf()!==NULL&&$this->session->id()!==NULL&&$this->session->login()!==NULL)
             {   
-                $this->url = $this->path_interface->gestion_interface_users($this->session->id());  
-            }
 
+                $this->url = $this->interface_manager->admin( $this->session->type() , $this->url);  
+                
+            }
+            
         $this->geturls = explode('/',$this->url);
        
         /*
@@ -106,33 +108,34 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
     /**
      * Return true controller
      *
-     * @param array $recuperationurl
+     * @param array $get_url
      * @var \bin\controllers\controllers\main $main
      * @var \bin\controllers\controllers\admin $admin
      * @return string
     */
-    private function router($recuperationurl)
+    private function router($get_url)
     {
-        if(count($recuperationurl)>1){ 
+        if(count($get_url)>1){ 
             
-            $pageenvoyer = $recuperationurl[1].'_ep';
+            $main = $get_url[1].'_ep';
+            $admin = $get_url[1].'/'.$get_url[2].'_ep';
 
         }else{
             
-            $pageenvoyer = 'erreur';
+            $page = 'erreur';
         }
 
-        if($recuperationurl[0]==="views" || $pageenvoyer==="erreur")
+        if($get_url[0]==="views" || $main==="erreur")
         {
-            return $this->main->send_page($pageenvoyer);
+            return $this->main->send($main);
 
-        }elseif($recuperationurl[0]==="admin-views"&&$this->session->token_csrf()!==NULL&&$this->session->id_user()!==NULL){
-
-            return $this->admin->send_page($pageenvoyer);
+        }elseif($get_url[0]==="admin_views"&&$this->session->token_csrf()!==NULL&&$this->session->id()!==NULL&&$this->session->login()!==NULL){
+            
+            return $this->admin->send($admin);
 
         }else{
 
-            return $this->main->send_page($pageenvoyer);
+            return $this->main->send($main);
 
         }
     }

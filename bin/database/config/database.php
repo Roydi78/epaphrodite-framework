@@ -65,7 +65,7 @@ class database
 
                 foreach($datas as $k => &$v) 
                 {
-                    $request->bindParam($k + 1, $datas[$k], PDO::datas_STR);
+                    $request->bindParam($k + 1, $datas[$k], PDO::PARAM_STR);
                 }
 
             }    
@@ -88,7 +88,7 @@ class database
 
                 foreach($datas as $k => &$v) 
                 {
-                    $request->bindParam($k + 1, $datas[$k], PDO::datas_STR);
+                    $request->bindParam($k + 1, $datas[$k], PDO::PARAM_STR);
                 }
 
             }    
@@ -110,7 +110,7 @@ class database
 
                 foreach($datas as $k => &$v) 
                 {
-                    $requestdeleted->bindParam($k + 1, $datas[$k], PDO::datas_STR);
+                    $requestdeleted->bindParam($k + 1, $datas[$k], PDO::PARAM_STR);
                 }
 
             } 
@@ -131,7 +131,7 @@ class database
 
                 foreach($datas as $k => &$v) 
                 {
-                    $request->bindParam($k + 1, $datas[$k], PDO::datas_STR);
+                    $request->bindParam($k + 1, $datas[$k], PDO::PARAM_STR);
                 }
 
             }    

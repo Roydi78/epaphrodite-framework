@@ -9,16 +9,26 @@ class gestion_interface
     private $auth_interface;
     private $type_user_connecter;
 
-
-    public function gestion_interface_users()
+    /** ************************************************************************************
+     *Admin interface manager
+     * @param string $key|null
+     * @return string
+    */
+    public function admin( ?int $key=null , ?string $url=null )
     {
 
-        $this->type_user_connecter = 'admin-views/admin-dashbaord/';
+        $this->auth_interface = 'views/login/';
 
-        return $this->type_user_connecter;
+        if( $key!==null ){ $this->auth_interface = 'admin_views/'; }
+
+        return $this->auth_interface.$url;
+
     }
 
-    public function login_interface()
+    /** 
+     * Login interface manager
+    */
+    public function login()
     {
 
         $this->auth_interface = 'views/login/';

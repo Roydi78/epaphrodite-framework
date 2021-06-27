@@ -52,7 +52,7 @@ class validate_token {
     */
     public function token_verify(){
 
-        if($this->session->login_user()!==NULL){ return $this->on(); }else{ return $this->off(); }
+        if($this->session->login()!==NULL){ return $this->on(); }else{ return $this->off(); }
 
     }
 

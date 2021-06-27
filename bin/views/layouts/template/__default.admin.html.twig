@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ path.css('/bootstrap') }}" rel="stylesheet">
-    <link href="{{ path.font('/font_awesome') }}" rel="stylesheet" type="text/css">
+    <link href="{{ path.font('font-awesome-min') }}" rel="stylesheet" type="text/css">
+    <link href="{{ path.icofont('icofont.min') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ path.css('/style_admin') }}" rel="stylesheet">
     <link rel="icon" href="{{ path.img('logo.png') }}">
     <title>{{ msg.answers('site-title') }}</title>
@@ -16,13 +17,13 @@
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-brand">
-        <a>ADMINISTRATION</a>
-        <div id="close-sidebar"><i class="fa fa-remove"></i></div>
+        <a href="{{ path.dashboard() }}">DASHBOARD</a>
+        <div id="close-sidebar"><i class="icofont-close-line"></i></div>
       </div>
       <div class="sidebar-header">
         <div class="user-info">
-          <span class="user-status"><i class="fa fa-circle-o"></i><span>En ligne</span></span>
-          <span class="user-status"><i class="fa fa-reply"></i><span><a href="{{ path.dashboard('admin/') }}">Dashboard</a></span></span>
+          <span class="user-status"><i class="fa fa-circle-o text-success"></i><span>En ligne</span></span>
+          <span class="user-status"><i class="fa fa-reply"></i><span><a href="{{ path.dashboard() }}">Dashboard</a></span></span>
         </div>
       </div>
       <div class="sidebar-search">
@@ -40,15 +41,43 @@
             <div class="sidebar-submenu">
               <ul>
                 <li><a href="#">Modifier mot de passe</a></li>
-                <li><a href="#">Modifier mot de passe</a></li>
+              </ul>
+            </div>
+          </li> 
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>IMPRESSION</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="#">Liste utilisateur</a></li>
+              </ul>
+            </div>
+          </li> 
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>IMPORTATION</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="#">Liste utilisateur</a></li>
+              </ul>
+            </div>
+          </li>  
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>EXPORTATION</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="#">Liste utilisateur</a></li>
               </ul>
             </div>
           </li>                               
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>GEST. UTILISATEURS</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="#">Ajouter utilisateur</a></li>
+                <li><a href="#">Liste utilisateur</a></li>
+              </ul>
+            </div>
+          </li>                                         
         </ul>
       </div>
     </div>
     <div class="sidebar-footer">
-      <a href="{{ path.dashboard('logout/') }}"><i class="fa fa-power-off"></i></a>
+      <a href="{{ path.admin('logout/') }}">D&eacute;connexion <i class="icofont-power"></i></a>
     </div>
   </nav>
   <main class="page-content">

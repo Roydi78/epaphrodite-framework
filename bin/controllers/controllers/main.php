@@ -92,7 +92,7 @@ class Control extends twig
 
                 if( isset($_POST['submit'])&&$this->csrf->process()===true ){
                     
-                    $this->result = $this->loginin->verify_user_access( $_POST['login'] , $_POST['password'] );
+                    $this->result = $this->loginin->acces_manager( $_POST['login'] , $_POST['password'] );
                     if($this->result === false){ $this->ans = $this->msg->answers('login-wrong'); $class="error"; }
 
                 }
@@ -120,7 +120,7 @@ class Control extends twig
 
 class main extends Control
 {
-    public function send_page( $html )
+    public function send( $html )
     {
 
         $this->epaphrodite( $html );

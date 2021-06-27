@@ -113,7 +113,7 @@ class auth
      * @param string $motpasse
      * @return bool
     */
-    public function verify_user_access( string $login , string $motpasse )
+    public function acces_manager( string $login , string $motpasse )
     {
 
       if(($this->verify_if_is_correct->only_number_and_character( $login , $nbre=12 ))===false){
@@ -147,7 +147,9 @@ class auth
 
                     $_SESSION["id"] = $users_datas[0]["iduser_bd"];
 
-                    $this->gethost = $this->path->dashboard('admin');
+                    $_SESSION["type"] = $users_datas[0]["type_user_bd"];
+
+                    $this->gethost = $this->path->dashboard();
 
                     if($this->secure->get_csrf($_COOKIE[$this->msg->answers('token_name')])!==0)
                     {

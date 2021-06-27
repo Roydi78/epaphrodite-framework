@@ -3,10 +3,10 @@ namespace bin\epaphrodite\auth;
 
 class session_auth
 {
-    public $login;
-    public $iduser;
-    public $token_csrf;
-    public $typuser;
+    protected $login;
+    protected $id;
+    protected $type;
+    protected $token_csrf;
 
 
     /**
@@ -26,7 +26,7 @@ class session_auth
     /**
      * ***************************************************************************************************
      * User session iduser data
-     * @var mixed $iduser
+     * @var int $iduser
      * @return mixed
     */     
     public function id(){
@@ -36,6 +36,20 @@ class session_auth
         return $this->id;
 
     }
+
+    /**
+     * ***************************************************************************************************
+     * User session type user
+     * @var int $type
+     * @return mixed
+    */     
+    public function type(){
+
+        $this->type = isset($_SESSION['type']) ? $_SESSION['type'] : NULL;
+
+        return $this->type;
+
+    }    
 
     /**
      * ***************************************************************************************************
