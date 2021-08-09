@@ -76,16 +76,28 @@ class paths extends host
      * Admin link path
      *
      * @param string $url|null
+     * @param string $folder|null
      * @return void
     */   
-    public function admin( ?string $url=null )
+    public function admin( ?string $folder=null , ?string $url=null )
     {
 
-        $this->path = $this->gethost().$this->slug($url).'/';
+        $this->path = $this->gethost().$folder.'/'.$this->slug($url).'/';
 
         return $this->path;
 
-    }        
+    } 
+    
+    /**
+     * Logout
+     */
+    public function logout(){
+
+        $this->path = $this->gethost().'logout/';
+
+        return $this->path;
+
+    }
 
     /**
      * Admin for @id
