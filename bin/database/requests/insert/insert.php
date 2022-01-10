@@ -6,6 +6,15 @@ use bin\database\config\process;
 
 class insert{
 
+    /**
+     * Get class
+     * @return void
+    */
+    function __construct()
+    {
+      $this->process = new process;
+    }      
+
     /************************************************************************************************
      * Querybilder constructor
      *

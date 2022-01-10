@@ -7,6 +7,7 @@ class querybuilder{
     private $table;
     private $where;
     private $like;
+    private $between;
     private $and;
     private $order;
     private $join;
@@ -17,7 +18,6 @@ class querybuilder{
     private $set;    
 
     /**
-     * ***************************************************************************************************
      * table
      *
      * @param string $table
@@ -33,7 +33,6 @@ class querybuilder{
     }
 
     /**
-     * ***************************************************************************************************
      * insert
      *
      * @param string $insert
@@ -48,7 +47,6 @@ class querybuilder{
     } 
     
     /**
-     * ***************************************************************************************************
      * values
      *
      * @param string $values
@@ -63,11 +61,9 @@ class querybuilder{
     }    
 
     /**
-     * ***************************************************************************************************
      * where
      *
      * @param string $where
-     * @param string $type
      * @return self
     */     
     public function where(string $where , ?string $type=null ):self
@@ -79,24 +75,38 @@ class querybuilder{
     }
 
     /**
-     * ***************************************************************************************************
      * like
      *
-     * @param string $where
-     * @param mixed $sign
+     * @param string $like
      * @return self
     */      
-    public function like( string $like , $sign ):self
+    public function like( string $like ):self
     {
 
-        $this->like = "$like $sign = ?";
+        $this->like = "$like";
+
+        return $this;
+
+    } 
+    
+    /**
+     * like
+     *
+     * @param string $between
+     * @param string $first
+     * @param string $second
+     * @return self
+    */      
+    public function between( string $between ):self
+    {
+
+        $this->between = "$between";
 
         return $this;
 
     }    
 
     /**
-     * ***************************************************************************************************
      * limit
      *
      * @param string $begining
@@ -113,7 +123,6 @@ class querybuilder{
     }      
 
     /**
-     * ***************************************************************************************************
      * order by
      *
      * @param string $key
@@ -130,7 +139,6 @@ class querybuilder{
     }  
 
     /**
-     * ***************************************************************************************************
      * group by
      *
      * @param string $group
@@ -145,7 +153,6 @@ class querybuilder{
     }      
 
     /**
-     * ***************************************************************************************************
      * and
      *
      * @param array $getand
@@ -162,7 +169,6 @@ class querybuilder{
     }     
 
     /**
-     * ***************************************************************************************************
      * join
      *
      * @param array $getjoin
@@ -182,7 +188,6 @@ class querybuilder{
 
     
     /**
-     * ***************************************************************************************************
      * set
      *
      * @param array $getset
@@ -201,7 +206,6 @@ class querybuilder{
     }    
 
     /**
-     * ***************************************************************************************************
      * select query chaine
      *
      * @param array $propriety
@@ -237,8 +241,15 @@ class querybuilder{
             Add LIKE if exist
         */         
         if($this->like){
-            $query .=" LIKE {$this->like} ";
-        }          
+            $query .=" WHERE {$this->like} LIKE ?";
+        } 
+        
+        /* 
+            Add BETWEEN if exist
+        */         
+        if($this->between){
+            $query .=" WHERE {$this->between} BETWEEN ? AND ? ";
+        }         
 
         /* 
             Add AND if exist
@@ -273,7 +284,6 @@ class querybuilder{
     
     
     /**
-     * ***************************************************************************************************
      * insert query chaine
      *
      * @return void
@@ -305,7 +315,6 @@ class querybuilder{
    
 
     /**
-     * ***************************************************************************************************
      * Update query chaine
      *  @return string
     */     
@@ -315,14 +324,23 @@ class querybuilder{
         /* 
             Update inital query chaine
         */ 
-        $query = "UPDATE {$this->table} SET ";
+        $query = "UPDATE {$this->table} ";
         
+        /* 
+            Add join if exist
+        */         
+        if($this->join){
+
+            $query .=" {$this->join}";
+
+        }         
+
         /* 
             Add SET if exist
         */  
         if($this->set){
-            $query .=" {$this->set}";
-        }  
+            $query .=" SET {$this->set}";
+        }           
 
         /* 
             Add WHERE if exist
@@ -335,14 +353,14 @@ class querybuilder{
             Add LIKE if exist
         */         
         if($this->like){
-            $query .=" LIKE {$this->like} ";
+            $query .=" WHERE {$this->like} LIKE ? ";
         }          
         
         /* 
             Add AND if exist
         */          
         if($this->and){
-            $query .=" AND {$this->and}";
+            $query .=" {$this->and}";
         }           
 
         return $query;
@@ -350,7 +368,6 @@ class querybuilder{
     }
     
     /**
-     * ***************************************************************************************************
      * Delete query chaine
      *
      * @return string
@@ -374,14 +391,14 @@ class querybuilder{
             Add LIKE if exist
         */         
         if($this->like){
-            $query .=" LIKE {$this->like} ";
+            $query .=" WHERE {$this->like} LIKE ? ";
         }          
         
         /* 
             Add AND if exist
         */          
         if($this->and){
-            $query .=" AND {$this->and}";
+            $query .=" {$this->and}";
         }           
 
         return $query;
