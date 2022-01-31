@@ -87,11 +87,11 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
             }
 
             /*
-                Get user dashbord page
+            Get user dashbord page
             */ 
-            if($this->session->token_csrf()!==NULL&&$this->session->id()!==NULL&&$this->session->login()!==NULL)
+            if($this->url==="dashboard/"&&$this->session->token_csrf()!==NULL&&$this->session->id()!==NULL&&$this->session->login()!==NULL)
             {   
-
+                
                 $this->url = $this->interface_manager->admin( $this->session->type() , $this->url);  
                 
             }
@@ -119,17 +119,17 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
             
             $main = $get_url[1].'_ep';
             $admin = $get_url[1].'/'.$get_url[2].'_ep';
-
+            
         }else{
             
             $page = 'erreur';
         }
-
+        
         if($get_url[0]==="views" || $main==="erreur")
         {
             return $this->main->send($main);
-
-        }elseif($get_url[0]==="admin_views"&&$this->session->token_csrf()!==NULL&&$this->session->id()!==NULL&&$this->session->login()!==NULL){
+            
+        }elseif($get_url[0]==="dashboard"&&$this->session->token_csrf()!==NULL&&$this->session->id()!==NULL&&$this->session->login()!==NULL){
             
             return $this->admin->send($admin);
 

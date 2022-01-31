@@ -29,7 +29,7 @@ class get_id
     }   
     
     /** **********************************************************************************************
-     * Request to select user by module
+     * Request to select user right by module and 
      * 
      * @param string|null $module
      */    
@@ -38,11 +38,10 @@ class get_id
 
         $sql = $this->QueryBuilder()
             ->table('user_rights')
-            ->where('modules')
-            ->and(['idtype_user_rights'])
+            ->where('menus')
             ->SQuery(NULL);
 
-        $result = $this->process->select($sql, 's', [$module, $this->session->type()], false);
+        $result = $this->process->select($sql, 's', [$module.','.$this->session->type()], false);
 
         if (!empty($result)) {
             return true;

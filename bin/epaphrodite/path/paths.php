@@ -66,7 +66,7 @@ class paths extends host
     public function dashboard()
     {
 
-        $this->path = $this->gethost().'dashbaord/admin/';
+        $this->path = $this->gethost().'dashboard/';
 
         return $this->path;
 

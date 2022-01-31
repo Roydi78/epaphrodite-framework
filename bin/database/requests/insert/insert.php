@@ -40,11 +40,11 @@ class insert{
                 
             $sql = $this->QueryBuilder()
                         ->table('user_rights')
-                        ->insert(' idtype_user_rights , idpages , autorisations , modules ')
-                        ->values(' ? , ? , ? , ? ')
+                        ->insert(' idtype_user_rights , idpages , autorisations , modules , menus ')
+                        ->values(' ? , ? , ? , ? , ? ')
                         ->IQuery();
                 
-            $this->process->insert($sql, 'sss', [ $idtype_users , $pages , $actions , $this->datas->yedidiah($pages,'apps') ], false);
+            $this->process->insert($sql, 'sss', [ $idtype_users , $pages , $actions , $this->datas->yedidiah($pages,'apps') , $this->datas->yedidiah($pages,'apps').','.$idtype_users ], false);
                 
             return true;
         } else {

@@ -17,11 +17,18 @@ class gestion_interface
     public function admin( ?int $key=null , ?string $url=null )
     {
 
-        $this->auth_interface = 'views/login/';
+        
+        if( $key!==null ){ 
+            
+            $this->interface =
+            [
+                1 => 'dashboard/super_admin/',
+                2 => 'dashboard/user/',
+            ];
 
-        if( $key!==null ){ $this->auth_interface = 'admin_views/'; }
+            return $url.$this->interface[$key];     
 
-        return $this->auth_interface.$url;
+        }else{ return $this->login().$url; }
 
     }
 

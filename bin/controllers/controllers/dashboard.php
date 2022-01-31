@@ -47,11 +47,10 @@ class Control_dashboard extends twig
 
     public function epaphrodite( $html )
     {
-    
-        //var_dump(_DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html');
+        
         if(file_exists( _DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html' ))
         {
-            
+           
         /**
          * ************************************************************************
          * Dashboard for super admin
@@ -60,7 +59,7 @@ class Control_dashboard extends twig
          * @param array $array
          * @return mixed
         */
-        if( $html ==="dashbaord/super_admin_ep"){
+        if( $html ==="dashboard/super_admin_ep"){
 
 
             $this->render( _DIR_ADMIN_TEMP_ . $html ,
@@ -81,7 +80,7 @@ class Control_dashboard extends twig
          * @param array $array
          * @return mixed
         */
-        elseif( $html ==="dashbaord/user_ep"){
+        elseif( $html ==="dashboard/user_ep"){
 
 
             $this->render( _DIR_ADMIN_TEMP_ . $html ,
@@ -95,16 +94,16 @@ class Control_dashboard extends twig
             
         }        
                  
-
-        }else{ $this->errors->error_404();}     
+        }else{ $this->errors->error_404();}    
+         
     }
 
 }
 
 class dashboard extends Control_dashboard
 {
-    public function send( $html ){
-
+    public function send( $html )
+    {
         $this->epaphrodite( $html );
     }
 }
