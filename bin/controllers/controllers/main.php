@@ -39,7 +39,7 @@ class Control extends twig
     {
 
         $this->loginin = new \bin\database\requests\select\auth;
-        $this->auth = new \bin\epaphrodite\auth\session_auth();
+        $this->session = new \bin\epaphrodite\auth\session_auth();
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
         $this->paths = new \bin\epaphrodite\path\paths;
         $this->msg = new \bin\epaphrodite\define\text_messages;        

@@ -33,15 +33,16 @@ class Control_dashboard extends twig
 
     function __construct()
     { 
-        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
-        $this->auth = new \bin\epaphrodite\auth\session_auth();
-        $this->paths = new \bin\epaphrodite\path\paths();
-        $this->msg = new \bin\epaphrodite\define\text_messages; 
-        $this->sms = new \bin\epaphrodite\api\sms\send_sms;
-        $this->email = new \bin\epaphrodite\api\email\send_mail;       
-        $this->env = new \bin\epaphrodite\env\env;
-        $this->layouts = new \bin\epaphrodite\env\layouts; 
         $this->errors = new errors;
+        $this->env = new \bin\epaphrodite\env\env;
+        $this->paths = new \bin\epaphrodite\path\paths;
+        $this->layouts = new \bin\epaphrodite\env\layouts; 
+        $this->sms = new \bin\epaphrodite\api\sms\send_sms;
+        $this->msg = new \bin\epaphrodite\define\text_messages; 
+        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
+        $this->session = new \bin\epaphrodite\auth\session_auth;
+        $this->email = new \bin\epaphrodite\api\email\send_mail;       
+        $this->get_id = new \bin\database\requests\select\get_id;
     }
 
     public function epaphrodite( $html )
@@ -53,13 +54,13 @@ class Control_dashboard extends twig
             
         /**
          * ************************************************************************
-         * Dashboard
+         * Dashboard for super admin
          * 
          * @param string $html
          * @param array $array
          * @return mixed
         */
-        if( $html ==="dashbaord/admin_ep"){
+        if( $html ==="dashbaord/super_admin_ep"){
 
 
             $this->render( _DIR_ADMIN_TEMP_ . $html ,
@@ -67,10 +68,33 @@ class Control_dashboard extends twig
                 'path'=>$this->paths , 
                 'env'=>$this->env , 
                 'msg' => $this->msg ,
-                'layouts' => $this->layouts->admin($this->auth->type()),
+                'menus' => $this->get_id,
+                'layouts' => $this->layouts->admin($this->session->type()),
             ]);
             
-        }            
+        } 
+        
+        /**
+         * ************************************************************************
+         * Dashboard
+         * 
+         * @param string $html
+         * @param array $array
+         * @return mixed
+        */
+        elseif( $html ==="dashbaord/admin_ep"){
+
+
+            $this->render( _DIR_ADMIN_TEMP_ . $html ,
+            [ 
+                'path'=>$this->paths , 
+                'env'=>$this->env , 
+                'msg' => $this->msg ,
+                'menus' => $this->get_id,
+                'layouts' => $this->layouts->admin($this->session->type()),
+            ]);
+            
+        }        
                  
 
         }else{ $this->errors->error_404();}     

@@ -15,7 +15,7 @@ class errors extends twig
     {
         $this->paths = new \bin\epaphrodite\path\paths();
         $this->msg = new \bin\epaphrodite\define\text_messages();
-        $this->auth = new \bin\epaphrodite\auth\session_auth();
+        $this->session = new \bin\epaphrodite\auth\session_auth();
         $this->layouts = new \bin\epaphrodite\env\layouts;
     }
 
@@ -74,7 +74,7 @@ class errors extends twig
             ]
         );
 
-        $this->auth->deconnexion();
+        $this->session->deconnexion();
         die();
     }
 
@@ -107,7 +107,7 @@ class errors extends twig
         $path_init = $this->paths->gethost();
         $path_connect = $this->paths->dashboard();
 
-        if ($this->auth->login() == NULL) {
+        if ($this->session->login() == NULL) {
             return $path_init;
         } else {
             return $path_connect;
