@@ -26,7 +26,30 @@ class get_id
     private function QueryBuilder(): \bin\database\querybilder\querybuilder
     {
         return new \bin\database\querybilder\querybuilder();
-    }    
+    }   
+    
+    /** **********************************************************************************************
+     * Request to select user by module
+     * 
+     * @param string|null $module
+     */    
+    public function modules( ?string $module=null )
+    {
+
+        $sql = $this->QueryBuilder()
+            ->table('user_rights')
+            ->where('modules')
+            ->and(['idtype_user_rights'])
+            ->SQuery(NULL);
+
+        $result = $this->process->select($sql, 's', [$module, $this->session->type()], false);
+
+        if (!empty($result)) {
+            return true;
+        } else {
+            return false;
+        }
+    }      
 
     /** **********************************************************************************************
      * Request to select users by login

@@ -49,7 +49,7 @@ class if_not_exist{
     private function create_user_right_if_not_exist()
     {
 
-      $sql = "CREATE TABLE IF NOT EXISTS user_rights (iduser_rights int(11) NOT NULL auto_increment , modules varchar(200)NOT NULL  , idpages varchar(200)NOT NULL , idtype_user_rights int(11)NOT NULL , autorisations int(1)NOT NULL , PRIMARY KEY(iduser_rights) , INDEX (idtype_user_rights) )";        
+      $sql = "CREATE TABLE IF NOT EXISTS user_rights (iduser_rights int(11) NOT NULL auto_increment , modules varchar(200)NOT NULL  , idpages varchar(200)NOT NULL , idtype_user_rights int(11)NOT NULL  , menus varchar(200)NOT NULL , autorisations int(1)NOT NULL , PRIMARY KEY(iduser_rights) , INDEX (idtype_user_rights) , INDEX(menus) )";        
 
       $this->request->insert( $sql , NULL , NULL , false );
 
