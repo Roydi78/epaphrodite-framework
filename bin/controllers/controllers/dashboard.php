@@ -68,7 +68,6 @@ class Control_dashboard extends twig
                 'path'=>$this->paths , 
                 'env'=>$this->env , 
                 'msg' => $this->msg ,
-                'menus' => $this->get_id,
                 'layouts' => $this->layouts->admin($this->session->type()),
             ]);
             
@@ -76,13 +75,13 @@ class Control_dashboard extends twig
         
         /**
          * ************************************************************************
-         * Dashboard
+         * Dashboard for simple users
          * 
          * @param string $html
          * @param array $array
          * @return mixed
         */
-        elseif( $html ==="dashbaord/admin_ep"){
+        elseif( $html ==="dashbaord/user_ep"){
 
 
             $this->render( _DIR_ADMIN_TEMP_ . $html ,
