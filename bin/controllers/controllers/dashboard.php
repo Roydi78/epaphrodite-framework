@@ -5,7 +5,7 @@ namespace bin\controllers\controllers;
 use bin\controllers\render\twig;
 use bin\controllers\render\errors;
 
-class Control_admin extends twig
+class Control_dashboard extends twig
 {
 
     /**
@@ -67,7 +67,7 @@ class Control_admin extends twig
                 'path'=>$this->paths , 
                 'env'=>$this->env , 
                 'msg' => $this->msg ,
-                'layouts' => $this->layouts->admin(),
+                'layouts' => $this->layouts->admin($this->auth->type()),
             ]);
             
         }            
@@ -78,7 +78,7 @@ class Control_admin extends twig
 
 }
 
-class admin extends Control_admin
+class dashboard extends Control_dashboard
 {
     public function send( $html ){
 

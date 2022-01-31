@@ -23,7 +23,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->interface_manager = new \bin\epaphrodite\others\gestion_interface;
         $this->main = new \bin\controllers\controllers\main;
-        $this->admin = new \bin\controllers\controllers\admin;
+        $this->admin = new \bin\controllers\controllers\dashboard;
         $this->env = new \bin\controllers\render\method44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee; 
         $this->paths = new \bin\epaphrodite\path\paths;
     }

@@ -32,6 +32,7 @@ class select{
 
         $sql = $this->QueryBuilder() 
                     -> table('user_bd') 
+                    ->orderby('loginuser_bd', 'ASC')
                     -> SQuery(NULL);
 
         $result = $this->process->select( $sql , null , null , true );

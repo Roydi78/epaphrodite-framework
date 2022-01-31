@@ -27,7 +27,7 @@ class layouts
 
         return "layouts/template/__default.main.html.twig";
 
-    }  
+    }     
     
     /**
      * ******************************************************************************
@@ -35,9 +35,16 @@ class layouts
      *
      * @return string
     */    
-    public function admin(){
+    public function admin(?int $key = null){
 
-        return "layouts/template/__default.admin.html.twig";
+        $urls =
+        [
+
+            1 => "layouts/template/__default.admin.html.twig",
+            2 => "layouts/template/__default.all.users.html.twig",
+        ];
+
+        return $urls[$key];
 
     }
     

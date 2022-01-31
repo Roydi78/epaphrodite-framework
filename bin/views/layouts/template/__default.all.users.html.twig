@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ path.css('/bootstrap') }}" rel="stylesheet">
-    <link href="{{ path.font('font-awesome-min') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ path.css('bootstrap.min.style') }}" rel="stylesheet">
+    <link href="{{ path.font('font.awesome.style') }}" rel="stylesheet" type="text/css">
     <link href="{{ path.icofont('icofont.min') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ path.css('default.admin.style') }}" rel="stylesheet">
     <link rel="icon" href="{{ path.img('logo.png') }}">
+    <script src="{{ path.js('cycle.chart') }}"></script>
     <title>{{ msg.answers('site-title') }}</title>
 </head>
 <body>
@@ -37,42 +38,36 @@
       <div class="sidebar-menu">
         <ul>
           <li class="header-menu"><span>Menu de gestion</span></li>
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>MON PROFIL</span></a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li><a href="#">Modifier mot de passe</a></li>
-              </ul>
-            </div>
-          </li> 
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>IMPRESSION</span></a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li><a href="#">Liste utilisateur</a></li>
-              </ul>
-            </div>
-          </li> 
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>IMPORTATION</span></a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li><a href="#">Liste utilisateur</a></li>
-              </ul>
-            </div>
-          </li>  
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>EXPORTATION</span></a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li><a href="#">Liste utilisateur</a></li>
-              </ul>
-            </div>
-          </li>                               
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>GEST. UTILISATEURS</span></a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li><a href="#">Ajouter utilisateur</a></li>
-                <li><a href="#">Liste utilisateur</a></li>
-              </ul>
-            </div>
-          </li>                                         
+            {% if menus.modules('profil') == true %}
+              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ datas.modules('profil') }}</span></a>
+                <div class="sidebar-submenu">
+                  <ul>
+                    {% for select in menus.liste_menu('profil') %}
+                      <li><a href="{{ datas.yedidiah(select.idpages|e , 'path' ) }}">{{ datas.yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+            {% endif %}                                                                               
+            {% if menus.modules('right') == true %}
+              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ datas.modules('right') }}</span></a>
+                <div class="sidebar-submenu">
+                  <ul>
+                    {% for select in menus.liste_menu('right') %}
+                      <li><a href="{{ datas.yedidiah(select.idpages|e , 'path' ) }}">{{ datas.yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+            {% endif %} 
+            {% if menus.modules('users') == true %}
+              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ datas.modules('users') }}</span></a>
+                <div class="sidebar-submenu">
+                  <ul>
+                    {% for select in menus.liste_menu('users') %}
+                      <li><a href="{{ datas.yedidiah(select.idpages|e , 'path' ) }}">{{ datas.yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+            {% endif %}                                                                                                 
         </ul>
       </div>
     </div>
@@ -81,7 +76,8 @@
     </div>
   </nav>
   <main class="page-content">
-    <div class="container-fluid">
+    <div class="container-fluid" id="contenu">
+        <div class="container header-title"><strong>{{ msg.answers('site-title') }}</strong></div>
         {% block content %}{% endblock %}
     </div>
   </main>
