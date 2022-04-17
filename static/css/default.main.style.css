@@ -157,6 +157,17 @@ body {
     color: #ee2d2d;
 }
 
+.loader {
+    background: url('http://localhost:8888/epahrodite-framework/static/img/loading.gif') 50% 50% no-repeat rgba(255, 255, 255, 0.8);
+    cursor: wait;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
 
 /*--------------------------------------------------------------
     # Mobile
