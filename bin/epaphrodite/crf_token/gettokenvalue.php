@@ -20,6 +20,7 @@ class gettokenvalue{
 
     private function generateurtoken($length)
     {
+        $this->token='';
         if($this->userconnecter_token()===NULL){
             $chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             for($i=0; $i<$length; $i++){
