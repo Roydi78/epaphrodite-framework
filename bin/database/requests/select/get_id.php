@@ -16,6 +16,7 @@ class get_id
         $this->process = new process;
         $this->datas = new \bin\database\datas\datas;
         $this->session = new \bin\epaphrodite\auth\session_auth;
+        $this->json_datas = file_get_contents( _DIR_DATAS_ .'json_data.json');
     }
 
     /************************************************************************************************
@@ -35,20 +36,103 @@ class get_id
      */    
     public function modules( ?string $module=null )
     {
+        $result = false;
+        $index = $module.','.$this->session->type();
 
-        $sql = $this->QueryBuilder()
-            ->table('user_rights')
-            ->where('menus')
-            ->SQuery(NULL);
+        $json_arr = json_decode($this->json_datas, true);
 
-        $result = $this->process->select($sql, 's', [$module.','.$this->session->type()], false);
-
-        if (!empty($result)) {
-            return true;
-        } else {
-            return false;
+        foreach ($json_arr as $key => $value) {
+            if ($value['index_module'] == $index) { 
+                $result = true;
+            }
         }
+        
+        return $result;
+
+    } 
+    
+    /** **********************************************************************************************
+     * Request to select user right if exist
+     * 
+     * @return bool
+     */
+    public function if_right_exist($idtype_user, $pages)
+    {
+        $result = false;
+        $index = $idtype_user.','.$pages;
+        $json_arr = json_decode($this->json_datas, true);
+
+        foreach ($json_arr as $key => $value) {
+            if ($value['index_right'] == $index) { $result =true; }
+        }
+        
+        return $result;
+
+    } 
+
+    /************************************************************************************************
+     * Request to select user right by user type
+     */
+    public function users_rights($idtype_user)
+    {
+
+        $result = [];
+        $json_arr = json_decode($this->json_datas, true);
+
+        foreach ($json_arr as $key => $value) {
+            if ($value['idtype_user_rights'] == $idtype_user) { 
+                $result []= $json_arr[$key];
+            }
+        }
+        
+        return $result; 
+    }     
+    
+    /************************************************************************************************
+     * Request to select user right by page type and @iduser
+     */
+    public function autorisations($pages)
+    {
+        $actions = false;
+        $index = $this->session->type().','.$pages;
+        $json_arr = json_decode($this->json_datas, true);
+
+        foreach ($json_arr as $key => $value) {
+
+            if ($value['index_right'] == $index) { 
+                if($value['autorisations']==1){
+                    $actions =true; 
+                }else{
+                    $actions =false; 
+                }
+
+            }
+        }
+        
+        return $actions;
     }      
+    
+    /** ********************************************************************************************** 
+     * Request to select user right by user type
+     * @param string|null $key
+     * @return array
+    */
+    public function liste_menu( ?string $key=null )
+    {
+
+        $result = [];
+        $index = $key.','.$this->session->type();
+
+        $json_arr = json_decode($this->json_datas, true);
+
+        foreach ($json_arr as $key => $value) {
+            if ($value['index_module'] === $index) { 
+                $result []= $json_arr[$key];
+            }
+        }
+        
+        return $result;        
+    }     
 
     /** **********************************************************************************************
      * Request to select users by login

@@ -27,7 +27,7 @@ class insert{
 
     /**
     * Ajouter des droits utilisateurs
-    *
+    * index ( module , type_user , idpage , action)
     * @param int|null $idtype_users
     * @param string|null $pages
     * @param string|null $actions
@@ -36,22 +36,30 @@ class insert{
     public function users_rights( ?int $idtype_users=null , ?string $pages=null ,  ?string  $actions=null )
     {
        
-        if (!empty($idtype_users) && !empty($pages) && count($this->get_id->if_right_exist($idtype_users, $pages)) < 1) {
-                
-            $sql = $this->QueryBuilder()
-                        ->table('user_rights')
-                        ->insert(' idtype_user_rights , idpages , autorisations , modules , menus ')
-                        ->values(' ? , ? , ? , ? , ? ')
-                        ->IQuery();
-                
-            $this->process->insert($sql, 'sss', [ $idtype_users , $pages , $actions , $this->datas->yedidiah($pages,'apps') , $this->datas->yedidiah($pages,'apps').','.$idtype_users ], false);
-                
+        if (!empty($idtype_users) && !empty($pages) && $this->get_id->if_right_exist($idtype_users, $pages)===false ) {
+            
+            $json_datas = file_get_contents( _DIR_DATAS_ .'json_data.json');
+
+            $save_right = json_decode($json_datas, true);
+
+            $save_right[] = array( 
+                'iduser_rights'=>count($save_right)+1, 
+                'idtype_user_rights'=>$idtype_users, 
+                'idpages'=>$pages, 
+                'autorisations'=>$actions, 
+                'modules'=>$this->datas->yedidiah($pages,'apps'), 
+                'index_module'=>$this->datas->yedidiah($pages,'apps').','.$idtype_users, 
+                'index_right'=>$idtype_users.','.$pages, 
+            );
+
+            file_put_contents( _DIR_DATAS_ .'json_data.json' , json_encode($save_right));
+ 
             return true;
         } else {
             return false;
         }
 
-    }  
+    } 
 
     /**
     * Ajouter des droits utilisateurs dans le systeme

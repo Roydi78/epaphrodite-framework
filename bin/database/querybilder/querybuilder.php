@@ -16,6 +16,8 @@ class querybuilder{
     private $insert;
     private $values;   
     private $set;    
+    private $set_i;    
+    private $replace;    
 
     /**
      * table
@@ -186,7 +188,6 @@ class querybuilder{
         return $this;
     }    
 
-    
     /**
      * set
      *
@@ -197,10 +198,47 @@ class querybuilder{
         
         foreach($getset as $val){
 
-            $this->set .= $val . " = ?". " , ";;
+            $this->set .= $val . " = ?". " , ";
         }
 
         $this->set = rtrim($this->set," , ");
+
+        return $this;
+    }  
+
+    /**
+     * set
+     *
+     * @param array $getset
+     * @param string $sign
+     * @return self
+     */    
+    public function set_i( $getset=[] , ?string $sign="+" ):self{
+        
+        foreach($getset as $val){
+
+            $this->set_i .= $val . " = $val $sign ?". " , ";
+        }
+
+        $this->set_i = rtrim($this->set_i," , ");
+
+        return $this;
+    }      
+    
+    /**
+     * replace
+     *
+     * @param array $getreplace
+     * @return self
+     */    
+    public function replace( $propriete=[] ):self{
+        
+        foreach($propriete as $val){
+
+            $this->replace .= $val . " = REPLACE( $val , ? , ? ) , ";
+        }        
+
+        $this->replace = rtrim($this->replace," , ");
 
         return $this;
     }    
@@ -340,7 +378,21 @@ class querybuilder{
         */  
         if($this->set){
             $query .=" SET {$this->set}";
-        }           
+        }  
+
+        /* 
+            Add SET if exist
+        */  
+        if($this->set_i){
+            $query .=" SET {$this->set_i}";
+        }         
+        
+                /* 
+            Add REPLACE if exist
+        */  
+        if($this->replace){
+            $query .=" SET {$this->replace}";
+        }
 
         /* 
             Add WHERE if exist
@@ -348,6 +400,13 @@ class querybuilder{
         if($this->where){
             $query .=" WHERE {$this->where} ";
         } 
+
+        /* 
+            Add BETWEEN if exist
+        */         
+        if($this->between){
+            $query .=" WHERE {$this->between} BETWEEN ? AND ? ";
+        }         
         
         /* 
             Add LIKE if exist
@@ -392,7 +451,14 @@ class querybuilder{
         */         
         if($this->like){
             $query .=" WHERE {$this->like} LIKE ? ";
-        }          
+        }   
+        
+        /* 
+            Add BETWEEN if exist
+        */         
+        if($this->between){
+            $query .=" WHERE {$this->between} BETWEEN ? AND ? ";
+        }         
         
         /* 
             Add AND if exist
