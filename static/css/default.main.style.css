@@ -166,6 +166,7 @@ body {
     left: 50%;
     position: fixed;
     border-radius: 100%;
+    background: 50% 50% no-repeat rgba(255, 255, 255, 0.8);
 }
 
 
