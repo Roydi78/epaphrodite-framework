@@ -158,14 +158,54 @@ body {
 }
 
 .loader {
-    background: url('http://localhost:8888/epahrodite-framework/static/img/loading.gif') 50% 50% no-repeat rgba(255, 255, 255, 0.8);
-    cursor: wait;
-    height: 100%;
-    left: 0;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
     position: fixed;
-    top: 0;
+    border-radius: 100%;
+}
+
+
+/* LOADER 1 */
+
+#loader-1:before,
+#loader-1:after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
     width: 100%;
-    z-index: 9999;
+    height: 100%;
+    border-radius: 100%;
+    border: 7px solid transparent;
+    border-top-color: #07984d;
+}
+
+#loader-1:before {
+    z-index: 100;
+    animation: spin 1s infinite;
+}
+
+#loader-1:after {
+    border: 7px solid #ccc;
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 .loaderpage {
