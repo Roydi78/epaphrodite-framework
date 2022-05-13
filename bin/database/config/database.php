@@ -11,15 +11,15 @@ class database
         @Var of connexions 
     */
     private $get_connexion;
-    const DB_PASS = "root";
-    const DB_DSN = "mysql:host=localhost;dbname=epaphrodite_bd";
-    const DB_USER = 'root';
-    const option =
+    private const DB_DSN = "mysql:host=localhost;dbname=epaphrodite_bd";
+    private const DB_USER = 'root';
+    private const DB_PASS = 'root';
+    private const option =
     [
         PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'",
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_EMULATE_PREPARES  => false
-    ];
+    ]; 
 
     /* 
         Construct database connection 

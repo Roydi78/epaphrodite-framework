@@ -22,7 +22,7 @@
       {{ include('layouts/display/__header.html.html') }}
         {% block content %}{% endblock %}
       {{ include('layouts/display/__footer.html.html') }}
-      <div class="loader" id="loader-1"></div>
+      <div class="loader"><div class="tools_loader" id="loader-1"></div></div>
       <script src="{{ path.js('jquery') }}"></script><script src="{{ path.js('bootstrap-min') }}"></script><script src="{{ path.js('aos') }}"></script><script src="{{ path.js('main') }}"></script><script>jQuery(window).load(function(){ jQuery(".loader").fadeOut("200"); });</script><script>$(".loaderpage").hide();</script><script type="text/javascript">$(document).ready(function(){$('#datasform').submit(function() {$('#loaderdatas').show(); return true;});});</script>
     </body>
 </html>

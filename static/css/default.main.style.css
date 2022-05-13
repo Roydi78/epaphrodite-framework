@@ -166,7 +166,6 @@ body {
     left: 50%;
     position: fixed;
     border-radius: 100%;
-    background: 50% 50% no-repeat rgba(255, 255, 255, 0.8);
 }
 
 
@@ -207,17 +206,6 @@ body {
         -o-transform: rotate(360deg);
         transform: rotate(360deg);
     }
-}
-
-.loaderpage {
-    background: url('http://localhost:8888/epahrodite-framework/static/img/laoder.gif') 50% 50% no-repeat rgba(255, 255, 255, 0.8);
-    cursor: wait;
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
 }
 
 
