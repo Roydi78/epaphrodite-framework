@@ -38,16 +38,16 @@ class Control extends twig
     function __construct()
     {
 
-        $this->loginin = new \bin\database\requests\select\auth;
-        $this->session = new \bin\epaphrodite\auth\session_auth();
-        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
-        $this->paths = new \bin\epaphrodite\path\paths;
-        $this->msg = new \bin\epaphrodite\define\text_messages;        
+        $this->errors = new errors;  
         $this->env = new \bin\epaphrodite\env\env;
+        $this->paths = new \bin\epaphrodite\path\paths;
         $this->layouts = new \bin\epaphrodite\env\layouts;
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
+        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
+        $this->loginin = new \bin\database\requests\select\auth;
+        $this->session = new \bin\epaphrodite\auth\session_auth;
+        $this->msg = new \bin\epaphrodite\define\text_messages;        
         $this->email = new \bin\epaphrodite\api\email\send_mail;
-        $this->errors = new errors;  
 
     }
 

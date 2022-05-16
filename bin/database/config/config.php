@@ -25,7 +25,8 @@ class config
     [
         PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'",
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_EMULATE_PREPARES  => false
+        PDO::ATTR_EMULATE_PREPARES  => false,
+        PDO::ATTR_PERSISTENT => true
     ];  
 
     /**
@@ -36,6 +37,7 @@ class config
         
         $ini = _DIR_CONFIG_ . "config.ini" ;
         $content = parse_ini_file ( $ini , true ) ;
+        return $content;
 
     }    
     
