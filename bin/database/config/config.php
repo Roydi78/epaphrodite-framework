@@ -8,12 +8,19 @@ use PDOException;
 class config
 {
 
-    
-    /**
+        /* 
+        Construct database connection 
+    */
+        /**
         * @var array
     */
     private $get_connexion;
 
+    function __construct()
+    {
+        $this->get_connexion = $this->epaphrodite_get_connexion();
+    }
+    
     /**
     * @var array
     */
@@ -54,6 +61,12 @@ class config
         
     }
 
+    private function main(){
+
+
+
+    }     
+
    /* 
         Get database connection 
     */
@@ -61,7 +74,7 @@ class config
     {
         try {
 
-            $get_connexion = new PDO(self::DB_DSN(), self::DB_USER(), self::DB_PASS(), self::OPTION);
+            $get_connexion = new PDO( self::DB_DSN() , self::DB_USER(), self::DB_PASS(), self::OPTION);
 
             return $get_connexion;
 
@@ -71,11 +84,6 @@ class config
 
         }
     }    
-
-    private function main(){
-
-
-
-    }    
+   
 
 }
