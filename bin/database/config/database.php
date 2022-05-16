@@ -39,7 +39,7 @@ class database
             $get_connexion = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS, self::option);
 
             return $get_connexion;
-            
+
         } catch (PDOException $e) {
 
             echo "Probleme de connexion a la base de donnees: " . $e->getMessage();

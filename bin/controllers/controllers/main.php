@@ -58,7 +58,6 @@ class Control extends twig
 
         if(file_exists( _DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $html . '.html' ))
         {
-            //var_dump( _DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $html . '.html' );die();
             /**
              * *****************************************************************************************************************************
              * index
@@ -88,6 +87,7 @@ class Control extends twig
             */
             elseif( $html ==="login_ep")
             {
+            
                 $this->ans='';$class=null;
 
                 if( isset($_POST['submit'])&&$this->csrf->process()===true ){

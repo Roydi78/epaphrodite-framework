@@ -18,5 +18,6 @@ define('_DIR_PRINTER_','bin/files/fpdf');
 define('_DIR_IMPORT_','bin/files/import');
 define('_DIR_QRCODE_','bin/files/qrcode');
 define('_DIR_FUNCTION_','bin/epaphrodite');
+define('_DIR_CONFIG_','bin/database/datas');
 define('_DIR_DATAS_','bin/database/datas/');
 define('_DIR_VISITOR_', 'bin/visite_compter_folder/');

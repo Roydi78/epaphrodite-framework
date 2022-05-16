@@ -8,11 +8,8 @@ use PDOException;
 class config
 {
 
-        /* 
-        Construct database connection 
-    */
-        /**
-        * @var array
+    /**
+    * @var array
     */
     private $get_connexion;
 
@@ -30,6 +27,17 @@ class config
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_EMULATE_PREPARES  => false
     ];  
+
+    /**
+    * @var string
+    * @return string
+    */      
+    private function ini_config(){
+        
+        $ini = _DIR_CONFIG_ . "config.ini" ;
+        $content = parse_ini_file ( $ini , true ) ;
+
+    }    
     
     /**
     * @var string
