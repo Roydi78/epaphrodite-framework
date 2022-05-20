@@ -31,6 +31,21 @@ class paths extends host
      * @param ?string $url=null
      * @return void
     */ 
+    public function db( ?string $url=null )
+    {
+
+        $this->path = $this->gethost().'server/';
+
+        return $this->path;
+
+    }      
+
+    /**
+     * Simple main paths
+     *
+     * @param ?string $url=null
+     * @return void
+    */ 
     public function main( ?string $url=null )
     {
 
