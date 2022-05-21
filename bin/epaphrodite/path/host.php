@@ -7,8 +7,9 @@ class host {
     protected $host;
     protected $domain;
 
-    /*
-        Get domaine of website
+    /**
+      * Get domaine of website
+      * @return string
     */    
     private function domain()
     {
@@ -18,8 +19,9 @@ class host {
         return $this->domaine;
     }
         
-    /* 
-        Host link path
+    /**
+      * Host link path
+      * @return string
     */
     public function host()
     {

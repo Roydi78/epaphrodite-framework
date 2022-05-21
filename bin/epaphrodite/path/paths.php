@@ -26,12 +26,11 @@ class paths extends host
     }
 
     /**
-     * Simple main paths
+     * db paths
      *
-     * @param ?string $url=null
-     * @return void
+     * @return string
     */ 
-    public function db( ?string $url=null )
+    public function db()
     {
 
         $this->path = $this->gethost().'server/';
@@ -44,7 +43,7 @@ class paths extends host
      * Simple main paths
      *
      * @param ?string $url=null
-     * @return void
+     * @return string
     */ 
     public function main( ?string $url=null )
     {
@@ -61,7 +60,7 @@ class paths extends host
      * @param string $url|null
      * @param string $action
      * @param integer $id
-     * @return void
+     * @return string
     */   
     public function main_id( ?string $url=null , string $action , int $id )
     {
@@ -76,7 +75,7 @@ class paths extends host
      * Dashboard path link
      *
      * @param string $url|null
-     * @return void
+     * @return string
     */   
     public function dashboard()
     {
@@ -92,7 +91,7 @@ class paths extends host
      *
      * @param string $url|null
      * @param string $folder|null
-     * @return void
+     * @return string
     */   
     public function admin( ?string $folder=null , ?string $url=null )
     {
@@ -105,6 +104,7 @@ class paths extends host
     
     /**
      * Logout
+     * @return string
      */
     public function logout(){
 
@@ -120,7 +120,7 @@ class paths extends host
      * @param string $url|null
      * @param string $action
      * @param integer $id
-     * @return void
+     * @return string
     */         
     public function admin_id( string $url , string $action , int $id )
     {
@@ -135,7 +135,7 @@ class paths extends host
      * images paths
      *
      * @param string $img
-     * @return void
+     * @return string
     */
     public function img( string $img )
     {
@@ -150,7 +150,7 @@ class paths extends host
      * js paths
      *
      * @param string $js
-     * @return void
+     * @return string
     */
     public function js( string $js )
     {
@@ -165,7 +165,7 @@ class paths extends host
      * css paths
      *
      * @param string $css
-     * @return void
+     * @return string
     */      
     public function css( string $css )
     {
@@ -180,7 +180,7 @@ class paths extends host
      * bootstrap font paths
      *
      * @param string $cssneeded
-     * @return void
+     * @return string
     */     
     public function font( string $cssneeded ){
         $this->path = $this->gethost().'static/font-awesome/css/'.$this->slug($cssneeded).'.css';
@@ -191,7 +191,7 @@ class paths extends host
      * bootstrap font paths
      *
      * @param string $cssneeded
-     * @return void
+     * @return string
     */     
     public function icofont( string $cssneeded ){
         $this->path = $this->gethost().'static/icofont/'.$cssneeded.'.css';
@@ -202,7 +202,7 @@ class paths extends host
      * pdf files paths
      *
      * @param string $pdfneeded
-     * @return void
+     * @return string
     */      
     public function pdf( string $pdfneeded )
     {
@@ -218,7 +218,7 @@ class paths extends host
      *
      * @param string $string
      * @param string $delimiter
-     * @return void
+     * @return string
     */
     private function slug( string $string , string $delimiter = '-' ) 
     {
@@ -241,7 +241,7 @@ class paths extends host
      *
      * @param string $string
      * @param string $delimiter
-     * @return void
+     * @return string
     */      
     public function href_slug( string $string , string $delimiter = '_' ) 
     {
