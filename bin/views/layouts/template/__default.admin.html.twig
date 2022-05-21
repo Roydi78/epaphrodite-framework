@@ -22,64 +22,71 @@
       </div>
       <div class="sidebar-header">
         <div class="user-info">
-          <span class="user-status"><i class="fa fa-circle-o text-success"></i><span>En ligne</span></span>
+          <span class="user-status"><i class="fa fa-circle-o"></i><span>En ligne</span></span>
           <span class="user-status"><i class="fa fa-reply"></i><span><a href="{{ path.dashboard() }}">Dashboard</a></span></span>
-        </div>
-      </div>
-      <div class="sidebar-search">
-        <div>
-          <div class="input-group">
-            <input type="text" class="form-control search-menu" placeholder="Search...">
-            <div class="input-group-append"><span class="input-group-text"><i class="icofont-search" aria-hidden="true"></i></span></div>
-          </div>
         </div>
       </div>
       <div class="sidebar-menu">
         <ul>
-          <li class="header-menu"><span>Menu de gestion</span></li>
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>MON PROFIL</span></a>
+          <li class="header-menu"><span>Modules de gestion</span></li>
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-user"></i><span>MON PROFIL</span></a>
             <div class="sidebar-submenu">
               <ul>
+                <li><a href="#">Mes infos perso</a></li>
                 <li><a href="#">Modifier mot de passe</a></li>
               </ul>
             </div>
           </li> 
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>IMPRESSION</span></a>
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-print"></i><span>GEST. IMPRESSION</span></a>
             <div class="sidebar-submenu">
               <ul>
-                <li><a href="#">Liste utilisateur</a></li>
+                <li><a href="#">Impression documents</a></li>
               </ul>
             </div>
           </li> 
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>IMPORTATION</span></a>
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-upload"></i><span>GEST. IMPORTATION</span></a>
             <div class="sidebar-submenu">
               <ul>
-                <li><a href="#">Liste utilisateur</a></li>
+                <li><a href="#">Import des fichiers</a></li>
               </ul>
             </div>
           </li>  
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>EXPORTATION</span></a>
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-download"></i><span>GEST. EXPORTATION</span></a>
             <div class="sidebar-submenu">
               <ul>
-                <li><a href="#">Liste utilisateur</a></li>
+                <li><a href="#">Export des fichiers</a></li>
               </ul>
             </div>
-          </li>                               
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>GEST. UTILISATEURS</span></a>
+          </li> 
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-key"></i><span>DROITS UTILISATEURS</span></a>
             <div class="sidebar-submenu">
               <ul>
-                <li><a href="#">Ajouter utilisateur</a></li>
-                <li><a href="#">Liste utilisateur</a></li>
+                <li><a href="#">Gest. droits utilisateurs</a></li>
+              </ul>
+            </div>
+          </li>                                        
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-users"></i><span>GEST. UTILISATEURS</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="#">Ajouter des utilisateurs</a></li>
+                <li><a href="#">Liste des utilisateurs</a></li>
               </ul>
             </div>
           </li>   
-          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>GEST. DATABASE</span></a>
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-database"></i><span>GEST. DATABASE</span></a>
             <div class="sidebar-submenu">
               <ul>
                 <li><a target="_blank" href="{{ path.db() }}">Authentification DB</a></li>
               </ul>
             </div>
-          </li>                                                  
+          </li> 
+          <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cogs"></i><span>PARAMETRE SYSTEME</span></a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li><a href="#">Gest. des logos</a></li>
+              </ul>
+            </div>
+          </li>                                                             
         </ul>
       </div>
     </div>
