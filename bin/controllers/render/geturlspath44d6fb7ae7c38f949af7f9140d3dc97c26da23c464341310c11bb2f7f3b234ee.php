@@ -122,9 +122,9 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
             
         }else{
             
-            $page = 'erreur';
+            $admin = 'erreur';
         }
-        
+
         if($get_url[0]==="views" || $main==="erreur")
         {
             return $this->main->send($main);

@@ -2,6 +2,114 @@ body {
     font-size: 0.9rem;
 }
 
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mt-70 {
+    margin-top: 70px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.mt-30 {
+    margin-top: 300px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mb-100 {
+    padding-bottom: 100px;
+}
+
+.mb-70 {
+    padding-bottom: 70px;
+}
+
+.mb-50 {
+    padding-bottom: 50px;
+}
+
+.mb-30 {
+    padding-bottom: 300px;
+}
+
+.mb-20 {
+    padding-bottom: 20px;
+}
+
+.mb-10 {
+    padding-bottom: 10px;
+}
+
+.pt-100 {
+    padding-top: 100px;
+}
+
+.pt-70 {
+    padding-top: 70px;
+}
+
+.pt-50 {
+    padding-top: 50px;
+}
+
+.pt-30 {
+    padding-top: 300px;
+}
+
+.pt-20 {
+    padding-top: 20px;
+}
+
+.pt-10 {
+    padding-top: 10px;
+}
+
+.pb-100 {
+    padding-bottom: 100px;
+}
+
+.pb-70 {
+    padding-bottom: 70px;
+}
+
+.pb-50 {
+    padding-bottom: 50px;
+}
+
+.pb-30 {
+    padding-bottom: 300px;
+}
+
+.pb-20 {
+    padding-bottom: 20px;
+}
+
+.pb-10 {
+    padding-bottom: 10px;
+}
+
+.epaphrodite .logo img {
+    margin-top: 100px;
+    width: 50%;
+}
+
+.text-framework {
+    font-size: 30px;
+    margin-left: 40%;
+    margin-top: -3%;
+    z-index: 99;
+}
+
 .sidebar-dropdown {
     border-bottom: 1px solid rgb(70, 69, 69);
 }
@@ -129,7 +237,7 @@ body {
 .sidebar-wrapper .sidebar-header .user-info .user-status i {
     font-size: 12px;
     margin-right: 4px;
-    color: #f1f1f1;
+    color: #000000;
 }
 
 .sidebar-wrapper .sidebar-menu {
@@ -339,7 +447,7 @@ body {
 }
 
 .user-status a:hover {
-    color: #fffefb;
+    color: #000000;
 }
 
 .page-wrapper.chiller-theme.toggled #close-sidebar {
