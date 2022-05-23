@@ -19,13 +19,14 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
     */
     public function __construct()
     {
-        $this->startsession = new \bin\epaphrodite\env\gestcookies;
-        $this->session = new \bin\epaphrodite\auth\session_auth;
-        $this->interface_manager = new \bin\epaphrodite\others\gestion_interface;
-        $this->main = new \bin\controllers\controllers\main;
-        $this->admin = new \bin\controllers\controllers\dashboard;
-        $this->env = new \bin\controllers\render\method44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee; 
         $this->paths = new \bin\epaphrodite\path\paths;
+        $this->main = new \bin\controllers\controllers\main;
+        $this->session = new \bin\epaphrodite\auth\session_auth;
+        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
+        $this->admin = new \bin\controllers\controllers\dashboard;
+        $this->startsession = new \bin\epaphrodite\env\gestcookies;
+        $this->interface_manager = new \bin\epaphrodite\others\gestion_interface;
+        $this->env = new \bin\controllers\render\method44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee; 
     }
     
     /**
@@ -125,6 +126,9 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
             $admin = 'erreur';
         }
 
+    if($this->csrf->process()===true){
+
+
         if($get_url[0]==="views" || $main==="erreur")
         {
             return $this->main->send($main);
@@ -138,6 +142,9 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
             return $this->main->send($main);
 
         }
+
+    }
+
     }
     
 }
