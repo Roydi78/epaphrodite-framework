@@ -12,7 +12,6 @@ class Control extends twig
      * declare all variables
      *
      * @var \bin\epaphrodite\path\paths $paths
-     * @var \bin\epaphrodite\crf_token\token_csrf $csrf
      * @var \bin\epaphrodite\auth\session_auth $path_session
      * @var \bin\epaphrodite\define\text_messages $msg
      * @var \bin\epaphrodite\email\send_mail $email
@@ -42,8 +41,8 @@ class Control extends twig
         $this->env = new \bin\epaphrodite\env\env;
         $this->paths = new \bin\epaphrodite\path\paths;
         $this->layouts = new \bin\epaphrodite\env\layouts;
-        $this->sms = new \bin\epaphrodite\api\sms\send_sms;
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
+        $this->sms = new \bin\epaphrodite\api\sms\send_sms;
         $this->loginin = new \bin\database\requests\select\auth;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->msg = new \bin\epaphrodite\define\text_messages;        
@@ -99,14 +98,13 @@ class Control extends twig
 
                 $this->render( _DIR_MAIN_TEMP_ . $html ,
                 [ 
-                    'path'=>$this->paths , 
+                    'class'=>$class ,
                     'env'=>$this->env , 
-                    'msg' => $this->msg,
-                    'csrf'=> $this->csrf,
-                    'reponse'=>$this->ans,
-                    'class'=>$class,
-                    'layouts' => $this->layouts->main(),
-                    'form' => $this->layouts->forms(),
+                    'msg' => $this->msg ,
+                    'path'=>$this->paths , 
+                    'reponse'=>$this->ans ,
+                    'form' => $this->layouts->forms() ,
+                    'layouts' => $this->layouts->main() ,
                 ]);
                 
             }else{ $this->errors->error_404(); }          

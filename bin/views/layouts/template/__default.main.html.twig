@@ -10,12 +10,12 @@
     <meta name="language" content="{{ msg.answers('language') }}">
     <meta name="Revisit-after" CONTENT="15">
     <meta name="robots" content="Index, Follow">
-    <link href="{{ path.css('bootstrap') }}" rel="stylesheet">
+    <link href="{{ __css('bootstrap') }}" rel="stylesheet">
     <link href="{{ path.font('font-awesome-min') }}" rel="stylesheet" type="text/css">
     <link href="{{ path.icofont('icofont.min') }}" rel="stylesheet" type="text/css">
-    <link href="{{ path.css('aos') }}" rel="stylesheet">
-    <link href="{{ path.css('default.main.style') }}" rel="stylesheet">
-    <link rel="icon" href="{{ path.img('logo.png') }}">
+    <link href="{{ __css('aos') }}" rel="stylesheet">
+    <link href="{{ __css('default.main.style') }}" rel="stylesheet">
+    <link rel="icon" href="{{ __img('logo.png') }}">
     <title>{{ msg.answers('site-title') }}</title>
   </head>
     <body>
@@ -23,7 +23,7 @@
         {% block content %}{% endblock %}
       {{ include('layouts/display/__footer.html.html') }}
       <div class="loader"><div class="tools_loader" id="loader-1"></div></div>
-      <script src="{{ path.js('jquery') }}"></script><script src="{{ path.js('bootstrap-min') }}"></script><script src="{{ path.js('aos') }}"></script><script src="{{ path.js('main') }}"></script><script>jQuery(window).load(function(){ jQuery(".loader").fadeOut("200"); });</script><script>$(".loaderpage").hide();</script><script type="text/javascript">$(document).ready(function(){$('#datasform').submit(function() {$('#loaderdatas').show(); return true;});});</script>
+      <script src="{{ __js('jquery') }}"></script><script src="{{ __js('bootstrap-min') }}"></script><script src="{{ __js('aos') }}"></script><script src="{{ __js('main') }}"></script><script>jQuery(window).load(function(){ jQuery(".loader").fadeOut("200"); });</script><script>$(".loaderpage").hide();</script><script type="text/javascript">$(document).ready(function(){$('#datasform').submit(function() {$('#loaderdatas').show(); return true;});});</script>
     </body>
 </html>
 

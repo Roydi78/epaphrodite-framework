@@ -42,4 +42,5 @@ abstract class AbstractExtension implements ExtensionInterface
     {
         return [];
     }
+
 }

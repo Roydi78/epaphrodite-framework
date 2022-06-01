@@ -75,6 +75,7 @@ final class CoreExtension extends AbstractExtension
     private $dateFormats = ['F j, Y H:i', '%d days'];
     private $numberFormat = [0, '.', ','];
     private $timezone = null;
+    private $layouts;
 
     /**
      * Sets the default format to be used by the date filter.
@@ -219,11 +220,13 @@ final class CoreExtension extends AbstractExtension
             // iteration and runtime
             new TwigFilter('default', '_twig_default_filter', ['node_class' => DefaultFilter::class]),
             new TwigFilter('keys', 'twig_get_array_keys_filter'),
+
         ];
-    }
+    } 
 
     public function getFunctions(): array
     {
+        
         return [
             new TwigFunction('max', 'max'),
             new TwigFunction('min', 'min'),
@@ -234,6 +237,11 @@ final class CoreExtension extends AbstractExtension
             new TwigFunction('date', 'twig_date_converter', ['needs_environment' => true]),
             new TwigFunction('include', 'twig_include', ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('source', 'twig_source', ['needs_environment' => true, 'is_safe' => ['all']]),
+            new TwigFunction('csrf_token', 'csrf_token_twig' ),
+            new TwigFunction('__img', 'imagePath_twig' ),
+            new TwigFunction('__css', 'cssPath_twig' ),
+            new TwigFunction('__js', 'jsPath_twig' ),
+            new TwigFunction('__path', 'mainPath_twig' ),
         ];
     }
 
@@ -299,10 +307,14 @@ final class CoreExtension extends AbstractExtension
             ],
         ];
     }
+
+
+
 }
 }
 
 namespace {
+
     use Twig\Environment;
     use Twig\Error\LoaderError;
     use Twig\Error\RuntimeError;
@@ -311,8 +323,9 @@ namespace {
     use Twig\Markup;
     use Twig\Source;
     use Twig\Template;
-
+    
     /**
+     * 
  * Cycles over a value.
  *
  * @param \ArrayAccess|array $values
@@ -675,6 +688,7 @@ function twig_last(Environment $env, $item)
 
     return \is_string($elements) ? $elements : current($elements);
 }
+
 
 /**
  * Joins the values to a string.
@@ -1091,6 +1105,12 @@ function twig_lower_filter(Environment $env, $string)
 {
     return mb_strtolower($string, $env->getCharset());
 }
+
+function _template_twig_(Environment $env, $string){
+
+    return mb_strtolower($string, $env->getCharset());
+   
+   }
 
 /**
  * Returns a titlecased string.
@@ -1595,4 +1615,86 @@ function twig_array_reduce($array, $arrow, $initial = null)
 
     return array_reduce($array, $arrow, $initial);
 }
+
+/**
+ * Return token class
+ * 
+ */
+function __classToken(){
+
+    return new \bin\epaphrodite\crf_token\token_csrf;
+}
+
+/**
+ * Return paths class
+ * 
+ */
+function __classPaths(){
+
+    return new \bin\epaphrodite\path\paths;
+}
+
+/**
+ * Return auth class
+ * 
+ */
+function __classAuth(){
+
+    return  new \bin\epaphrodite\auth\session_auth;
+}
+
+/**
+ * Return input of token csrf
+ * 
+ * @return string
+ */
+function csrf_token_twig(){
+
+    __classToken()->input_field();
+}
+
+/**
+ * Return image paths
+ * 
+ */
+function imagePath_twig( $img ){
+
+   echo  __classPaths()->img( $img );
+}
+
+/**
+ * Return css paths
+ * 
+ */
+function cssPath_twig( $css ){
+
+    echo  __classPaths()->css( $css );
+ }
+
+
+/**
+ * Return javascript paths
+ * 
+ */
+ function jsPath_twig( $js ){
+
+    echo  __classPaths()->js( $js );
+ }
+
+ /**
+ * Return javascript paths
+ * 
+ */
+function mainPath_twig( ?string $dir=null , ?string $page=null  ){
+
+    if( __classAuth()->login()!=false&&__classAuth()->id()!=false){
+
+        echo  __classPaths()->admin( $dir , $page );
+    }else{
+       
+        echo  __classPaths()->main( $dir );
+    }
+
+ }
+
 }

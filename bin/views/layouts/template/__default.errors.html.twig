@@ -3,10 +3,10 @@
     <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}{% endblock %}</title>
-        <link href="{{ path.css('bootstrap') }}" rel="stylesheet">
+        <link href="{{ __css('bootstrap') }}" rel="stylesheet">
         <link href="{{ path.font('font-awesome-min') }}" rel="stylesheet" type="text/css">
         <link href="{{ path.icofont('icofont.min') }}" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="{{ path.css('erreur') }}">
+        <link rel="stylesheet" type="text/css" href="{{ __css('erreur') }}">
     </head>
     <body>
         {% block content %}{% endblock %}

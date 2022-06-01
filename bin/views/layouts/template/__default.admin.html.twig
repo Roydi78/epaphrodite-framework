@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ path.css('/bootstrap') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ __css('/bootstrap') }}" rel="stylesheet">
     <link href="{{ path.font('font-awesome-min') }}" rel="stylesheet" type="text/css">
     <link href="{{ path.icofont('icofont.min') }}" rel="stylesheet" type="text/css">
-    <link href="{{ path.css('aos') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ path.css('default.admin.style') }}" rel="stylesheet">
-    <link rel="icon" href="{{ path.img('logo.png') }}">
+    <link href="{{ __css('aos') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ __css('default.admin.style') }}" rel="stylesheet">
+    <link rel="icon" href="{{ __img('logo.png') }}">
     <title>{{ msg.answers('site-title') }}</title>
 </head>
 <body>
@@ -123,6 +123,6 @@
   </main>
 </div>
 <div class="loader"><div class="tools_loader" id="loader-1"></div></div>
-<script>(function() { 'use strict'; window.addEventListener('load', function() { var forms = document.getElementsByClassName('validerinfos'); var validation = Array.prototype.filter.call(forms, function(form) { form.addEventListener('submit', function(event) { if (form.checkValidity() === false) { event.preventDefault(); event.stopPropagation();}form.classList.add('was-validated');}, false);});}, false);})();</script><script src="{{ path.js('jquery') }}"></script><script src="{{ path.js('bootstrap') }}"></script><script src="{{ path.js('aos') }}"></script><script src="{{ path.js('main') }}"></script><script>jQuery(function ($) {$(".sidebar-dropdown > a").click(function() {$(".sidebar-submenu").slideUp(300);if ($(this).parent().hasClass("active")) {$(".sidebar-dropdown").removeClass("active");$(this).parent().removeClass("active");}else{$(".sidebar-dropdown").removeClass("active");$(this).next(".sidebar-submenu").slideDown(300);$(this).parent().addClass("active");}});$("#close-sidebar").click(function() {$(".page-wrapper").removeClass("toggled");});$("#show-sidebar").click(function() {$(".page-wrapper").addClass("toggled");});});</script><script>jQuery(window).load(function(){ jQuery(".loader").fadeOut("200"); });</script><script>$(".loaderpage").hide();</script><script type="text/javascript">$(document).ready(function(){$('#datasform').submit(function() {$('#loaderdatas').show(); return true;});});</script>
+<script>(function() { 'use strict'; window.addEventListener('load', function() { var forms = document.getElementsByClassName('validerinfos'); var validation = Array.prototype.filter.call(forms, function(form) { form.addEventListener('submit', function(event) { if (form.checkValidity() === false) { event.preventDefault(); event.stopPropagation();}form.classList.add('was-validated');}, false);});}, false);})();</script><script src="{{ __js('jquery') }}"></script><script src="{{ __js('bootstrap') }}"></script><script src="{{ __js('aos') }}"></script><script src="{{ __js('main') }}"></script><script>jQuery(function ($) {$(".sidebar-dropdown > a").click(function() {$(".sidebar-submenu").slideUp(300);if ($(this).parent().hasClass("active")) {$(".sidebar-dropdown").removeClass("active");$(this).parent().removeClass("active");}else{$(".sidebar-dropdown").removeClass("active");$(this).next(".sidebar-submenu").slideDown(300);$(this).parent().addClass("active");}});$("#close-sidebar").click(function() {$(".page-wrapper").removeClass("toggled");});$("#show-sidebar").click(function() {$(".page-wrapper").addClass("toggled");});});</script><script>jQuery(window).load(function(){ jQuery(".loader").fadeOut("200"); });</script><script>$(".loaderpage").hide();</script><script type="text/javascript">$(document).ready(function(){$('#datasform').submit(function() {$('#loaderdatas').show(); return true;});});</script>
 </body>
 </html>
