@@ -26,7 +26,7 @@ class validate_token {
     /**
      * Get session token value
      * 
-     * @return void
+     * @return mixed
      */
     private function get_session_token(){
 
@@ -37,7 +37,7 @@ class validate_token {
     /**
      * hidden token csrf input
      * 
-     * @return void
+     * @return mixed
     */
     private function get_input_token(){
 
@@ -48,12 +48,11 @@ class validate_token {
     /**
      * Verify token crsf key
      *
-     * @return void
+     * @return mixed
     */
     public function token_verify(){
 
         if($this->session->login()!==NULL){ return $this->on(); }else{ return $this->off(); }
-
     }
 
     /**
@@ -62,6 +61,7 @@ class validate_token {
      * @return void
      */
     protected function on(){
+
         if( hash('gost',$this->secure->secure())===hash('gost',$this->get_input_token()) && hash('gost',$this->secure->secure())===hash('gost',$this->get_session_token()) && hash('gost',$this->get_input_token())===hash('gost',$this->get_session_token()) ){ return true; }else{ $this->error->send(); }
     }
 

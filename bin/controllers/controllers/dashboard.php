@@ -39,7 +39,6 @@ class Control_dashboard extends twig
         $this->layouts = new \bin\epaphrodite\env\layouts; 
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
         $this->msg = new \bin\epaphrodite\define\text_messages; 
-        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->email = new \bin\epaphrodite\api\email\send_mail;       
         $this->get_id = new \bin\database\requests\select\get_id;
@@ -51,48 +50,50 @@ class Control_dashboard extends twig
         if(file_exists( _DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html' ))
         {
            
-        /**
-         * ************************************************************************
-         * Dashboard for super admin
-         * 
-         * @param string $html
-         * @param array $array
-         * @return mixed
-        */
-        if( $html ==="dashboard/super_admin_ep"){
+            /**
+             * ************************************************************************
+             * Dashboard for super admin
+             * 
+             * @param string $html
+             * @param array $array
+             * @return mixed
+            */
+            if( $html ==="dashboard/super_admin_ep"){
 
 
-            $this->render( _DIR_ADMIN_TEMP_ . $html ,
-            [ 
-                'path'=>$this->paths , 
-                'env'=>$this->env , 
-                'msg' => $this->msg ,
-                'layouts' => $this->layouts->admin($this->session->type()),
-            ]);
+                $this->render( _DIR_ADMIN_TEMP_ . $html ,
+                [ 
+                    'path'=>$this->paths , 
+                    'env'=>$this->env , 
+                    'msg' => $this->msg ,
+                    'layouts' => $this->layouts->admin($this->session->type()),
+                ]);
+                
+            } 
             
-        } 
-        
-        /**
-         * ************************************************************************
-         * Dashboard for simple users
-         * 
-         * @param string $html
-         * @param array $array
-         * @return mixed
-        */
-        elseif( $html ==="dashboard/user_ep"){
+            /**
+             * ************************************************************************
+             * Dashboard for simple users
+             * 
+             * @param string $html
+             * @param array $array
+             * @return mixed
+            */
+            elseif( $html ==="dashboard/user_ep"){
 
 
-            $this->render( _DIR_ADMIN_TEMP_ . $html ,
-            [ 
-                'path'=>$this->paths , 
-                'env'=>$this->env , 
-                'msg' => $this->msg ,
-                'menus' => $this->get_id,
-                'layouts' => $this->layouts->admin($this->session->type()),
-            ]);
+                $this->render( _DIR_ADMIN_TEMP_ . $html ,
+                [ 
+                    'path'=>$this->paths , 
+                    'env'=>$this->env , 
+                    'msg' => $this->msg ,
+                    'menus' => $this->get_id,
+                    'layouts' => $this->layouts->admin($this->session->type()),
+                ]);
+                
+            }
             
-        }        
+            else{ $this->errors->error_403();}     
                  
         }else{ $this->errors->error_404();}    
          

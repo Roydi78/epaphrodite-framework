@@ -11,23 +11,37 @@ class token_csrf{
 
     function __construct()
     {
-
+        $this->csrf = new validate_token();
         $this->token_value = new gettokenvalue();
-
-        $this->crsf = new validate_token();
-
     }
 
+    /**
+     * Token csrf input
+     * 
+     *  @return mixed 
+     * */    
     public function input_field(){
 
         $input_token = "<input type='hidden' name='token_csrf' value='".$this->token_value->getvalue()."' required \>";
-
         echo $input_token;
     }  
 
-    public function process(){
+    /**
+     * csrf verification process...
+     * 
+     * @return bool
+     */
+    private function process(){
 
-        return $this->crsf->token_verify();
+        return $this->csrf->token_verify();
+    }
+
+    /**
+     * If csrf exist
+     */
+    public function tocsrf(){
+
+        if(isset($_POST['token_csrf'])){ if($this->process()===true){ return true; }else{ return false;} }else{ return true; }
 
     }
 

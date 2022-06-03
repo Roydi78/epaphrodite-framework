@@ -17,11 +17,11 @@ class Control extends twig
      * @var \bin\epaphrodite\email\send_mail $email
      * @var \bin\epaphrodite\api\sms\send_sms $sms
      * @var \bin\controllers\render\errors $errors
-     * @var \bin\database\requests\select\auth $loginin
+     * @var \bin\database\requests\select\auth $auth
      * @var \bin\epaphrodite\env\layouts $layouts
     */
-    private $csrf;
-    private $loginin;
+
+    private $auth;
     private $layouts;
     private $paths;
     private $email;
@@ -41,11 +41,10 @@ class Control extends twig
         $this->env = new \bin\epaphrodite\env\env;
         $this->paths = new \bin\epaphrodite\path\paths;
         $this->layouts = new \bin\epaphrodite\env\layouts;
-        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
-        $this->loginin = new \bin\database\requests\select\auth;
-        $this->session = new \bin\epaphrodite\auth\session_auth;
+        $this->auth = new \bin\database\requests\select\auth;
         $this->msg = new \bin\epaphrodite\define\text_messages;        
+        $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->email = new \bin\epaphrodite\api\email\send_mail;
 
     }
@@ -89,9 +88,9 @@ class Control extends twig
             
                 $this->ans='';$class=null;
 
-                if( isset($_POST['submit'])&&$this->csrf->process()===true ){
+                if( isset($_POST['submit']) ){
                     
-                    $this->result = $this->loginin->acces_manager( $_POST['login'] , $_POST['password'] );
+                    $this->result = $this->auth->acces_manager( $_POST['login'] , $_POST['password'] );
                     if($this->result === false){ $this->ans = $this->msg->answers('login-wrong'); $class="error"; }
 
                 }

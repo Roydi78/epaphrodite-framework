@@ -20,6 +20,7 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
     public function __construct()
     {
         $this->paths = new \bin\epaphrodite\path\paths;
+        $this->errors = new \bin\controllers\render\errors;
         $this->main = new \bin\controllers\controllers\main;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
@@ -114,33 +115,42 @@ class geturlspath44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234e
      * @var \bin\controllers\controllers\admin $admin
      * @return string
     */
-    private function router($get_url)
+    public function router($get_url)
     {
-        if(count($get_url)>1){ 
-            
-            $main = $get_url[1].'_ep';
-            $admin = $get_url[1].'/'.$get_url[2].'_ep';
-            
-        }else{
-            
-            $admin = 'erreur';
-        }
 
+        /**
+         * csrf process...
+         */
+        if($this->csrf->tocsrf()===true){
 
-        if($get_url[0]==="views" || $main==="erreur")
-        {
-            return $this->main->send($main);
-            
-        }elseif($get_url[0]==="dashboard"&&$this->session->token_csrf()!==NULL&&$this->session->id()!==NULL&&$this->session->login()!==NULL){
-            
-            return $this->admin->send($admin);
+            if(count($get_url)>1){ 
+                
+                $main = $get_url[1].'_ep';
+                $admin = $get_url[1].'/'.$get_url[2].'_ep';
+                
+            }else{
+                
+                $admin = 'erreur';
+            }
 
-        }else{
+            /**
+             * check controllers
+             */
+            if($get_url[0]==="views" || $main==="erreur")
+            {
+                return $this->main->send($main);
+                
+            }elseif($get_url[0]==="dashboard"&&$this->session->token_csrf()!==NULL&&$this->session->id()!==NULL&&$this->session->login()!==NULL){
+                
+                return $this->admin->send($admin);
 
-            return $this->main->send($main);
+            }else{
 
-        }
+                return $this->main->send($main);
 
+            }
+
+        }else{ $this->errors->error_403(); }
     }
     
 }
