@@ -8,7 +8,7 @@
         <div class="form aos-init" data-aos="fade-up" data-aos-offset="300">
             <div class="reponses {{ class }}">{{ reponse ? reponse : "" }}</div>
             <form class="validerinfos" method="post" novalidate>
-                {{ csrf_token() }} {{ input_field('login','Login','text' , "Entrez votre Login svp!!!" ) }} {{ input_field('password','Password','password' , "Entrez votre mot de passe svp!!!" ) }} {{ submit('submit' , 'Connexion' , 'btn-success') }}
+                {{ __csrf() }} {{ input_field('login','Login','text' , "Entrez votre Login svp!!!" ) }} {{ input_field('password','Password','password' , "Entrez votre mot de passe svp!!!" ) }} {{ submit('submit' , 'Connexion' , 'btn-success') }}
             </form>
         </div>
         <div class="epaphrodite" align="center">

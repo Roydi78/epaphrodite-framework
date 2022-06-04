@@ -58,7 +58,7 @@ class Control extends twig
         {
             /**
              * *****************************************************************************************************************************
-             * index
+             * main index
              * 
              * @param string $html
              * @param array $array

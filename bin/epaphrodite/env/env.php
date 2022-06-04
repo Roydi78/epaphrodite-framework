@@ -3,10 +3,15 @@ namespace bin\epaphrodite\env;
 
 class env{
 
-    /* 
-        Tronquer le nombre de mot du text ou de la phrase
-    */      
-    public function truncate($string , $limit , $separator = '...' )
+    /**
+     * Tronquer le nombre de mot du text ou de la phrase
+     * 
+     * @param string|null $string
+     * @param int|1 $limit
+     * 
+     * @return string
+     *  */    
+    public function truncate( ?string $string=null , ?int $limit=1 , $separator = '...' )
     {
         if(strlen($string) > $limit){
             $newlimit = $limit- strlen($separator);
@@ -29,12 +34,13 @@ class env{
     }
 
     /**
-     * Code ISO
+     * Transforme code ISO
      *
-     * @param string $chaine
-     * @return void
+     * @param string|null $chaine
+     * 
+     * @return mixed
      */
-    public function chaine ( string $chaine ){
+    public function chaine ( ?string $chaine=null ){
 
         $pattern = [ "/&#039;/", "/&#224;/", "/&#225;/", "/&#226;/", "/&#227;/", "/&#228;/", "/&#230;/", "/&#231;/" , "/&#232;/" , "/&#233;/" , "/&#234;/" , "/&#235;/" , "/&#238;/", "/&#239;/", "/&#244;/", "/&#251;/", "/&amp;/"];
             
@@ -50,7 +56,7 @@ class env{
      * For transcoding values in an Excel generated (french)
      *
      * @param string $chaine
-     * @return void
+     * @return string
      */
     public function translate_fr( string $chaine ){
         

@@ -237,11 +237,13 @@ final class CoreExtension extends AbstractExtension
             new TwigFunction('date', 'twig_date_converter', ['needs_environment' => true]),
             new TwigFunction('include', 'twig_include', ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('source', 'twig_source', ['needs_environment' => true, 'is_safe' => ['all']]),
-            new TwigFunction('csrf_token', 'csrf_token_twig' ),
+            new TwigFunction('__csrf', 'csrf_token_twig' ),
+            new TwigFunction('__truncate', 'truncatePath_twig' ),
+            new TwigFunction('__path', 'mainPath_twig' ),
+            new TwigFunction('__toiso', 'isoPath_twig' ),
             new TwigFunction('__img', 'imagePath_twig' ),
             new TwigFunction('__css', 'cssPath_twig' ),
             new TwigFunction('__js', 'jsPath_twig' ),
-            new TwigFunction('__path', 'mainPath_twig' ),
         ];
     }
 
@@ -1644,6 +1646,15 @@ function __classAuth(){
 }
 
 /**
+ * Return Env class
+ * 
+ */
+function __classEnv(){
+
+    return  new \bin\epaphrodite\env\env;
+}
+
+/**
  * Return input of token csrf
  * 
  * @return string
@@ -1696,5 +1707,24 @@ function mainPath_twig( ?string $dir=null , ?string $page=null  ){
     }
 
  }
+
+/**
+ * Tronquer le nombre de mot du text ou de la phrase
+ * @return string
+ */
+function truncatePath_twig( $string , $limit ){
+
+    return __classEnv()->truncate( $string , $limit );
+ }
+
+/**
+ * Transforme code ISO
+ * @return string
+ */
+function isoPath_twig( $string ){
+
+    return __classEnv()->chaine( $string );
+ } 
+
 
 }
