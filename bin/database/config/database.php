@@ -3,7 +3,6 @@
 namespace bin\database\config;
 
 use PDO;
-use PDOException;
 use bin\database\config\config;
 
 class database extends config
@@ -25,7 +24,7 @@ class database extends config
     */
     public function closeConnection($bd)
     {
-       //return $this->get_connexion($bd) = NULL;
+       return $this->epaphrodite_get_connexion($bd) = NULL;
     }
 
     /* 

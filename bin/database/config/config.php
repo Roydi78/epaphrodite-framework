@@ -44,7 +44,7 @@ class config
     */    
     private static function DB_DSN($db){
 
-        return SELF::ini_config()["1DB_DSN"];
+        return SELF::ini_config()[$db."DB_DSN"];
         
     }
 
@@ -54,7 +54,7 @@ class config
     */       
     private static function DB_PASS($db){
 
-        return SELF::ini_config()["1DB_PASSWORD"];
+        return SELF::ini_config()[$db."DB_PASSWORD"];
         
     }
 
@@ -64,7 +64,7 @@ class config
     */       
     private static function DB_USER($db){
 
-        return SELF::ini_config()["1DB_USER"];
+        return SELF::ini_config()[$db."DB_USER"];
         
     }    
 
@@ -75,7 +75,7 @@ class config
     {
         try {
 
-            $get_connexion = new PDO( self::DB_DSN($db) , self::DB_USER($db), self::DB_PASS($db), self::OPTION);
+            $get_connexion = new PDO( SELF::DB_DSN($db) , SELF::DB_USER($db), SELF::DB_PASS($db), SELF::OPTION);
 
             return $get_connexion;
 
