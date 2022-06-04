@@ -24,6 +24,7 @@ class twig {
 
     /**
      * Twig path Environment
+     * 
      * @return mixed
     */    
     public function twig_env(){
@@ -38,10 +39,11 @@ class twig {
      *
      * @param string $view
      * @param array $array
+     * 
      * @return mixed
      */ 
     public function render( string $view , array $array ){
-        //var_dump( $array );die();
+        
       echo $this->twig_env()->render( $view.'.html', $array );
 
     }    

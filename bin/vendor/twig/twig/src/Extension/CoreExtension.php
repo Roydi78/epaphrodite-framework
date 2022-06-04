@@ -240,10 +240,13 @@ final class CoreExtension extends AbstractExtension
             new TwigFunction('__csrf', 'csrf_token_twig' ),
             new TwigFunction('__truncate', 'truncatePath_twig' ),
             new TwigFunction('__path', 'mainPath_twig' ),
+            new TwigFunction('__host', 'hostPath_twig' ),
             new TwigFunction('__msg', 'msgPath_twig' ),
             new TwigFunction('__toiso', 'isoPath_twig' ),
             new TwigFunction('__img', 'imagePath_twig' ),
             new TwigFunction('__css', 'cssPath_twig' ),
+            new TwigFunction('__cssfont', 'cssfontPath_twig' ),
+            new TwigFunction('__cssiconfont', 'cssiconfontPath_twig' ),
             new TwigFunction('__js', 'jsPath_twig' ),
         ];
     }
@@ -1692,6 +1695,24 @@ function cssPath_twig( $css ){
     echo  __classPaths()->css( $css );
  }
 
+ /**
+ * Return css paths
+ * 
+ */
+function cssfontPath_twig( $css ){
+
+    echo  __classPaths()->font( $css );
+ }
+
+ /**
+ * Return css paths
+ * 
+ */
+function cssiconfontPath_twig( $css ){
+
+    echo  __classPaths()->icofont( $css );
+ }
+
 
 /**
  * Return javascript paths
@@ -1714,6 +1735,22 @@ function mainPath_twig( ?string $dir=null , ?string $page=null  ){
     }else{
        
         echo  __classPaths()->main( $dir );
+    }
+
+ }
+
+  /**
+ * Return javascript paths
+ * 
+ */
+function hostPath_twig(){
+
+    if( __classAuth()->login()!=false&&__classAuth()->id()!=false){
+
+        echo  __classPaths()->dashboard();
+    }else{
+       
+        echo  __classPaths()->gethost();
     }
 
  }

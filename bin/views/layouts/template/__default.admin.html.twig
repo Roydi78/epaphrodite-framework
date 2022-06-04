@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ __css('/bootstrap') }}" rel="stylesheet">
-    <link href="{{ path.font('font-awesome-min') }}" rel="stylesheet" type="text/css">
-    <link href="{{ path.icofont('icofont.min') }}" rel="stylesheet" type="text/css">
+    <link href="{{ __cssfont('font-awesome-min') }}" rel="stylesheet" type="text/css">
+    <link href="{{ __cssiconfont('icofont.min') }}" rel="stylesheet" type="text/css">
     <link href="{{ __css('aos') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ __css('default.admin.style') }}" rel="stylesheet">
     <link rel="icon" href="{{ __img('logo.png') }}">
@@ -18,13 +18,13 @@
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-brand">
-        <a href="{{ path.dashboard() }}">DASHBOARD</a>
+        <a href="{{ __host() }}">DASHBOARD</a>
         <div id="close-sidebar"><i class="icofont-close-line"></i></div>
       </div>
       <div class="sidebar-header">
         <div class="user-info">
           <span class="user-status"><i class="fa fa-circle-o"></i><span>En ligne</span></span>
-          <span class="user-status"><i class="fa fa-reply"></i><span><a href="{{ path.dashboard() }}">Dashboard</a></span></span>
+          <span class="user-status"><i class="fa fa-reply"></i><span><a href="{{ __host() }}">Dashboard</a></span></span>
         </div>
       </div>
       <div class="sidebar-menu">

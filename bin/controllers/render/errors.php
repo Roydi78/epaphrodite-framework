@@ -13,10 +13,10 @@ class errors extends twig
      */
     function __construct()
     {
-        $this->paths = new \bin\epaphrodite\path\paths();
-        $this->msg = new \bin\epaphrodite\define\text_messages();
-        $this->session = new \bin\epaphrodite\auth\session_auth();
+        $this->paths = new \bin\epaphrodite\path\paths;
         $this->layouts = new \bin\epaphrodite\env\layouts;
+        $this->msg = new \bin\epaphrodite\define\text_messages;
+        $this->session = new \bin\epaphrodite\auth\session_auth;
     }
 
     /**
@@ -29,9 +29,7 @@ class errors extends twig
         $this->render(
             'errors/404',
             [
-                'path' => $this->paths,
                 'back' => $this->back(),
-                'msg' => $this->msg,
                 'layouts' => $this->layouts->errors(),
             ]
         );
@@ -48,9 +46,7 @@ class errors extends twig
         $this->render(
             'errors/403',
             [
-                'path' => $this->paths,
                 'back' => $this->back(),
-                'msg' => $this->msg,
                 'layouts' => $this->layouts->errors(),
             ]
         );
@@ -68,8 +64,7 @@ class errors extends twig
         $this->render(
             'errors/419',
             [
-                'path' => $this->paths,
-                'msg' => $this->msg,
+                'back' => $this->back(),
                 'layouts' => $this->layouts->errors(),
             ]
         );
@@ -89,8 +84,7 @@ class errors extends twig
         $this->render(
             'errors',
             [
-                'path' => $this->paths,
-                'msg' => $this->msg,
+                'back' => $this->back(),
                 'layouts' => $this->layouts->errors(),
             ]
         );
@@ -104,6 +98,7 @@ class errors extends twig
      */
     private function back()
     {
+
         $path_init = $this->paths->gethost();
         $path_connect = $this->paths->dashboard();
 
