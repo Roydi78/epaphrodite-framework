@@ -241,6 +241,7 @@ final class CoreExtension extends AbstractExtension
             new TwigFunction('__truncate', 'truncatePath_twig' ),
             new TwigFunction('__path', 'mainPath_twig' ),
             new TwigFunction('__host', 'hostPath_twig' ),
+            new TwigFunction('__dbpath', 'dbPath_twig' ),
             new TwigFunction('__msg', 'msgPath_twig' ),
             new TwigFunction('__toiso', 'isoPath_twig' ),
             new TwigFunction('__img', 'imagePath_twig' ),
@@ -1753,6 +1754,15 @@ function hostPath_twig(){
         echo  __classPaths()->gethost();
     }
 
+ }
+
+ /**
+ * Return javascript paths
+ * 
+ */
+function dbPath_twig(){
+
+    echo  __classPaths()->db();
  }
 
 /**
