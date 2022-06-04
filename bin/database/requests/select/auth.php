@@ -61,7 +61,7 @@ class auth
                       -> table('user_bd') 
                       -> SQuery(NULL);
 
-          $this->process->select( $sql , NULL , NULL , false );
+          $this->process->select( $sql , NULL , NULL , false , 1 );
           
           return true;
           
@@ -91,7 +91,7 @@ class auth
                       -> where('loginuser_bd') 
                       -> SQuery(NULL);
 
-          $result = $this->process->select($sql,'s',[ $loginuser ] , true );
+          $result = $this->process->select($sql,'s',[ $loginuser ] , true , 1 );
 
           return $result;
 

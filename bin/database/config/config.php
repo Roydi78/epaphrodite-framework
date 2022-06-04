@@ -13,10 +13,6 @@ class config
     */
     private $get_connexion;
 
-    function __construct()
-    {
-        $this->get_connexion = $this->epaphrodite_get_connexion();
-    }
     
     /**
     * @var array
@@ -33,10 +29,11 @@ class config
     * @var string
     * @return string
     */      
-    private function ini_config(){
+    private static function ini_config(){
         
-        $ini = _DIR_CONFIG_ . "config.ini" ;
-        $content = parse_ini_file ( $ini , true ) ;
+        $ini = _DIR_CONFIG_ . "/config.ini" ;
+        $content = parse_ini_file ( $ini , true );
+
         return $content;
 
     }    
@@ -45,9 +42,9 @@ class config
     * @var string
     * @return string
     */    
-    private static function DB_DSN(){
+    private static function DB_DSN($db){
 
-        return "mysql:host=localhost;dbname=epaphrodite_bd";
+        return SELF::ini_config()["1DB_DSN"];
         
     }
 
@@ -55,9 +52,9 @@ class config
     * @var string
     * @return string
     */       
-    private static function DB_PASS(){
+    private static function DB_PASS($db){
 
-        return "root";
+        return SELF::ini_config()["1DB_PASSWORD"];
         
     }
 
@@ -65,26 +62,20 @@ class config
     * @var string
     * @return string
     */       
-    private static function DB_USER(){
+    private static function DB_USER($db){
 
-        return "root";
+        return SELF::ini_config()["1DB_USER"];
         
-    }
-
-    private function main(){
-
-
-
-    }     
+    }    
 
    /* 
         Get database connection 
     */
-    public static function epaphrodite_get_connexion()
+    public static function epaphrodite_get_connexion($db)
     {
         try {
 
-            $get_connexion = new PDO( self::DB_DSN() , self::DB_USER(), self::DB_PASS(), self::OPTION);
+            $get_connexion = new PDO( self::DB_DSN($db) , self::DB_USER($db), self::DB_PASS($db), self::OPTION);
 
             return $get_connexion;
 
