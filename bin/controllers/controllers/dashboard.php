@@ -64,8 +64,6 @@ class Control_dashboard extends twig
                 $this->render( _DIR_ADMIN_TEMP_ . $html ,
                 [ 
                     'path'=>$this->paths , 
-                    'env'=>$this->env , 
-                    'msg' => $this->msg ,
                     'layouts' => $this->layouts->admin($this->session->type()),
                 ]);
                 
@@ -85,8 +83,6 @@ class Control_dashboard extends twig
                 $this->render( _DIR_ADMIN_TEMP_ . $html ,
                 [ 
                     'path'=>$this->paths , 
-                    'env'=>$this->env , 
-                    'msg' => $this->msg ,
                     'menus' => $this->get_id,
                     'layouts' => $this->layouts->admin($this->session->type()),
                 ]);

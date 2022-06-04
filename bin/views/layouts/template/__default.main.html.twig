@@ -4,10 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="Author" LANG="fr" CONTENT="{{ msg.answers('author') }}">
-    <meta name="description" content="<p>{{ msg.answers('description') }}</p>"> 
-    <meta name="keywords" content="{{ msg.answers('keywords') }}" />
-    <meta name="language" content="{{ msg.answers('language') }}">
+    <meta name="Author" LANG="fr" CONTENT="{{ __msg('author') }}">
+    <meta name="description" content="<p>{{ __msg('description') }}</p>"> 
+    <meta name="keywords" content="{{ __msg('keywords') }}" />
+    <meta name="language" content="{{ __msg('language') }}">
     <meta name="Revisit-after" CONTENT="15">
     <meta name="robots" content="Index, Follow">
     <link href="{{ __css('bootstrap') }}" rel="stylesheet">
@@ -16,7 +16,7 @@
     <link href="{{ __css('aos') }}" rel="stylesheet">
     <link href="{{ __css('default.main.style') }}" rel="stylesheet">
     <link rel="icon" href="{{ __img('logo.png') }}">
-    <title>{{ msg.answers('site-title') }}</title>
+    <title>{{ __msg('site-title') }}</title>
   </head>
     <body>
       {{ include('layouts/display/__header.html.html') }}

@@ -2,12 +2,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="logo aos-init" data-aos="fade-right" data-aos-offset="300" align="center"><img src="{{ __img('logo.png') }}" class="img-fluid"></div>
-        <div class="col-md-12 titlesite">{{ msg.answers('site-title') }}</div>
+        <div class="col-md-12 titlesite">{{ __msg('site-title') }}</div>
         <div class="col-md-12 epaphrodite" align="center">
             <h1 class="aos-init" data-aos="fade-left" data-aos-offset="300">Welcome</h1>
             <a href="{{ __path('login') }}">ACCES ADMINISTRATION <i class="icofont-long-arrow-right"></i></a>
-
-            <p>{{ __truncate( "tous les champs ne sont pas" , 20) }}</p>
         </div>
     </div>
 </div>

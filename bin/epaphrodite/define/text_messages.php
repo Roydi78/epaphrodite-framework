@@ -5,6 +5,7 @@ namespace bin\epaphrodite\define;
 class text_messages
 {
     public function answers($typeansers){
+
         $this->datas_type[] =
         [
             'language' => 'french',
@@ -23,6 +24,7 @@ class text_messages
             'site-title'=> 'EPAPHRODITE FRAMEWORK',
             'mdpnotsame'=>'mot de passe incorrecte',
             '404'=> 'Oops! Aucune page trouvée !!!',
+            'error_text' => 'Erreur txt epaphrodite',
             'noformat'=>'Le format du fichier incorrecte !',
             'vide' => 'Veuillez remplir tous champs svp !!!',
             'login-wrong'=>'Login ou mot de passe incorrecte',

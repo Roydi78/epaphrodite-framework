@@ -69,8 +69,6 @@ class Control extends twig
                 $this->render( _DIR_MAIN_TEMP_ . $html ,
                 [ 
                     'path' => $this->paths , 
-                    'env' => $this->env , 
-                    'msg' => $this->msg ,
                     'layouts' => $this->layouts->main(),
                 ]);
             }
@@ -98,8 +96,6 @@ class Control extends twig
                 $this->render( _DIR_MAIN_TEMP_ . $html ,
                 [ 
                     'class'=>$class ,
-                    'env'=>$this->env , 
-                    'msg' => $this->msg ,
                     'path'=>$this->paths , 
                     'reponse'=>$this->ans ,
                     'form' => $this->layouts->forms() ,

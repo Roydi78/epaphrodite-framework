@@ -240,6 +240,7 @@ final class CoreExtension extends AbstractExtension
             new TwigFunction('__csrf', 'csrf_token_twig' ),
             new TwigFunction('__truncate', 'truncatePath_twig' ),
             new TwigFunction('__path', 'mainPath_twig' ),
+            new TwigFunction('__msg', 'msgPath_twig' ),
             new TwigFunction('__toiso', 'isoPath_twig' ),
             new TwigFunction('__img', 'imagePath_twig' ),
             new TwigFunction('__css', 'cssPath_twig' ),
@@ -1655,6 +1656,15 @@ function __classEnv(){
 }
 
 /**
+ * Return Message class
+ * 
+ */
+function __classMsg(){
+
+    return  new \bin\epaphrodite\define\text_messages;
+}
+
+/**
  * Return input of token csrf
  * 
  * @return string
@@ -1725,6 +1735,17 @@ function isoPath_twig( $string ){
 
     return __classEnv()->chaine( $string );
  } 
+
+
+/**
+ * Get message
+ * @param string|error_text $msg
+ * @return string
+ */
+function msgPath_twig( ?string $msg='error_text' ){
+
+    return __classMsg()->answers( $msg );
+ }  
 
 
 }

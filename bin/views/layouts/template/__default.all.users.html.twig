@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ __css('default.admin.style') }}" rel="stylesheet">
     <link rel="icon" href="{{ __img('logo.png') }}">
     <script src="{{ __js('cycle.chart') }}"></script>
-    <title>{{ msg.answers('site-title') }}</title>
+    <title>{{ __msg('site-title') }}</title>
 </head>
 <body>
 <div class="page-wrapper chiller-theme toggled">
@@ -70,7 +70,7 @@
   </nav>
   <main class="page-content">
     <div class="container-fluid" id="contenu">
-        <div class="container header-title"><strong>{{ msg.answers('site-title') }}</strong></div>
+        <div class="container header-title"><strong>{{ __msg('site-title') }}</strong></div>
         {% block content %}{% endblock %}
     </div>
   </main>
