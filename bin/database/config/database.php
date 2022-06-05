@@ -24,7 +24,7 @@ class database extends config
     */
     public function closeConnection($bd)
     {
-       return $this->epaphrodite_get_connexion($bd) = NULL;
+       return  NULL;
     }
 
     /* 

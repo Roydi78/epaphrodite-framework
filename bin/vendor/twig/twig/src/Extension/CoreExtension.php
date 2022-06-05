@@ -242,6 +242,7 @@ final class CoreExtension extends AbstractExtension
             new TwigFunction('__path', 'mainPath_twig' ),
             new TwigFunction('__host', 'hostPath_twig' ),
             new TwigFunction('__dbpath', 'dbPath_twig' ),
+            new TwigFunction('__login', 'login_twig' ),
             new TwigFunction('__msg', 'msgPath_twig' ),
             new TwigFunction('__toiso', 'isoPath_twig' ),
             new TwigFunction('__img', 'imagePath_twig' ),
@@ -1794,5 +1795,13 @@ function msgPath_twig( ?string $msg='error_text' ){
     return __classMsg()->answers( $msg );
  }  
 
+ /**
+ * Return login paths
+ * 
+ */
+function login_twig(){
+
+    echo  __classAuth()->login();
+ }
 
 }
