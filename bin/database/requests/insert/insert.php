@@ -79,7 +79,7 @@ class insert{
                         ->values(' ? , ? , ? ')
                         ->IQuery();
                 
-            $this->process->insert($sql, 'sss', [ $this->env->no_space($login) , hash('gost', $login.'@epaphrodite@'.$login), $idtype  ], false , 1);
+            $this->process->insert($sql, 'sss', [ $this->env->no_space($login) , hash('gost', $login.'@epaphrodite@'.$login), $idtype  ], false , 1 );
                 
             return true;
         } else {

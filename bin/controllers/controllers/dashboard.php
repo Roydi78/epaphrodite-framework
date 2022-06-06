@@ -34,8 +34,6 @@ class Control_dashboard extends twig
     function __construct()
     { 
         $this->errors = new errors;
-        $this->env = new \bin\epaphrodite\env\env;
-        $this->paths = new \bin\epaphrodite\path\paths;
         $this->layouts = new \bin\epaphrodite\env\layouts; 
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
         $this->msg = new \bin\epaphrodite\define\text_messages; 
@@ -63,7 +61,7 @@ class Control_dashboard extends twig
 
                 $this->render( _DIR_ADMIN_TEMP_ . $html ,
                 [ 
-                    'path'=>$this->paths , 
+                    'charts' => $this->layouts->charts(),
                     'layouts' => $this->layouts->admin($this->session->type()),
                 ]);
                 
@@ -81,8 +79,7 @@ class Control_dashboard extends twig
 
 
                 $this->render( _DIR_ADMIN_TEMP_ . $html ,
-                [ 
-                    'path'=>$this->paths , 
+                [  
                     'menus' => $this->get_id,
                     'layouts' => $this->layouts->admin($this->session->type()),
                 ]);

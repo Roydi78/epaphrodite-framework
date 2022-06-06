@@ -59,6 +59,18 @@ class layouts
         return "layouts/widgets/__widgets.forms.html.twig";
 
     }  
+
+    /**
+     * ******************************************************************************
+     * Get default template ( forms template )
+     *
+     * @return string
+    */    
+    public function charts(){
+
+        return "layouts/widgets/__widgets.charts.html.twig";
+
+    }      
     
     /**
      * ******************************************************************************

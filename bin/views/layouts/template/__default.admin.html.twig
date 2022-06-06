@@ -9,6 +9,7 @@
     <link href="{{ __cssiconfont('icofont.min') }}" rel="stylesheet" type="text/css">
     <link href="{{ __css('aos') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ __css('default.admin.style') }}" rel="stylesheet">
+    <script src="{{ __js('default.chart') }}"></script>
     <link rel="icon" href="{{ __img('logo.png') }}">
     <title>{{ __msg('site-title') }}</title>
 </head>
@@ -113,7 +114,7 @@
       </div>
     </div>
     <div class="sidebar-footer">
-      <a href="{{ path.logout() }}">D&eacute;connexion <i class="icofont-power"></i></a>
+      <a href="{{ __logout() }}">D&eacute;connexion <i class="icofont-power"></i></a>
     </div>
   </nav>
   <main class="page-content">

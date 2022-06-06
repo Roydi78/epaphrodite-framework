@@ -242,7 +242,12 @@ final class CoreExtension extends AbstractExtension
             new TwigFunction('__path', 'mainPath_twig' ),
             new TwigFunction('__host', 'hostPath_twig' ),
             new TwigFunction('__dbpath', 'dbPath_twig' ),
+            new TwigFunction('__logout', 'logoutPath_twig' ),
             new TwigFunction('__login', 'login_twig' ),
+            new TwigFunction('__yedidiah', 'datas_twig' ),
+            new TwigFunction('__menus', 'menu_twig' ),
+            new TwigFunction('__ifmodules', 'ifmodules_twig' ),
+            new TwigFunction('__libmodules', 'libmodules_twig' ),
             new TwigFunction('__msg', 'msgPath_twig' ),
             new TwigFunction('__toiso', 'isoPath_twig' ),
             new TwigFunction('__img', 'imagePath_twig' ),
@@ -1652,6 +1657,15 @@ function __classAuth(){
 }
 
 /**
+ * Return datas class
+ * 
+ */
+function __classDatas(){
+
+    return  new \bin\database\datas\datas;
+}
+
+/**
  * Return Env class
  * 
  */
@@ -1668,6 +1682,16 @@ function __classMsg(){
 
     return  new \bin\epaphrodite\define\text_messages;
 }
+
+/**
+ * Return Message class
+ * 
+ */
+function __classGetid(){
+
+    return  new \bin\database\requests\select\get_id;
+}
+
 
 /**
  * Return input of token csrf
@@ -1715,7 +1739,6 @@ function cssiconfontPath_twig( $css ){
     echo  __classPaths()->icofont( $css );
  }
 
-
 /**
  * Return javascript paths
  * 
@@ -1741,7 +1764,7 @@ function mainPath_twig( ?string $dir=null , ?string $page=null  ){
 
  }
 
-  /**
+/**
  * Return javascript paths
  * 
  */
@@ -1767,6 +1790,15 @@ function dbPath_twig(){
  }
 
 /**
+ * Return javascript paths
+ * 
+ */
+function logoutPath_twig(){
+
+    echo  __classPaths()->logout();
+ }
+
+/**
  * Tronquer le nombre de mot du text ou de la phrase
  * @return string
  */
@@ -1783,7 +1815,6 @@ function isoPath_twig( $string ){
 
     return __classEnv()->chaine( $string );
  } 
-
 
 /**
  * Get message
@@ -1803,5 +1834,41 @@ function login_twig(){
 
     echo  __classAuth()->login();
  }
+
+/**
+ * Return yedidiah paths
+ * 
+ */
+function datas_twig(?string $key = null, ?string $value = null){
+
+    echo  __classDatas()->yedidiah($key, $value );
+ }
+
+ /**
+ * Return login paths
+ * 
+ */
+function menu_twig( ?string $key=null ){
+
+    echo  __classGetid()->liste_menu( $key );
+ } 
+
+  /**
+ * Return login paths
+ * 
+ */
+function ifmodules_twig( ?string $module=null ){
+
+    echo  __classGetid()->modules( $module );
+ } 
+
+   /**
+ * Return login paths
+ * 
+ */
+function libmodules_twig( ?string $module=null ){
+
+    echo  __classDatas()->apps( $module );
+ } 
 
 }

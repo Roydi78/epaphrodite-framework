@@ -9,6 +9,7 @@
     <link href="{{ __cssiconfont('icofont.min') }}" rel="stylesheet" type="text/css">
     <link href="{{ __css('aos') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ __css('default.admin.style') }}" rel="stylesheet">
+    <script src="{{ __js('default.chart') }}"></script>
     <link rel="icon" href="{{ __img('logo.png') }}">
     <script src="{{ __js('cycle.chart') }}"></script>
     <title>{{ __msg('site-title') }}</title>
@@ -31,32 +32,32 @@
       <div class="sidebar-menu">
         <ul>
           <li class="header-menu"><span>Menu de gestion</span></li>
-            {% if menus.modules('profil') == true %}
-              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ datas.modules('profil') }}</span></a>
+            {% if __ifmodules('profil') == true %}
+              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ __libmodules('profil') }}</span></a>
                 <div class="sidebar-submenu">
                   <ul>
-                    {% for select in menus.liste_menu('profil') %}
-                      <li><a href="{{ datas.yedidiah(select.idpages|e , 'path' ) }}">{{ datas.yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
+                    {% for select in __menus('profil') %}
+                      <li><a href="{{ __yedidiah(select.idpages|e , 'path' ) }}">{{ __yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
                     {% endfor %}
                   </ul>
                 </div>
             {% endif %}                                                                               
-            {% if menus.modules('right') == true %}
-              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ datas.modules('right') }}</span></a>
+            {% if __ifmodules('right') == true %}
+              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ __libmodules('right') }}</span></a>
                 <div class="sidebar-submenu">
                   <ul>
-                    {% for select in menus.liste_menu('right') %}
-                      <li><a href="{{ datas.yedidiah(select.idpages|e , 'path' ) }}">{{ datas.yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
+                    {% for select in __menus('right') %}
+                      <li><a href="{{ __yedidiah(select.idpages|e , 'path' ) }}">{{ __yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
                     {% endfor %}
                   </ul>
                 </div>
             {% endif %} 
-            {% if menus.modules('users') == true %}
-              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ datas.modules('users') }}</span></a>
+            {% if __ifmodules('users') == true %}
+              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ __libmodules('users') }}</span></a>
                 <div class="sidebar-submenu">
                   <ul>
-                    {% for select in menus.liste_menu('users') %}
-                      <li><a href="{{ datas.yedidiah(select.idpages|e , 'path' ) }}">{{ datas.yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
+                    {% for select in __menus('users') %}
+                      <li><a href="{{ __yedidiah(select.idpages|e , 'path' ) }}">{{ __yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
                     {% endfor %}
                   </ul>
                 </div>
@@ -65,7 +66,7 @@
       </div>
     </div>
     <div class="sidebar-footer">
-      <a href="{{ path.logout() }}">D&eacute;connexion <i class="icofont-power"></i></a>
+      <a href="{{ __logout() }}">D&eacute;connexion <i class="icofont-power"></i></a>
     </div>
   </nav>
   <main class="page-content">

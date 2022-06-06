@@ -1,4 +1,4 @@
-{% extends layouts %} {% block content %}
+{% extends layouts %}{% from charts import bar_chart %} {% block content %}
 <div class="container-fluid admin">
     <h1>WELCOME - ADMINISTRATION</h1>
     <hr>
@@ -11,5 +11,12 @@
             </div>
         </div>
     </div>
+
+    <div class="col-lg-6 mb-6" align="center">
+        <canvas id="chart_test" style="width:100%;max-width:100%">tes</canvas>
+    </div>
+
+    {{ bar_chart( "test , test" , "5" , "#05a158" , "chart_test" , "test label" ) }}
+
 </div>
 {% endblock %}
