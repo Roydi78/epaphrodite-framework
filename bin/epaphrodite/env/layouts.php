@@ -39,7 +39,6 @@ class layouts
 
         $urls =
         [
-
             1 => "layouts/template/__default.admin.html.twig",
             2 => "layouts/template/__default.all.users.html.twig",
         ];
