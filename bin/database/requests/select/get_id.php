@@ -148,7 +148,7 @@ class get_id
             ->where('loginuser_bd')
             ->SQuery(NULL);
 
-        $result = $this->process->select($sql, 's', [ $login ], false , 1);
+        $result = $this->process->select($sql, 's', [ $login ], false );
 
         return $result;
     } 

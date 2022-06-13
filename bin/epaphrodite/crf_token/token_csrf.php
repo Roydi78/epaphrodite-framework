@@ -7,6 +7,7 @@ use bin\epaphrodite\crf_token\validate_token;
 
 class token_csrf{
 
+    protected $csrf;
     protected $token_value;
 
     function __construct()

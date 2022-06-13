@@ -63,7 +63,7 @@ class update{
                     -> table('user_bd') 
                     -> UQuery(NULL);
 
-        $result = $this->process->update( $sql , null , null , true , 1);
+        $result = $this->process->update( $sql , null , null , true );
 
         return $result;        
 

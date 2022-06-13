@@ -2,10 +2,10 @@
 
 namespace bin\epaphrodite\crf_token;
 
-use bin\epaphrodite\crf_token\gettokenvalue;
+use bin\epaphrodite\auth\session_auth;
 use bin\epaphrodite\crf_token\token_error;
 use bin\epaphrodite\crf_token\csrf_secure;
-use bin\epaphrodite\auth\session_auth;
+use bin\epaphrodite\crf_token\gettokenvalue;
 
 class validate_token {
 
@@ -17,10 +17,10 @@ class validate_token {
      */
     function __construct()
     {
-        $this->token_value = new gettokenvalue();
-        $this->error = new token_error();
-        $this->secure = new csrf_secure();
-        $this->session = new session_auth();
+        $this->error = new token_error;
+        $this->secure = new csrf_secure;
+        $this->session = new session_auth;
+        $this->token_value = new gettokenvalue;
     }
 
     /**

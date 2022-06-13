@@ -62,7 +62,7 @@ class select{
                     ->orderby('loginuser_bd', 'ASC')
                     -> SQuery(NULL);
 
-        $result = $this->process->select( $sql , null , null , true , 1 );
+        $result = $this->process->select( $sql , null , null , true );
 
         return $result;        
 
