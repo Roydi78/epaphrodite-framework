@@ -7,9 +7,7 @@ use bin\database\config\config;
 
 class database extends config
 {
-    /*
-        @Var of connexions 
-    */
+
 
     /* 
         Construct database connection 
@@ -27,10 +25,16 @@ class database extends config
        return  NULL;
     }
 
-    /* 
-        SQL select request  
+    /**
+     * SQL request to select  
+     * 
+     * @param string|null $sql_chaine
+     * @param string|null $param
+     * @param array|null $datas
+     * @param int|1 $bd
+     * 
     */
-    public function select($sql_chaine, $param, $datas = array() , int $bd)
+    public function select($sql_chaine, $param, $datas = array() , ?int $bd=1)
     {
         
         $request = $this->get_connexion($bd)->prepare($sql_chaine);
@@ -47,10 +51,14 @@ class database extends config
         return $request->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /* 
-        SQL insert request  
+    /**
+     * SQL request to insert  
+     * @param string|null $sql_chaine
+     * @param string|null $param
+     * @param array|null $datas
+     * @param int|1 $bd
     */
-    public function insert($sql_chaine, $param, $datas = array() , int $db)
+    public function insert( $sql_chaine, $param, $datas = array() , ?int $db=1 )
     {
 
         $request = $this->get_connexion($db)->prepare($sql_chaine);
@@ -67,10 +75,14 @@ class database extends config
         return $result;
     }
 
-    /* 
-        SQL delete request  
+    /**
+     * SQL request to delete  
+     * @param string|null $sql_chaine
+     * @param string|null $param
+     * @param array|null $datas
+     * @param int|1 $bd
     */
-    public function delete($sql_chaine, $param, $datas = array() , int $db)
+    public function delete( $sql_chaine , $param, $datas = array() , ?int $db=1)
     {
         $request = $this->get_connexion($db)->prepare($sql_chaine);
 
@@ -86,10 +98,15 @@ class database extends config
         return $request;
     }
 
-    /* 
-        SQL update request 
+    /**
+     * SQL request to update 
+     * 
+     * @param string|null $sql_chaine
+     * @param string|null $param
+     * @param array|null $datas
+     * @param int|1 $bd
     */
-    public function update($sql_chaine, $param, $datas = array() , int $db)
+    public function update($sql_chaine, $param, $datas = array() , ?int $db=1)
     {
         $request = $this->get_connexion($db)->prepare($sql_chaine);
 
@@ -104,4 +121,5 @@ class database extends config
 
         return $result;
     }
+
 }
