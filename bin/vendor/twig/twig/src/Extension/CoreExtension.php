@@ -1767,7 +1767,7 @@ function mainPath_twig( ?string $dir=null , ?string $page=null  ){
 /**
  * Return javascript paths
  * 
- */
+*/
 function hostPath_twig(){
 
     if( __classAuth()->login()!=false&&__classAuth()->id()!=false){
@@ -1845,7 +1845,7 @@ function datas_twig(?string $key = null, ?string $value = null){
  }
 
  /**
- * Return login paths
+ * Return menu paths
  * 
  */
 function menu_twig( ?string $key=null ){
@@ -1853,8 +1853,8 @@ function menu_twig( ?string $key=null ){
     echo  __classGetid()->liste_menu( $key );
  } 
 
-  /**
- * Return login paths
+/**
+ * Return module paths
  * 
  */
 function ifmodules_twig( ?string $module=null ){
@@ -1862,8 +1862,8 @@ function ifmodules_twig( ?string $module=null ){
     echo  __classGetid()->modules( $module );
  } 
 
-   /**
- * Return login paths
+/**
+ * Return libelle module paths
  * 
  */
 function libmodules_twig( ?string $module=null ){
