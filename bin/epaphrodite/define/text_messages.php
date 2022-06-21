@@ -24,6 +24,7 @@ class text_messages
             'site-title'=> 'EPAPHRODITE FRAMEWORK',
             'mdpnotsame'=>'mot de passe incorrecte',
             '404'=> 'Oops! Aucune page trouvée !!!',
+            '500'=> 'Internal server error',
             'error_text' => 'Erreur txt epaphrodite',
             'noformat'=>'Le format du fichier incorrecte !',
             'vide' => 'Veuillez remplir tous champs svp !!!',

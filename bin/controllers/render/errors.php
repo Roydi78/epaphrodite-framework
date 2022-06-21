@@ -78,13 +78,14 @@ class errors extends twig
      * 
      * @return exit
      */
-    public function error_500()
+    public function error_500( $errorType )
     {
 
         $this->render(
-            'errors',
+            'errors/500',
             [
                 'back' => $this->back(),
+                'type' => $errorType,
                 'layouts' => $this->layouts->errors(),
             ]
         );

@@ -68,23 +68,41 @@ class config
         
     }    
 
-   /* 
-        Get database connection 
+   /** 
+    * Connect to databse 
+    * @var int|1 $db
+    * @return mixed
     */
-    public static function epaphrodite_get_connexion($db)
+    public static function epaphrodite_get_connexion(?int $db=1)
     {
+        // Try to connect to database to etablish connexion
         try {
 
             $get_connexion = new PDO( SELF::DB_DSN($db) , SELF::DB_USER($db), SELF::DB_PASS($db), SELF::OPTION);
 
             return $get_connexion;
 
+        // If impossible send error message    
         } catch (PDOException $e) {
 
-            echo "Probleme de connexion a la base de donnees: " . $e->getMessage();
+            SELF::getError( $e->getMessage() );
 
         }
     }    
+
+    /**
+     * Error message
+     * @param string|null $type
+     * 
+     * @return mixed
+     */
+    private static function getError( ?string $type=null ){
+
+        $errors = new \bin\controllers\render\errors;
+            
+        $errors->error_500( $type );
+
+    }
    
 
 }
