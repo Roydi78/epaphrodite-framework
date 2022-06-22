@@ -35,7 +35,19 @@ class config
         $content = parse_ini_file ( $ini , true );
 
         return $content;
+    }   
+    
+    /**
+     * Error message
+     * @param string|null $type
+     * 
+     * @return mixed
+     */
+    private static function getError( ?string $type=null ){
 
+        $errors = new \bin\controllers\render\errors;
+            
+        $errors->error_500( $type );
     }    
     
     /**
@@ -45,7 +57,6 @@ class config
     private static function DB_DSN($db){
 
         return SELF::ini_config()[$db."DB_DSN"];
-        
     }
 
     /**
@@ -55,7 +66,6 @@ class config
     private static function DB_PASS($db){
 
         return SELF::ini_config()[$db."DB_PASSWORD"];
-        
     }
 
     /**
@@ -65,7 +75,6 @@ class config
     private static function DB_USER($db){
 
         return SELF::ini_config()[$db."DB_USER"];
-        
     }    
 
    /** 
@@ -78,9 +87,7 @@ class config
         // Try to connect to database to etablish connexion
         try {
 
-            $get_connexion = new PDO( SELF::DB_DSN($db) , SELF::DB_USER($db), SELF::DB_PASS($db), SELF::OPTION);
-
-            return $get_connexion;
+            return new PDO( SELF::DB_DSN($db) , SELF::DB_USER($db), SELF::DB_PASS($db), SELF::OPTION);
 
         // If impossible send error message    
         } catch (PDOException $e) {
@@ -88,21 +95,7 @@ class config
             SELF::getError( $e->getMessage() );
 
         }
-    }    
-
-    /**
-     * Error message
-     * @param string|null $type
-     * 
-     * @return mixed
-     */
-    private static function getError( ?string $type=null ){
-
-        $errors = new \bin\controllers\render\errors;
-            
-        $errors->error_500( $type );
-
-    }
+    }   
    
 
 }

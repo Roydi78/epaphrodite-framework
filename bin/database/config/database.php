@@ -57,6 +57,7 @@ class database extends config
      * @param string|null $param
      * @param array|null $datas
      * @param int|1 $bd
+     * 
     */
     public function insert( $sql_chaine, $param, $datas = array() , ?int $db=1 )
     {
