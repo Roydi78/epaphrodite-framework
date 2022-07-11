@@ -179,22 +179,33 @@ class paths extends host
     /**
      * bootstrap font paths
      *
-     * @param string $cssneeded
+     * @param string $font
      * @return string
     */     
-    public function font( string $cssneeded ){
-        $this->path = $this->gethost().'static/font-awesome/css/'.$this->slug($cssneeded).'.css';
+    public function font( string $font ){
+        $this->path = $this->gethost().'static/font-awesome/css/'.$this->slug($font).'.css';
         return $this->path;
     } 
 
     /**
-     * bootstrap font paths
+     * bootstrap icofont paths
      *
-     * @param string $cssneeded
+     * @param string $icofont
      * @return string
     */     
-    public function icofont( string $cssneeded ){
-        $this->path = $this->gethost().'static/icofont/'.$cssneeded.'.css';
+    public function icofont( string $icofont ){
+        $this->path = $this->gethost().'static/icofont/'.$icofont.'.css';
+        return $this->path;
+    }  
+    
+    /**
+     * bootstrap icon paths
+     *
+     * @param string $bsicon
+     * @return string
+    */     
+    public function bsicon( string $bsicon ){
+        $this->path = $this->gethost().'static/bootstrap-icons/'.$bsicon.'.css';
         return $this->path;
     }     
     

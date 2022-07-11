@@ -254,6 +254,7 @@ final class CoreExtension extends AbstractExtension
             new TwigFunction('__css', 'cssPath_twig' ),
             new TwigFunction('__cssfont', 'cssfontPath_twig' ),
             new TwigFunction('__cssiconfont', 'cssiconfontPath_twig' ),
+            new TwigFunction('__cssbsico', 'cssbsicontPath_twig' ),
             new TwigFunction('__js', 'jsPath_twig' ),
         ];
     }
@@ -1738,6 +1739,15 @@ function cssiconfontPath_twig( $css ){
 
     echo  __classPaths()->icofont( $css );
  }
+
+ /**
+ * Return bootstrap icon paths
+ * 
+ */
+function cssbsicontPath_twig( $css ){
+
+    echo  __classPaths()->bsicon( $css );
+ } 
 
 /**
  * Return javascript paths
