@@ -138,9 +138,9 @@ body {
     color: #ffffff;
 }
 
-.form {
+.form .validerinfos {
     margin: auto;
-    width: 50%;
+    width: 10%;
     padding: 20px;
     border: 1px solid #026d49;
     border-radius: 10px;
@@ -215,7 +215,7 @@ body {
 
 @media (max-width: 768px) {
     .form {
-        width: 100%;
+        width: 10%;
     }
     .epaphrodite h1 {
         font-size: 70px;
