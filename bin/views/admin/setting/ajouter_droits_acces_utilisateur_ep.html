@@ -2,7 +2,7 @@
 DES DROITS DES UTILISATEURS", path.admin( 'setting' ,'gest_droits_acces_users') ,"ATTRIBUTION DES DROITS AUX UTILISATEURS" )}}
 <div class="container" id="contenu">
     {{ alert_msg( reponse , alert ) }}
-    <form class="formdaicg" method="post" novalidate id="datasform">
+    <form class="validateforms" method="post" novalidate id="datasform">
         {{ loader() }}{{ __csrf() }}
         <div class="row g-3">
             <div class="col-12">

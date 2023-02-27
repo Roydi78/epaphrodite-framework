@@ -27,7 +27,31 @@ class datas
             [
                 1 => 'SUPER ADMINISTRATEUR',
                 2 => 'ADMINISTRATEUR',
-                3 => 'AUTRE UTILISATEUR',
+                3 => 'UTILISATEUR',
+
+            ];
+
+        if ($key === null) {
+            return $list;
+        } else {
+            return $list[$key];
+        }
+    }
+
+    /**
+     * Liste des types utilisateurs
+     * @param int $key
+     * @return array
+     */
+    public function other_user_list(?int $key = null)
+    {
+
+        $list =
+            [
+                1 => 'ADMINISTRATEUR',
+                2 => 'SOUS-DIRECTEUR',
+                3 => 'AGENT CENTRAL',
+                4 => 'AGENT REGION'
 
             ];
 
@@ -43,15 +67,16 @@ class datas
      * @param int $key
      * @return array
      */
-    public function apps(?int $key = null)
+    public function modules(?string $key = null)
     {
 
         $list =
             [
                 'profil' => 'MON PROFIL',
+                'agence' => 'GEST. AGENCES',
+                'import' => 'GEST. IMPORTATION',
                 'right' => 'GEST. DROITS ACCESS',
                 'users' => 'GEST. UTILISATEURS',
-                'setting' => 'PARAMETRE SYSTEME',
 
             ];
 
@@ -75,10 +100,10 @@ class datas
 
                 'umdp' => ['apps' => 'profil', 'libelle' => "Modifier mot de passe", 'path' => $this->paths->admin('users', 'modifier_mot_de_passe'), 'right' => 'umdp'],
                 'uinfos' => ['apps' => 'profil', 'libelle' => "Modifier mes infos", 'path' => $this->paths->admin('users', 'modifier_infos_perso'), 'right' => 'uinfos'],
-                'guseright' => ['apps' => 'right', 'libelle' => "Gest. droits utilisateurs", 'path' => $this->specific_path('guseright'), 'right' => 'guseright'],
-                'adduright' => ['apps' => 'right', 'libelle' => "Ajouter des droits utilisateurs", 'path' => $this->specific_path('adduright'), 'right' => 'adduright'],
-                'addusers' => ['apps' => 'users', 'libelle' => "Ajouter utilisateurs", 'path' => $this->specific_path('addusers'), 'right' => 'addusers'],
-                'gusers' => ['apps' => 'users', 'libelle' => "Liste utilisateurs", 'path' => $this->specific_path('gusers'), 'right' => 'gusers'],
+                'ajoutagence' => ['apps' => 'agence', 'libelle' => "Ajouter des agences", 'path' => $this->paths->admin('users', 'ajouter_des_agences'), 'right' => 'ajoutagence'],
+                'listagence' => ['apps' => 'agence', 'libelle' => "Liste des agences", 'path' => $this->paths->admin('users', 'list_des_agences'), 'right' => 'listagence'],
+                'importusers' => ['apps' => 'import', 'libelle' => "Importation des utilisateurs", 'path' => $this->paths->admin('users', 'import_des_utilisateurs'), 'right' => 'importusers'],
+                'listusers' => ['apps' => 'users', 'libelle' => "Liste des utilisateurs", 'path' => $this->paths->admin('users', 'liste_des_utilisateurs'), 'right' => 'listusers'],
 
             ];
 

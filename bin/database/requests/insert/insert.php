@@ -99,7 +99,7 @@ class insert
                 ->values(' ? , ? , ? ')
                 ->IQuery();
 
-            $this->process->insert($sql, 'sss', [$this->env->no_space($login), hash('gost', $login . '@daicg'), $idtype], false, 1);
+            $this->process->insert($sql, 'sss', [$this->env->no_space($login), hash('gost', $login . '@epaph'), $idtype], false, 1);
 
             $actions = "Ajout d'un utilisateur : " . $login;
 

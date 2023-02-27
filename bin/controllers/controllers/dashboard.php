@@ -21,10 +21,11 @@ class Control_dashboard extends twig
      * @var \bin\epaphrodite\env\env $env
      * @var \bin\controllers\render\errors $errors
      */
-    private $auth;
     private $sms;
     private $msg;
     private $env;
+    private $auth;
+    private $count;
     private $email;
     private $paths;
     private $get_id;
@@ -38,6 +39,7 @@ class Control_dashboard extends twig
         $this->layouts = new \bin\epaphrodite\env\layouts;
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
         $this->msg = new \bin\epaphrodite\define\text_messages;
+        $this->count = new \bin\database\requests\select\count;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->email = new \bin\epaphrodite\api\email\send_mail;
         $this->get_id = new \bin\database\requests\select\get_id;
@@ -62,6 +64,7 @@ class Control_dashboard extends twig
                 $this->render(
                     _DIR_ADMIN_TEMP_ . $html,
                     [
+                        'count' => $this->count,
                         'select' => $this->get_id,
                         'login' => $this->session->nomprenoms(),
                         'layouts' => $this->layouts->admin($this->session->type()),
@@ -82,6 +85,7 @@ class Control_dashboard extends twig
                 $this->render(
                     _DIR_ADMIN_TEMP_ . $html,
                     [
+                        'count' => $this->count,
                         'select' => $this->get_id,
                         'login' => $this->session->nomprenoms(),
                         'layouts' => $this->layouts->admin($this->session->type()),
@@ -103,6 +107,7 @@ class Control_dashboard extends twig
                 $this->render(
                     _DIR_ADMIN_TEMP_ . $html,
                     [
+                        'count' => $this->count,
                         'select' => $this->get_id,
                         'login' => $this->session->nomprenoms(),
                         'layouts' => $this->layouts->admin($this->session->type()),

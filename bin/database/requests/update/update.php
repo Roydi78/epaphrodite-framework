@@ -205,7 +205,7 @@ class update
             ->where('loginuser_bd')
             ->UQuery();
 
-        $this->process->update($sql, 'ss', [hash('gost', $code_user . '@daicg'), $code_user], false);
+        $this->process->update($sql, 'ss', [hash('gost', $code_user . '@epaph'), $code_user], false);
 
         $actions = "Réinitialisation de mot de passe de l'utilisateur : " . $code_user;
         $this->action_recente($actions);
