@@ -92,7 +92,7 @@ class utilisateur_app extends twig
 
                 if (isset($_POST['submit'])) {
 
-                    $this->result = $this->update->infos_perso($_POST['matricule'], $_POST['nomprenom'], $_POST['email'], $_POST['contact']);
+                    $this->result = $this->update->infos_perso($_POST['nomprenom'], $_POST['email'], $_POST['contact']);
                     if ($this->result === true) {
                         $this->ans = $this->msg->answers('succes');
                         $alert = 'alert-success';

@@ -143,8 +143,6 @@ class auth
 
           $_SESSION["login"] = $users_datas[0]["loginuser_bd"];
 
-          $_SESSION["matricule"] = $users_datas[0]["matricule_user"];
-
           $_SESSION["type"] = $users_datas[0]["type_user_bd"];
 
           $_SESSION["nom_prenoms"] = $users_datas[0]["nomprenoms_user"];

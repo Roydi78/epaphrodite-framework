@@ -20,34 +20,34 @@ class Control_dashboard extends twig
      * @var \bin\epaphrodite\env\layouts $layouts
      * @var \bin\epaphrodite\env\env $env
      * @var \bin\controllers\render\errors $errors
-    */
-    private $csrf;
+     */
     private $auth;
-    private $layouts;
-    private $paths;
     private $sms;
     private $msg;
-    private $email;
     private $env;
+    private $email;
+    private $paths;
+    private $get_id;
+    private $session;
+    private $layouts;
     private $errors;
 
     function __construct()
-    { 
+    {
         $this->errors = new errors;
-        $this->layouts = new \bin\epaphrodite\env\layouts; 
+        $this->layouts = new \bin\epaphrodite\env\layouts;
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
-        $this->msg = new \bin\epaphrodite\define\text_messages; 
+        $this->msg = new \bin\epaphrodite\define\text_messages;
         $this->session = new \bin\epaphrodite\auth\session_auth;
-        $this->email = new \bin\epaphrodite\api\email\send_mail;       
+        $this->email = new \bin\epaphrodite\api\email\send_mail;
         $this->get_id = new \bin\database\requests\select\get_id;
     }
 
-    public function epaphrodite( $html )
+    public function epaphrodite($html)
     {
-        
-        if(file_exists( _DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html' ))
-        {
-           
+
+        if (file_exists(_DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html')) {
+
             /**
              * ************************************************************************
              * Dashboard for super admin
@@ -55,18 +55,40 @@ class Control_dashboard extends twig
              * @param string $html
              * @param array $array
              * @return mixed
-            */
-            if( $html ==="dashboard/super_admin_ep"){
+             */
+            if ($html === "dashboard/super_admin_ep") {
 
 
-                $this->render( _DIR_ADMIN_TEMP_ . $html ,
-                [ 
-                    'charts' => $this->layouts->charts(),
-                    'layouts' => $this->layouts->admin($this->session->type()),
-                ]);
-                
-            } 
-            
+                $this->render(
+                    _DIR_ADMIN_TEMP_ . $html,
+                    [
+                        'select' => $this->get_id,
+                        'login' => $this->session->nomprenoms(),
+                        'layouts' => $this->layouts->admin($this->session->type()),
+                    ]
+                );
+            }
+
+            /**
+             * ************************************************************************
+             * Dashboard for administrateur users
+             * 
+             * @param string $html
+             * @param array $array
+             * @return mixed
+             */
+            elseif ($html === "dashboard/admin_ep") {
+
+                $this->render(
+                    _DIR_ADMIN_TEMP_ . $html,
+                    [
+                        'select' => $this->get_id,
+                        'login' => $this->session->nomprenoms(),
+                        'layouts' => $this->layouts->admin($this->session->type()),
+                    ]
+                );
+            }
+
             /**
              * ************************************************************************
              * Dashboard for simple users
@@ -74,30 +96,31 @@ class Control_dashboard extends twig
              * @param string $html
              * @param array $array
              * @return mixed
-            */
-            elseif( $html ==="dashboard/user_ep"){
+             */
+            elseif ($html === "dashboard/user_ep") {
 
 
-                $this->render( _DIR_ADMIN_TEMP_ . $html ,
-                [  
-                    'menus' => $this->get_id,
-                    'layouts' => $this->layouts->admin($this->session->type()),
-                ]);
-                
+                $this->render(
+                    _DIR_ADMIN_TEMP_ . $html,
+                    [
+                        'select' => $this->get_id,
+                        'login' => $this->session->nomprenoms(),
+                        'layouts' => $this->layouts->admin($this->session->type()),
+                    ]
+                );
+            } else {
+                $this->errors->error_403();
             }
-            
-            else{ $this->errors->error_403();}     
-                 
-        }else{ $this->errors->error_404();}    
-         
+        } else {
+            $this->errors->error_404();
+        }
     }
-
 }
 
 class dashboard extends Control_dashboard
 {
-    public function send( $html )
+    public function send($html)
     {
-        $this->epaphrodite( $html );
+        $this->epaphrodite($html);
     }
 }

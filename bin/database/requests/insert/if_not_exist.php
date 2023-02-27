@@ -26,7 +26,7 @@ class if_not_exist
   private function create_recently_actions_if_not_exist()
   {
 
-    $sql = "CREATE TABLE IF NOT EXISTS recente_actions (idrecenteactions int(11) NOT NULL auto_increment , usersactions varchar(20)NOT NULL , dateactions datetime , libactions varchar(200)NOT NULL , PRIMARY KEY(idrecenteactions) , INDEX (usersactions) )";
+    $sql = "CREATE TABLE IF NOT EXISTS recente_actions (idrecenteactions int(11) NOT NULL auto_increment , usersactions varchar(20)NOT NULL , dateactions datetime , libactions varchar(300)NOT NULL , PRIMARY KEY(idrecenteactions) , INDEX (usersactions) )";
 
     $this->request->insert($sql, NULL, NULL, false);
   }
