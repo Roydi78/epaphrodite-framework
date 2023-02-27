@@ -1,20 +1,56 @@
-{% extends layouts %}{% from charts import bar_chart %} {% block content %}
-<div class="container-fluid admin">
-    <h1>WELCOME - ADMINISTRATION</h1>
-    <hr>
-    <p>{{ messages.answers('site-title') }}</p>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 epaphrodite" align="center">
-                <div class="eplogo aos-init" data-aos="fade-right" data-aos-offset="300" align="center"><img src="{{ __img('logo.png') }}" class="img-fluid"></div>
-                <div class="text-framework aos-init" data-aos="fade-left" data-aos-offset="300">Framework</div>
+{% extends layouts %} {% block content %}
+<div class="container-fluid maindashboard">
+    <div class="row">
+        <div class="col-lg-8 mb-8">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card dashboard_card">
+                        <h4 class="card-header text-light"> <i class="bi bi-gear"></i> AGENCES</h4>
+                        <div class="card-body">
+                            <p class="card-text" id="number_card"><strong>{{ count.count_all_agences() }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card dashboard_card">
+                        <h4 class="card-header text-light"> <i class="bi bi-gear"></i> PERSONNEL</h4>
+                        <div class="card-body">
+                            <p class="card-text" id="number_card"><strong>0</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card dashboard_card">
+                        <h4 class="card-header text-light"> <i class="bi bi-gear"></i> UTILISATEURS</h4>
+                        <div class="card-body">
+                            <p class="card-text" id="number_card"><strong>0</strong></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <div class="col-lg-6 mb-6" align="center">
-        <canvas id="chart_test" style="width:100%;max-width:100%">tes</canvas>
-    </div>
-
+        </div> 
+        <div class="col-lg-4 mb-4">
+            <div class="row">
+                <div class="col-lg-12 mb-12">
+                    <div class="card onathermenu">
+                        <div class="card-body">
+                            <h5 class="card-title">Actions r&eacute;centes</h5>
+                            {% for select in select.recents_actions() %}
+                            <div class="activity">
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">{{ select.dateactions|e|date('d/m/Y H:i:s') }}</div>
+                                    <i class='bi bi-clock activity-badge text-white align-self-start'></i>
+                                    <div class="activity-content">
+                                        {{ select.libactions|e }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div> 
+    </div>      
 </div>
 {% endblock %}
