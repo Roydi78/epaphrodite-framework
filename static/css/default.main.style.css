@@ -17,7 +17,7 @@ body {
 }
 
 .mt-30 {
-    margin-top: 300px;
+    margin-top: 30px;
 }
 
 .mt-20 {
@@ -101,7 +101,7 @@ body {
 }
 
 .logo img {
-    margin-top: 150px;
+    margin-top: 100px;
     width: 40%;
 }
 
@@ -113,9 +113,10 @@ body {
 }
 
 .epaphrodite h1 {
-    font-size: 180px;
+    font-size: 100px;
     font-weight: 100px;
     text-align: center;
+    width: 80%;
 }
 
 .epaphrodite {
@@ -140,12 +141,13 @@ body {
 
 .form .validerinfos {
     margin: auto;
-    width: 10%;
+    width: 40%;
     padding: 20px;
     border: 1px solid #026d49;
     border-radius: 10px;
     background: #f1f1f1;
 }
+
 
 .success {
     text-align: center;
@@ -156,6 +158,10 @@ body {
     text-align: center;
     color: #ee2d2d;
 }
+
+#inputlarge{
+    resize: none;
+  }
 
 .loader {
     width: 70px;
@@ -218,7 +224,7 @@ body {
         width: 10%;
     }
     .epaphrodite h1 {
-        font-size: 70px;
+        font-size: 60px;
         font-weight: 100px;
         text-align: center;
     }
