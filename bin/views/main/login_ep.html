@@ -7,8 +7,10 @@
     <div class="container mt-20">
         <div class="form aos-init" data-aos="fade-up" data-aos-offset="300">
             <div class="reponses {{ class }}">{{ reponse ? reponse : "" }}</div>
-            <form class="validerinfos" method="post" novalidate>
-                {{ __csrf() }} {{ input_field('login','Login','text' , "Entrez votre Login svp!!!" ) }} {{ input_field('password','Password','password' , "Entrez votre mot de passe svp!!!" ) }} {{ submit('submit' , 'Connexion' , 'btn-success') }}
+            <form class="validateforms" method="post" novalidate>
+                <div class="row g-3">
+                {{ __csrf() }} {{ input_field('login','Login','text' , "Entrez votre Login svp!!!" ) }} {{ input_field('password','Mot de passe','password' , "Entrez votre mot de passe svp!!!" ) }} {{ submit('Se connecter' , 'bi bi-lock') }}
+            </div>
             </form>
         </div>
         <div class="epaphrodite" align="center">
@@ -21,7 +23,7 @@
     (function() {
         'use strict';
         window.addEventListener('load', function() {
-            var forms = document.getElementsByClassName('validerinfos');
+            var forms = document.getElementsByClassName('validateforms');
             var validation = Array.prototype.filter.call(forms, function(form) {
                 form.addEventListener('submit', function(event) {
                     if (form.checkValidity() === false) {
