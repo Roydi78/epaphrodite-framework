@@ -200,7 +200,8 @@ namespace Twig\Extension {
                 new TwigFilter('nl2br', 'nl2br', ['pre_escape' => 'html', 'is_safe' => ['html']]),
                 new TwigFilter('spaceless', 'twig_spaceless', ['is_safe' => ['html']]),
 
-                // array helpers
+                // array helpers 
+                new TwigFilter('strpad', 'strpad'),
                 new TwigFilter('join', 'twig_join_filter'),
                 new TwigFilter('split', 'twig_split_filter', ['needs_environment' => true]),
                 new TwigFilter('sort', 'twig_sort_filter'),
@@ -744,6 +745,21 @@ namespace {
         }
 
         return implode($glue, \array_slice($value, 0, -1)) . $and . $value[\count($value) - 1];
+    }
+
+    /**
+     * Strpad
+     * {{ 1|split(2,0) }}
+     * 
+     * @param $number
+     * @param $pad_length
+     * @param $pad_string
+     * 
+     * @return int
+     */
+    function strpad($number, $pad_length, $pad_string)
+    {
+        return str_pad($number, $pad_length, $pad_string, STR_PAD_LEFT);
     }
 
     /**

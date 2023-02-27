@@ -224,7 +224,7 @@ body {
     right: 15px;
     bottom: 15px;
     z-index: 99999;
-    background: #4154f1;
+    background: #126b4c;
     width: 40px;
     height: 40px;
     border-radius: 4px;
@@ -350,7 +350,7 @@ body {
   --------------------------------------------------------------*/
 
 .logo {
-    line-height: 1;
+    line-height: 1.1;
 }
 
 @media (min-width: 1200px) {
@@ -360,8 +360,8 @@ body {
 }
 
 .logo span {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 500;
     color: #d46407;
     font-family: "Nunito", sans-serif;
 }
@@ -430,7 +430,7 @@ body {
 }
 
 .header-nav .nav-profile {
-    color: #d46407;
+    color: #126b4c;
 }
 
 .header-nav .nav-profile img {

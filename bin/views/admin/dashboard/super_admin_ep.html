@@ -7,7 +7,7 @@
                     <div class="card dashboard_card">
                         <h4 class="card-header text-light"> <i class="bi bi-gear"></i> UTILISATEURS</h4>
                         <div class="card-body">
-                            <p class="card-text" id="number_card"><strong>{{ count.count_all_users() }}</strong></p>
+                            <p class="card-text" id="number_card"><strong>{{ count.count_all_users()|strpad(2,0) }}</strong></p>
                         </div>
                     </div>
                 </div>
