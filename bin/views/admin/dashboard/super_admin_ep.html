@@ -3,14 +3,22 @@
     <div class="row">
         <div class="col-lg-8 mb-8">
             <div class="row">
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-6 mb-6">
+                    <div class="card dashboard_card">
+                        <h4 class="card-header text-light"> <i class="bi bi-gear"></i> GROUPE D'UTILISATEUR</h4>
+                        <div class="card-body">
+                            <p class="card-text" id="number_card"><strong>{{ 3|strpad(2,0) }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-6">
                     <div class="card dashboard_card">
                         <h4 class="card-header text-light"> <i class="bi bi-gear"></i> UTILISATEURS</h4>
                         <div class="card-body">
                             <p class="card-text" id="number_card"><strong>{{ count.count_all_users()|strpad(2,0) }}</strong></p>
                         </div>
                     </div>
-                </div>
+                </div>                
             </div>
         </div> 
         <div class="col-lg-4 mb-4">
