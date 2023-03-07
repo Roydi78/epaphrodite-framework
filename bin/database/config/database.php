@@ -22,7 +22,7 @@ class database extends config
     */
     public function closeConnection($bd)
     {
-       return  NULL;
+        return  NULL;
     }
 
     /**
@@ -33,10 +33,10 @@ class database extends config
      * @param array|null $datas
      * @param int|1 $bd
      * 
-    */
-    public function select($sql_chaine, $param, $datas = array() , ?int $bd=1)
+     */
+    public function select($sql_chaine, $param, $datas = array(), ?int $bd = 1)
     {
-        
+
         $request = $this->get_connexion($bd)->prepare($sql_chaine);
 
         if (!empty($param)) {
@@ -58,8 +58,8 @@ class database extends config
      * @param array|null $datas
      * @param int|1 $bd
      * 
-    */
-    public function insert( $sql_chaine, $param, $datas = array() , ?int $db=1 )
+     */
+    public function insert($sql_chaine, $param, $datas = array(), ?int $db = 1)
     {
 
         $request = $this->get_connexion($db)->prepare($sql_chaine);
@@ -82,8 +82,8 @@ class database extends config
      * @param string|null $param
      * @param array|null $datas
      * @param int|1 $bd
-    */
-    public function delete( $sql_chaine , $param, $datas = array() , ?int $db=1)
+     */
+    public function delete($sql_chaine, $param, $datas = array(), ?int $db = 1)
     {
         $request = $this->get_connexion($db)->prepare($sql_chaine);
 
@@ -106,8 +106,8 @@ class database extends config
      * @param string|null $param
      * @param array|null $datas
      * @param int|1 $bd
-    */
-    public function update($sql_chaine, $param, $datas = array() , ?int $db=1)
+     */
+    public function update($sql_chaine, $param, $datas = array(), ?int $db = 1)
     {
         $request = $this->get_connexion($db)->prepare($sql_chaine);
 
@@ -122,5 +122,4 @@ class database extends config
 
         return $result;
     }
-
 }

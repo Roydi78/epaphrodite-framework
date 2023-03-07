@@ -7,7 +7,8 @@ use bin\database\config\database;
 class process
 {
 
-    
+    private $connexion;
+
     /**
      * *****************************************************************************************************************************
      * Processed all select request
@@ -18,15 +19,17 @@ class process
      * @param int|1 $bd
      * 
      * @return void
-    */
-    public function select( $sql , ?string $param=null , ?array $datas = null , ?bool $etat=false , ?int $bd=1 ){
+     */
+    public function select($sql, ?string $param = null, ?array $datas = null, ?bool $etat = false, ?int $bd = 1)
+    {
 
-        $result = $this->connexion()->select($sql, $param, $datas , $bd);
-  
-        if($etat===true){ $this->connexion->closeConnection($bd); }
+        $result = $this->connexion()->select($sql, $param, $datas, $bd);
+
+        if ($etat === true) {
+            $this->connexion->closeConnection($bd);
+        }
 
         return $result;
-
     }
 
     /**
@@ -40,17 +43,19 @@ class process
      * @param int|1 $bd
      * 
      * @return void
-    */  
-    public function update( $sql , ?string $param=null , ?array $datas = null , ?bool $etat = false , ?int $bd=1 ){
+     */
+    public function update($sql, ?string $param = null, ?array $datas = null, ?bool $etat = false, ?int $bd = 1)
+    {
 
-        $result = $this->connexion()->update($sql, $param, $datas , $bd);
+        $result = $this->connexion()->update($sql, $param, $datas, $bd);
 
-        if($etat===true){ $this->connexion->closeConnection($bd); }
+        if ($etat === true) {
+            $this->connexion->closeConnection($bd);
+        }
 
         return $result;
+    }
 
-    }  
-    
     /**
      * *****************************************************************************************************************************
      * Processed all insert request
@@ -62,17 +67,19 @@ class process
      * @param int|1 $bd
      * 
      * @return void
-     */   
-    public function insert( $sql , ?string $param = null , ?array $datas = null , ?bool $etat = false , ?int $bd=1 ){
+     */
+    public function insert($sql, ?string $param = null, ?array $datas = null, ?bool $etat = false, ?int $bd = 1)
+    {
 
-        $result = $this->connexion()->insert($sql, $param, $datas , $bd);
+        $result = $this->connexion()->insert($sql, $param, $datas, $bd);
 
-        if($etat===true){ $this->connexion->closeConnection($bd); }
+        if ($etat === true) {
+            $this->connexion->closeConnection($bd);
+        }
 
         return $result;
+    }
 
-    }    
-    
     /**
      * *****************************************************************************************************************************
      * Processed all delete request
@@ -84,25 +91,26 @@ class process
      * @param int|1 $bd
      * 
      * @return void
-     */    
-    public function delete( $sql , ?string $param = null , ?array $datas = null , ?bool $etat = false , ?int $bd=1 ){
+     */
+    public function delete($sql, ?string $param = null, ?array $datas = null, ?bool $etat = false, ?int $bd = 1)
+    {
 
-        $result = $this->connexion()->delete($sql, $param, $datas , $bd);
+        $result = $this->connexion()->delete($sql, $param, $datas, $bd);
 
-        if($etat===true){ $this->connexion->closeConnection($bd); }
+        if ($etat === true) {
+            $this->connexion->closeConnection($bd);
+        }
 
         return $result;
-        
-    } 
-    
+    }
+
     /**
      * *****************************************************************************************************************************
      * Get connexion of database
-     */     
-    private function connexion(){
+     */
+    private function connexion()
+    {
 
-     return $this->connexion = new database();
-
+        return $this->connexion = new database();
     }
-    
 }
