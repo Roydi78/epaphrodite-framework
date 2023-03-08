@@ -12,10 +12,11 @@ class database extends config
     /* 
         Construct database connection 
     */
-    public function get_connexion($db)
+    public function get_connexion(int $db, ?int $new = 1)
     {
-        return $this->epaphrodite_get_connexion($db);
+        return $new == 1 ? $this->epaphrodite_get_connexion($db) : $this->epaphrodite_other_connexion($db);
     }
+
 
     /* 
         Disconnexion 
@@ -59,10 +60,10 @@ class database extends config
      * @param int|1 $bd
      * 
      */
-    public function insert($sql_chaine, $param, $datas = array(), ?int $db = 1)
+    public function insert($sql_chaine, $param, $datas = array(), ?int $db = 1, ?int $new = 1)
     {
 
-        $request = $this->get_connexion($db)->prepare($sql_chaine);
+        $request = $this->get_connexion($db, $new)->prepare($sql_chaine);
 
         if (!empty($param)) {
 

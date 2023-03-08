@@ -66,6 +66,16 @@ class config
      * @var string
      * @return string
      */
+    private static function DB_OTHDSN($db)
+    {
+
+        return SELF::ini_config()[$db . "DB_OTHDSN"];
+    }
+
+    /**
+     * @var string
+     * @return string
+     */
     private static function DB_PASS($db)
     {
 
@@ -93,6 +103,25 @@ class config
         try {
 
             return new PDO(SELF::DB_DSN($db), SELF::DB_USER($db), SELF::DB_PASS($db), SELF::OPTION);
+
+            // If impossible send error message    
+        } catch (PDOException $e) {
+
+            SELF::getError($e->getMessage());
+        }
+    }
+
+    /** 
+     * Connect to databse 
+     * @var int|1 $db
+     * @return mixed
+     */
+    public static function epaphrodite_other_connexion(?int $db = 1)
+    {
+        // Try to connect to database to etablish connexion
+        try {
+
+            return new PDO(SELF::DB_OTHDSN($db), SELF::DB_USER($db), SELF::DB_PASS($db), SELF::OPTION);
 
             // If impossible send error message    
         } catch (PDOException $e) {

@@ -23,6 +23,18 @@ class if_not_exist
    * **********************************************************************************************
    * Create recently users actions if not exist
    */
+  private function create_db_if_not_exist()
+  {
+
+    $sql = "CREATE DATABASE IF NOT EXISTS epaphrodite_bd";
+
+    $this->request->insert($sql, NULL, NULL, false);
+  }
+
+  /**
+   * **********************************************************************************************
+   * Create recently users actions if not exist
+   */
   private function create_recently_actions_if_not_exist()
   {
 
@@ -50,9 +62,21 @@ class if_not_exist
   private function create_user_if_not_exist()
   {
 
-    $sql = "CREATE TABLE IF NOT EXISTS user_bd (iduser_bd int(11) NOT NULL auto_increment , loginuser_bd varchar(20)NOT NULL , mdpuser_bd varchar(100) NOT NULL , nomprenoms_user varchar(150) DEFAULT NULL , contact_user varchar(10) DEFAULT NULL , email_user varchar(50) DEFAULT NULL , type_user_bd int(1) NOT NULL , etat_userbd int(1) NOT NULL DEFAULT '1' , PRIMARY KEY(iduser_bd) , INDEX (loginuser_bd) )";
+    $sql = "CREATE TABLE IF NOT EXISTS user_bd (iduser_bd int(11) NOT NULL auto_increment , loginuser_bd varchar(20)NOT NULL , mdpuser_bd varchar(100) NOT NULL , nomprenoms_user varchar(150) DEFAULT NULL , contact_user varchar(10) DEFAULT NULL , email_user varchar(50) DEFAULT NULL , type_user_bd int(1) NOT NULL DEFAULT '1' , etat_userbd int(1) NOT NULL DEFAULT '1' , PRIMARY KEY(iduser_bd) , INDEX (loginuser_bd) )";
 
     $this->request->insert($sql, NULL, NULL, false);
+  }
+
+  /**
+   * ********************************************************************************************** 
+   * Create user if not exist
+   */
+  private function insert_user_if_not_exist()
+  {
+
+    $sql = "INSERT INTO user_bd VALUE ( loginuser_bd , mdpuser_bd)";
+
+    $this->request->insert($sql, 'ss', ['admin', 'admin'], false);
   }
 
   /**
@@ -74,6 +98,8 @@ class if_not_exist
    */
   public function create_table()
   {
+
+    $this->create_db_if_not_exist();
 
     $this->create_user_right_if_not_exist();
 

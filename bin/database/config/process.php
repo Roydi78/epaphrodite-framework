@@ -68,10 +68,10 @@ class process
      * 
      * @return void
      */
-    public function insert($sql, ?string $param = null, ?array $datas = null, ?bool $etat = false, ?int $bd = 1)
+    public function insert($sql, ?string $param = null, ?array $datas = null, ?bool $etat = false, ?int $bd = 1, ?int $new = 1)
     {
 
-        $result = $this->connexion()->insert($sql, $param, $datas, $bd);
+        $result = $this->connexion()->insert($sql, $param, $datas, $bd, $new);
 
         if ($etat === true) {
             $this->connexion->closeConnection($bd);
