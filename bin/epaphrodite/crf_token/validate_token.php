@@ -7,8 +7,12 @@ use bin\epaphrodite\crf_token\token_error;
 use bin\epaphrodite\crf_token\csrf_secure;
 use bin\epaphrodite\crf_token\gettokenvalue;
 
-class validate_token {
+class validate_token
+{
 
+    protected $error;
+    protected $secure;
+    protected $session;
     protected $token_value;
 
     /**
@@ -28,31 +32,42 @@ class validate_token {
      * 
      * @return mixed
      */
-    private function get_session_token(){
+    private function get_session_token()
+    {
 
-       return $this->token_value->getvalue();
-
-    }  
+        return $this->token_value->getvalue();
+    }
 
     /**
      * hidden token csrf input
      * 
      * @return mixed
-    */
-    private function get_input_token(){
+     */
+    private function get_input_token()
+    {
 
-        if (isset($_POST['token_csrf'])) { return $_POST['token_csrf']; } elseif (isset($_GET['token_csrf'])) { return $_GET['token_csrf']; } else { return NULL; }
-
-     }      
+        if (isset($_POST['token_csrf'])) {
+            return $_POST['token_csrf'];
+        } elseif (isset($_GET['token_csrf'])) {
+            return $_GET['token_csrf'];
+        } else {
+            return NULL;
+        }
+    }
 
     /**
      * Verify token crsf key
      *
      * @return mixed
-    */
-    public function token_verify(){
+     */
+    public function token_verify()
+    {
 
-        if($this->session->login()!==NULL){ return $this->on(); }else{ return $this->off(); }
+        if ($this->session->login() !== NULL) {
+            return $this->on();
+        } else {
+            return $this->off();
+        }
     }
 
     /**
@@ -60,9 +75,14 @@ class validate_token {
      *
      * @return void
      */
-    protected function on(){
+    protected function on()
+    {
 
-        if( hash('gost',$this->secure->secure())===hash('gost',$this->get_input_token()) && hash('gost',$this->secure->secure())===hash('gost',$this->get_session_token()) && hash('gost',$this->get_input_token())===hash('gost',$this->get_session_token()) ){ return true; }else{ $this->error->send(); }
+        if (hash('gost', $this->secure->secure()) === hash('gost', $this->get_input_token()) && hash('gost', $this->secure->secure()) === hash('gost', $this->get_session_token()) && hash('gost', $this->get_input_token()) === hash('gost', $this->get_session_token())) {
+            return true;
+        } else {
+            $this->error->send();
+        }
     }
 
     /**
@@ -70,10 +90,13 @@ class validate_token {
      *
      * @return void
      */
-    protected function off(){
-        
-        if( hash('gost',$this->get_input_token())===hash('gost',$this->get_session_token()) ){ return true; }else{ $this->error->send(); }
+    protected function off()
+    {
+
+        if (hash('gost', $this->get_input_token()) === hash('gost', $this->get_session_token())) {
+            return true;
+        } else {
+            $this->error->send();
+        }
     }
-
-
 }

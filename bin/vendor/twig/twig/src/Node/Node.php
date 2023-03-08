@@ -56,14 +56,14 @@ class Node implements \Countable, \IteratorAggregate
             $attributes[] = sprintf('%s: %s', $name, str_replace("\n", '', var_export($value, true)));
         }
 
-        $repr = [\get_class($this).'('.implode(', ', $attributes)];
+        $repr = [\get_class($this) . '(' . implode(', ', $attributes)];
 
         if (\count($this->nodes)) {
             foreach ($this->nodes as $name => $node) {
                 $len = \strlen($name) + 4;
                 $noderepr = [];
                 foreach (explode("\n", (string) $node) as $line) {
-                    $noderepr[] = str_repeat(' ', $len).$line;
+                    $noderepr[] = str_repeat(' ', $len) . $line;
                 }
 
                 $repr[] = sprintf('  %s: %s', $name, ltrim(implode("\n", $noderepr)));
@@ -145,6 +145,9 @@ class Node implements \Countable, \IteratorAggregate
         unset($this->nodes[$name]);
     }
 
+    /**
+     * @return int
+     */
     public function count()
     {
         return \count($this->nodes);

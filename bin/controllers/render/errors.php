@@ -7,6 +7,11 @@ use bin\controllers\render\twig;
 class errors extends twig
 {
 
+    private $msg;
+    private $paths;
+    private $layouts;
+    private $session;
+
     /**
      * Get class
      * @return void
@@ -78,7 +83,7 @@ class errors extends twig
      * 
      * @return exit
      */
-    public function error_500( $errorType )
+    public function error_500($errorType)
     {
 
         $this->render(

@@ -56,10 +56,10 @@ class paths extends host
      *
      * @param string $url|null
      * @param string $action
-     * @param integer $id
+     * @param string $id
      * @return string
      */
-    public function main_id(?string $url = null, string $action, int $id)
+    public function main_id(?string $url = null, ?string $action = null, ?string $id = NULL)
     {
 
         $this->path = $this->gethost() . $url . $action . $id;
@@ -116,7 +116,7 @@ class paths extends host
      * @param string $id
      * @return mixed
      */
-    public function admin_id(?string $folder = null, string $url, string $action, string $id)
+    public function admin_id(?string $folder = null, ?string $url = null, ?string $action = null, ?string $id = null)
     {
 
         $this->path = $this->gethost() . $folder . '/' . $this->slug($url) . '/' . $action . $id;

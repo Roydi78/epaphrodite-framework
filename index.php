@@ -1,7 +1,5 @@
 <?php
 
-//var_dump(hash('gost','000749@dsps@000749'));die();
-
 require 'bin/epaphrodite/define/define_directory.php';
 
 require _DIR_VENDOR_ . '/autoload.php';

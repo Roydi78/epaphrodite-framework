@@ -11,6 +11,8 @@ class gestcookies
     protected $cookievalue;
     protected $initvalue = "";
     private $session;
+    private $messages;
+    private $csrf;
 
     /**
      * construct class
@@ -23,7 +25,7 @@ class gestcookies
         $this->messages = new \bin\epaphrodite\define\text_messages;
         $this->csrf = new csrf_secure;
     }
-    
+
     /**
      * set session et cookies
      *
@@ -34,41 +36,36 @@ class gestcookies
      * @param string $httonly
      * @return void
      */
-    public function startsession( $lifetime , $path , $dommaine , $secure , $httonly )
-    {   
-        
-        session_set_cookie_params( $lifetime , $path , $dommaine , $secure , $httonly );
+    public function startsession($lifetime, $path, $dommaine, $secure, $httonly)
+    {
+
+        session_set_cookie_params($lifetime, $path, $dommaine, $secure, $httonly);
 
         session_name($this->messages->answers('session_name'));
 
         session_start();
 
-        if($this->session->login()===NULL&&empty($this->session->token_csrf()))
-        {
+        if ($this->session->login() === NULL && empty($this->session->token_csrf())) {
 
-            $this->set_user_cookies( $path, $dommaine, $secure, $httonly , $this->pathvalue->getvalue($this->initvalue) );
-            
+            $this->set_user_cookies($path, $dommaine, $secure, $httonly, $this->pathvalue->getvalue($this->initvalue));
         }
+    }
 
-     }
+    /**
+     * Set cookies
+     *
+     * @param string $path
+     * @param string $dommaine
+     * @param string $secure
+     * @param string $httonly
+     * @param string $cookievalue
+     * @return void
+     */
+    public function set_user_cookies($path, $dommaine, $secure, $httonly, $cookievalue)
+    {
 
-     /**
-      * Set cookies
-      *
-      * @param string $path
-      * @param string $dommaine
-      * @param string $secure
-      * @param string $httonly
-      * @param string $cookievalue
-      * @return void
-      */
-     public function set_user_cookies( $path , $dommaine, $secure, $httonly , $cookievalue)
-     {
-    
-        setcookie($this->messages->answers('token_name'), $cookievalue , time()+60*60*24 , $path , $dommaine , $secure , $httonly);
+        setcookie($this->messages->answers('token_name'), $cookievalue, time() + 60 * 60 * 24, $path, $dommaine, $secure, $httonly);
 
         $_COOKIE[$this->messages->answers('token_name')] = $cookievalue;
-
-     }
-
+    }
 }

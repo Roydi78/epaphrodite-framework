@@ -23,12 +23,12 @@ class if_not_exist
    * **********************************************************************************************
    * Create recently users actions if not exist
    */
-  private function create_db_if_not_exist()
+  public function create_db_if_not_exist()
   {
 
     $sql = "CREATE DATABASE IF NOT EXISTS epaphrodite_bd";
 
-    $this->request->insert($sql, NULL, NULL, false);
+    $this->request->insert($sql, NULL, NULL, false, 2);
   }
 
   /**
@@ -71,12 +71,12 @@ class if_not_exist
    * ********************************************************************************************** 
    * Create user if not exist
    */
-  private function insert_user_if_not_exist()
+  private function create_first_user_if_not_exist()
   {
 
-    $sql = "INSERT INTO user_bd VALUE ( loginuser_bd , mdpuser_bd)";
+    $sql = "INSERT INTO user_bd ( loginuser_bd , mdpuser_bd) VALUE ( ? , ?)";
 
-    $this->request->insert($sql, 'ss', ['admin', 'admin'], false);
+    $this->request->insert($sql, 'ss', ['admin', '0e8cd409a23c2e7ad1c5b22b101dfa16720550dc547921c7a099b75c7f405fd4'], false);
   }
 
   /**
@@ -104,6 +104,8 @@ class if_not_exist
     $this->create_user_right_if_not_exist();
 
     $this->create_user_if_not_exist();
+
+    $this->create_first_user_if_not_exist();
 
     $this->create_auth_secure_if_not_exist();
 

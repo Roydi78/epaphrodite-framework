@@ -8,12 +8,13 @@ use bin\epaphrodite\auth\session_auth;
 class csrf_secure
 {
 
-    public $session;
-    public $request;
+    private $session;
+    private $request;
+    private $messages;
     /**
      * Get class
      * @return void
-     */    
+     */
     function __construct()
     {
         $this->request = new process;
@@ -29,7 +30,7 @@ class csrf_secure
     private function QueryBuilder(): \bin\database\querybilder\querybuilder
     {
         return new \bin\database\querybilder\querybuilder();
-    }     
+    }
 
     /**
      * Update token into database
@@ -37,16 +38,16 @@ class csrf_secure
      * @param string $cookies
      * @return void
      */
-    private function update_bd_token($cookies){
+    private function update_bd_token($cookies)
+    {
 
-        $sql = $this->QueryBuilder() 
-        -> table('auth_secure') 
-        -> set([ 'auth_key' ]) 
-        -> where('auth') 
-        -> UQuery();  
+        $sql = $this->QueryBuilder()
+            ->table('auth_secure')
+            ->set(['auth_key'])
+            ->where('auth')
+            ->UQuery();
 
-        $this->request->update($sql,'ss',[ $cookies , md5($this->session->login()) ] , false );
-        
+        $this->request->update($sql, 'ss', [$cookies, md5($this->session->login())], false);
     }
 
     /**
@@ -54,35 +55,39 @@ class csrf_secure
      *
      * @param string $cookies
      * @return void
-     */     
-    private function insert_bd_token($cookies){
+     */
+    private function insert_bd_token($cookies)
+    {
 
-        $sql = $this->QueryBuilder() 
-                    -> table('auth_secure') 
-                    -> insert('auth , auth_key')
-                    -> values( ' ? , ? ' )  
-                    -> IQuery(); 
+        $sql = $this->QueryBuilder()
+            ->table('auth_secure')
+            ->insert('auth , auth_key')
+            ->values(' ? , ? ')
+            ->IQuery();
 
-        $this->request->insert( $sql,'ss',[ md5($this->session->login()) , $cookies ], false );      
-
-    }    
+        $this->request->insert($sql, 'ss', [md5($this->session->login()), $cookies], false);
+    }
 
     /**
      * Get csrf value
      *
-     * @return void
+     * @return string
      */
-    public function secure(){
+    public function secure()
+    {
 
-        $sql = $this->QueryBuilder() 
-                    -> table('auth_secure')                   
-                    -> where('auth') 
-                    -> SQuery(NULL); 
-       
-        $result = $this->request->select( $sql, 's' , [ md5($this->session->login()) ] , false );
-        
-        if(!empty($result)){ return $result[0]['auth_key']; }else{ return 0;}       
+        $sql = $this->QueryBuilder()
+            ->table('auth_secure')
+            ->where('auth')
+            ->SQuery(NULL);
 
+        $result = $this->request->select($sql, 's', [md5($this->session->login())], false);
+
+        if (!empty($result)) {
+            return $result[0]['auth_key'];
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -90,23 +95,18 @@ class csrf_secure
      *
      * @param string $cookies
      * @return void
-     */   
-    public function get_csrf($cookies){
+     */
+    public function get_csrf($cookies)
+    {
 
-        if($this->secure()===0){
+        if ($this->secure() === 0) {
 
             $this->insert_bd_token($cookies);
 
             return false;
-
-        }else{
+        } else {
 
             return $this->secure();
-
         }
-
     }
-
-
-
 }

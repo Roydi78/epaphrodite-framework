@@ -1809,7 +1809,7 @@ namespace {
      * Return javascript paths
      * 
      */
-    function mainidPath_twig(?string $folder = null, string $url, string $action, string $id)
+    function mainidPath_twig(?string $folder = null, ?string $url = null, ?string $action = null, ?string $id = null)
     {
 
         if (__classAuth()->login() != false && __classAuth()->id() != false) {

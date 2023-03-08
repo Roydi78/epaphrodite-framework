@@ -34,11 +34,11 @@ class FilesystemLoader implements LoaderInterface
      * @param string|array $paths    A path or an array of paths where to look for templates
      * @param string|null  $rootPath The root path common to all relative paths (null for getcwd())
      */
-    public function __construct($paths = [], string $rootPath = null)
+    public function __construct($paths = [], ?string $rootPath = null)
     {
-        $this->rootPath = (null === $rootPath ? getcwd() : $rootPath).\DIRECTORY_SEPARATOR;
+        $this->rootPath = (null === $rootPath ? getcwd() : $rootPath) . \DIRECTORY_SEPARATOR;
         if (false !== $realPath = realpath($rootPath)) {
-            $this->rootPath = $realPath.\DIRECTORY_SEPARATOR;
+            $this->rootPath = $realPath . \DIRECTORY_SEPARATOR;
         }
 
         if ($paths) {
@@ -87,7 +87,7 @@ class FilesystemLoader implements LoaderInterface
         // invalidate the cache
         $this->cache = $this->errorCache = [];
 
-        $checkPath = $this->isAbsolutePath($path) ? $path : $this->rootPath.$path;
+        $checkPath = $this->isAbsolutePath($path) ? $path : $this->rootPath . $path;
         if (!is_dir($checkPath)) {
             throw new LoaderError(sprintf('The "%s" directory does not exist ("%s").', $path, $checkPath));
         }
@@ -103,7 +103,7 @@ class FilesystemLoader implements LoaderInterface
         // invalidate the cache
         $this->cache = $this->errorCache = [];
 
-        $checkPath = $this->isAbsolutePath($path) ? $path : $this->rootPath.$path;
+        $checkPath = $this->isAbsolutePath($path) ? $path : $this->rootPath . $path;
         if (!is_dir($checkPath)) {
             throw new LoaderError(sprintf('The "%s" directory does not exist ("%s").', $path, $checkPath));
         }
@@ -206,15 +206,15 @@ class FilesystemLoader implements LoaderInterface
 
         foreach ($this->paths[$namespace] as $path) {
             if (!$this->isAbsolutePath($path)) {
-                $path = $this->rootPath.$path;
+                $path = $this->rootPath . $path;
             }
 
-            if (is_file($path.'/'.$shortname)) {
-                if (false !== $realpath = realpath($path.'/'.$shortname)) {
+            if (is_file($path . '/' . $shortname)) {
+                if (false !== $realpath = realpath($path . '/' . $shortname)) {
                     return $this->cache[$name] = $realpath;
                 }
 
-                return $this->cache[$name] = $path.'/'.$shortname;
+                return $this->cache[$name] = $path . '/' . $shortname;
             }
         }
 
@@ -277,7 +277,6 @@ class FilesystemLoader implements LoaderInterface
                 && ':' === $file[1]
                 && strspn($file, '/\\', 2, 1)
             )
-            || null !== parse_url($file, PHP_URL_SCHEME)
-        ;
+            || null !== parse_url($file, PHP_URL_SCHEME);
     }
 }
