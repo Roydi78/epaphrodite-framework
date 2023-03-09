@@ -23,18 +23,6 @@ class if_not_exist
    * **********************************************************************************************
    * Create recently users actions if not exist
    */
-  public function create_db_if_not_exist()
-  {
-
-    $sql = "CREATE DATABASE IF NOT EXISTS epaphrodite_bd";
-
-    $this->request->insert($sql, NULL, NULL, false, 2);
-  }
-
-  /**
-   * **********************************************************************************************
-   * Create recently users actions if not exist
-   */
   private function create_recently_actions_if_not_exist()
   {
 
@@ -98,8 +86,6 @@ class if_not_exist
    */
   public function create_table()
   {
-
-    $this->create_db_if_not_exist();
 
     $this->create_user_right_if_not_exist();
 

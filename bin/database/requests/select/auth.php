@@ -58,7 +58,7 @@ class auth
    * Verify if user_bd table exist in database
    * @return bool
    */
-  private function if_table_exist()
+  public function if_table_exist(): bool
   {
 
     try {
