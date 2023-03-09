@@ -14,7 +14,7 @@ RewriteCond %{REQUEST_FILENAME} !-l
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Lancer la reecriture de l'url des pages du site
-RewriteRule ^(.*)$ ?44d6fb7ae7c38f949af7f9140d3dc97c26da23c464341310c11bb2f7f3b234ee=$1 [QSA,L]
+RewriteRule ^(.*)$ ?d0f2fc4b2b97c18300fa420cf03c7028cd6a692234b0563c747665bed1d1b075=$1 [QSA,L]
 
 # Gestion des erreurs 403 , 404 et 500 du serveur
 ErrorDocument 403 /error/403.html
