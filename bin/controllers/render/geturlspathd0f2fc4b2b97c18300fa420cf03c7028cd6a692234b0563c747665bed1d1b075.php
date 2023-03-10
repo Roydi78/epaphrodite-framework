@@ -6,7 +6,7 @@ namespace bin\controllers\render;
 class geturlspathd0f2fc4b2b97c18300fa420cf03c7028cd6a692234b0563c747665bed1d1b075
 {
     private $session;
-    private $startsession;
+    private $generated;
     private $interface_manager;
     private $urlfound;
     private $main;
@@ -31,9 +31,9 @@ class geturlspathd0f2fc4b2b97c18300fa420cf03c7028cd6a692234b0563c747665bed1d1b07
         $this->main = new \bin\controllers\controllers\main;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
+        $this->generated = new \bin\epaphrodite\env\gestcookies;
         $this->admin = new \bin\controllers\controllers\dashboard;
         $this->setting = new \bin\controllers\controllers\setting;
-        $this->startsession = new \bin\epaphrodite\env\gestcookies;
         $this->users = new \bin\controllers\controllers\utilisateur;
         $this->interface_manager = new \bin\epaphrodite\others\gestion_interface;
         $this->env = new \bin\controllers\render\methodd0f2fc4b2b97c18300fa420cf03c7028cd6a692234b0563c747665bed1d1b075;
@@ -80,7 +80,7 @@ class geturlspathd0f2fc4b2b97c18300fa420cf03c7028cd6a692234b0563c747665bed1d1b07
          * @param string $httonly
          * @return void
          */
-        $this->startsession->startsession(60 * 60 * 24, '/', '', false, true);
+        $this->generated->session_if_not_exist();
 
         /*
             Get user authentification page or destroy session

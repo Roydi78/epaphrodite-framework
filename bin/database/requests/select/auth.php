@@ -155,7 +155,7 @@ class auth
 
           if ($this->secure->get_csrf($_COOKIE[$this->msg->answers('token_name')]) !== 0) {
 
-            $this->star->set_user_cookies('/', '', false, true, $this->secure->secure());
+            $this->star->set_user_cookies($this->secure->secure());
           }
 
           header("Location: $this->gethost ");

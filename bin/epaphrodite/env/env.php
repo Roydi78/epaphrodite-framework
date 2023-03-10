@@ -52,9 +52,7 @@ class env
 
         $rep_pat = ["'", "à", "á", "â", "ã", "ä", "æ", "ç", "è", "é", "ê", "ë", "î", "ï", "ô", "û", "&"];
 
-        $str_noacc = preg_replace($pattern, $rep_pat, $chaine);
-
-        return $str_noacc;
+        return !empty($chaine) ? preg_replace($pattern, $rep_pat, $chaine) : NULL;
     }
 
     /**

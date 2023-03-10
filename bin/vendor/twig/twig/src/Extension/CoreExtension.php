@@ -225,6 +225,7 @@ namespace Twig\Extension {
 
                 // Epaphrodite add new filters
                 new TwigFilter('strpad', 'twig_strptad'),
+                new TwigFilter('toiso', 'isoPath_twig'),
             ];
         }
 
@@ -2041,7 +2042,7 @@ namespace {
 
     function twig_strptad($number, $pad_length, $pad_string)
     {
-        return __classEnv()->explode_datas($number, $pad_length, $pad_string);
+        return __classEnv()->strpad($number, $pad_length, $pad_string);
     }
 
     /**

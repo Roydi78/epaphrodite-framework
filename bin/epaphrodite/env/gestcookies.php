@@ -7,12 +7,18 @@ use bin\epaphrodite\crf_token\csrf_secure;
 class gestcookies
 {
 
-    protected $pathvalue;
-    protected $cookievalue;
-    protected $initvalue = "";
+    protected $crsf;
     private $session;
     private $messages;
-    private $csrf;
+    protected $init = "";
+    protected $cookievalue;
+
+    /**
+     * The flag to define if we work under SSL
+     * @var bool
+     * @access private
+     */
+    private static bool $IS_SSL;
 
     /**
      * construct class
@@ -20,52 +26,94 @@ class gestcookies
      */
     function __construct()
     {
-        $this->pathvalue = new \bin\epaphrodite\crf_token\gettokenvalue();
-        $this->session = new \bin\epaphrodite\auth\session_auth();
+        $this->session = new \bin\epaphrodite\auth\session_auth;
+        $this->crsf = new \bin\epaphrodite\crf_token\gettokenvalue;
         $this->messages = new \bin\epaphrodite\define\text_messages;
-        $this->csrf = new csrf_secure;
     }
 
     /**
+     * Started
+     * @return bool
+     * @access private
+     */
+    private static function hasStarted(): bool
+    {
+        return session_status() === PHP_SESSION_ACTIVE;
+    }
+
+    /**
+     * Set main params
+     * 
+     * @return array
+     */
+    private static array $cookie_params = array(
+        'lifetime' => 86400,
+        'path' => '/',
+        'httponly' => true,
+        'samesite' => 'Strict',
+    );
+
+    /**
+     * Set others options
+     * 
+     * @return array
+     */
+    private static array $others_options = array(
+        'secure' => false,
+    );
+
+    /**
      * set session et cookies
-     *
-     * @param string $lifetime
-     * @param string $path
-     * @param string $dommaine
-     * @param string $secure
-     * @param string $httonly
+     * 
      * @return void
      */
-    public function startsession($lifetime, $path, $dommaine, $secure, $httonly)
+    public function session_if_not_exist(): void
     {
+        $sessionname = $this->messages->answers('session_name');
 
-        session_set_cookie_params($lifetime, $path, $dommaine, $secure, $httonly);
+        if (!self::hasStarted()) {
 
-        session_name($this->messages->answers('session_name'));
+            self::$IS_SSL = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on';
 
-        session_start();
+            if (!empty($sessionname)) {
+                session_name($sessionname);
+            } elseif (self::$IS_SSL) {
+                session_name('__Secure-PHPSESSID');
+            }
 
-        if ($this->session->login() === NULL && empty($this->session->token_csrf())) {
+            self::$cookie_params['domain'] = $_SERVER['SERVER_NAME'];
+            self::$cookie_params['secure'] = self::$IS_SSL;
 
-            $this->set_user_cookies($path, $dommaine, $secure, $httonly, $this->pathvalue->getvalue($this->initvalue));
+            session_set_cookie_params(array_merge(self::$cookie_params, self::$others_options));
+            session_start();
+
+            if ($this->session->login() === NULL && empty($this->session->token_csrf())) {
+
+                $this->set_user_cookies($this->crsf->getvalue($this->init));
+            }
         }
     }
 
     /**
      * Set cookies
      *
-     * @param string $path
-     * @param string $dommaine
-     * @param string $secure
-     * @param string $httonly
-     * @param string $cookievalue
+     * @param string $cookie_value
      * @return void
      */
-    public function set_user_cookies($path, $dommaine, $secure, $httonly, $cookievalue)
+    public function set_user_cookies($cookie_value): void
     {
 
-        setcookie($this->messages->answers('token_name'), $cookievalue, time() + 60 * 60 * 24, $path, $dommaine, $secure, $httonly);
+        $arr_cookie_options = array(
+            'expires' => time() + 60 * 60 * 24 * 30,
+            'path' => '/',
+            'domain' => '',
+            'secure' => false,
+            'httponly' => true,
+            'samesite' => 'strict'
+        );
 
-        $_COOKIE[$this->messages->answers('token_name')] = $cookievalue;
+        setcookie($this->messages->answers('token_name'), $cookie_value, $arr_cookie_options);
+
+        $_COOKIE[$this->messages->answers('token_name')] = $cookie_value;
     }
 }
