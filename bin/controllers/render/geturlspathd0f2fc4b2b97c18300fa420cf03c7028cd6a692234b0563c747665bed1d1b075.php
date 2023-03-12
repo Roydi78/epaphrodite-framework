@@ -68,6 +68,7 @@ class geturlspathd0f2fc4b2b97c18300fa420cf03c7028cd6a692234b0563c747665bed1d1b07
     public function runAppd0f2fc4b2b97c18300fa420cf03c7028cd6a692234b0563c747665bed1d1b075()
     {
 
+        // $this->correctTrailingSlash();
         $this->url = $this->geturi();
 
         /**

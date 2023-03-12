@@ -6,15 +6,17 @@ RewriteEngine On
 
 # Rediriger vers https ou http
 RewriteCond %{HTTPS} on
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
 
 # Protection des dossiers et de fichiers
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteCond %{REQUEST_FILENAME} !-d
 
+
 # Lancer la reecriture de l'url des pages du site
 RewriteRule ^(.*)$ ?d0f2fc4b2b97c18300fa420cf03c7028cd6a692234b0563c747665bed1d1b075=$1 [QSA,L]
+
 
 # Gestion des erreurs 403 , 404 et 500 du serveurs
 ErrorDocument 403 /error/403.html
